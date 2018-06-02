@@ -8,6 +8,8 @@ namespace PinupMobile.Core
     {
         public override void Initialize()
         {
+            Setup.Register();
+
             RegisterAppStart<AppStartupViewModel>();
         }
     }

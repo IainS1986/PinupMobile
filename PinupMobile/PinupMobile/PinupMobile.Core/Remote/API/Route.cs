@@ -1,5 +1,5 @@
 ﻿using System;
-namespace PinupMobile.Core.Remote
+namespace PinupMobile.Core.Remote.API
 {
     [AttributeUsage(AttributeTargets.Class)]  
     public class Route : Attribute
