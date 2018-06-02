@@ -1,5 +1,8 @@
+using MvvmCross;
 using MvvmCross.Platforms.Ios.Core;
 using PinupMobile.Core;
+using PinupMobile.Core.Settings;
+using PinupMobile.iOS.Settings;
 using UIKit;
 
 namespace PinupMobile.iOS
@@ -11,6 +14,8 @@ namespace PinupMobile.iOS
             base.InitializeIoC();
 
             //Mvx.RegisterType<ICameraCompatibility, CameraCompatibility>();
+
+            Mvx.LazyConstructAndRegisterSingleton<IUserSettings, UserSettings>();
         }
     }
 }

@@ -86,6 +86,9 @@
     <PackageReference Include="MvvmCross">
       <Version>6.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LinkerPleaseInclude.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="Views\AppStartupView.designer.cs">
       <DependentUpon>AppStartupView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\UserSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
@@ -190,6 +194,9 @@
       <Project>{A11B30FF-5237-4956-9C99-4D16A29DC61A}</Project>
       <Name>PinupMobile.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Settings\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
