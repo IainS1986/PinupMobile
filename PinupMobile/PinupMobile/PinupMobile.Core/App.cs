@@ -1,17 +1,14 @@
-using MvvmCross.Platform.IoC;
+using MvvmCross.IoC;
+using MvvmCross.ViewModels;
+using PinupMobile.Core.ViewModels;
 
 namespace PinupMobile.Core
 {
-    public class App : MvvmCross.Core.ViewModels.MvxApplication
+    public class App : MvxApplication
     {
         public override void Initialize()
         {
-            CreatableTypes()
-                .EndingWith("Service")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
-
-            RegisterNavigationServiceAppStart<ViewModels.FirstViewModel>();
+            RegisterAppStart<AppStartupViewModel>();
         }
     }
 }

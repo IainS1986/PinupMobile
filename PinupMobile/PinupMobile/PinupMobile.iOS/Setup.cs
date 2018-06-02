@@ -1,31 +1,16 @@
-using MvvmCross.Core.ViewModels;
-using MvvmCross.iOS.Platform;
-using MvvmCross.iOS.Views.Presenters;
-using MvvmCross.Platform.Platform;
+using MvvmCross.Platforms.Ios.Core;
+using PinupMobile.Core;
 using UIKit;
 
 namespace PinupMobile.iOS
 {
-    public class Setup : MvxIosSetup
+    public class Setup : MvxIosSetup<App>
     {
-        public Setup(MvxApplicationDelegate applicationDelegate, UIWindow window)
-            : base(applicationDelegate, window)
+        protected override void InitializeIoC()
         {
-        }
+            base.InitializeIoC();
 
-        public Setup(MvxApplicationDelegate applicationDelegate, IMvxIosViewPresenter presenter)
-            : base(applicationDelegate, presenter)
-        {
-        }
-
-        protected override IMvxApplication CreateApp()
-        {
-            return new Core.App();
-        }
-
-        protected override IMvxTrace CreateDebugTrace()
-        {
-            return new DebugTrace();
+            //Mvx.RegisterType<ICameraCompatibility, CameraCompatibility>();
         }
     }
 }

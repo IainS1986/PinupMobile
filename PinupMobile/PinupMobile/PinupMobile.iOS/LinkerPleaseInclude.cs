@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Specialized;
 using System.Windows.Input;
-using MvvmCross.iOS.Views;
 using Foundation;
 using UIKit;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Platforms.Ios.Views;
+using MvvmCross.IoC;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 
 #pragma warning disable 219
 
@@ -37,12 +40,17 @@ namespace PinupMobile.iOS
         public void Include(UITextField textField)
         {
             textField.Text = textField.Text + "";
+            textField.EditingDidBegin += (sender, args) => { textField.Text = ""; };
+            textField.EditingDidEnd += (sender, args) => { textField.Text = ""; };
+            textField.EditingDidEndOnExit += (sender, args) => { textField.Text = ""; };
+            textField.Placeholder = textField.Text + "";
             textField.EditingChanged += (sender, args) => { textField.Text = ""; };
         }
 
         public void Include(UITextView textView)
         {
             textView.Text = textView.Text + "";
+            textView.TextStorage.DidProcessEditing += (sender, e) => textView.Text = "";
             textView.Changed += (sender, args) => { textView.Text = ""; };
         }
 
@@ -101,17 +109,38 @@ namespace PinupMobile.iOS
         {
             changed.CollectionChanged += (s, e) => { var test = $"{e.Action}{e.NewItems}{e.NewStartingIndex}{e.OldItems}{e.OldStartingIndex}"; };
         }
+
         public void Include(ICommand command)
         {
             command.CanExecuteChanged += (s, e) => { if (command.CanExecute(null)) command.Execute(null); };
         }
-        public void Include(MvvmCross.Platform.IoC.MvxPropertyInjector injector)
+
+        public void Include(MvxPropertyInjector injector)
         {
-            injector = new MvvmCross.Platform.IoC.MvxPropertyInjector();
+            injector = new MvxPropertyInjector();
         }
+
         public void Include(System.ComponentModel.INotifyPropertyChanged changed)
         {
             changed.PropertyChanged += (sender, e) => { var test = e.PropertyName; };
+        }
+
+        public void Include(MvxNavigationService service, IMvxViewModelLoader loader)
+        {
+            service = new MvxNavigationService(null, loader);
+        }
+
+        public void Include(ConsoleColor color)
+        {
+            Console.Write("");
+            Console.WriteLine("");
+            color = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<!--/-:cnd -->
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -85,29 +83,26 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MvvmCross" Version="5.2.1" />
-    <PackageReference Include="MvvmCross.Binding" Version="5.2.1" />
-    <PackageReference Include="MvvmCross.Core" Version="5.2.1" />
-    <PackageReference Include="MvvmCross.Platform" Version="5.2.1" />
+    <PackageReference Include="MvvmCross">
+      <Version>6.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DebugTrace.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AppStartupView.cs" />
+    <Compile Include="Views\AppStartupView.designer.cs">
+      <DependentUpon>AppStartupView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
-    <Compile Include="Views\FirstView.designer.cs">
-      <DependentUpon>FirstView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FirstView.cs" />
-    <InterfaceDefinition Include="Views\FirstView.storyboard">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="Views\AppStartupView.xib" />
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -188,6 +183,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-83.5x83.5_2x.png">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PinupMobile.Core\PinupMobile.Core.csproj">

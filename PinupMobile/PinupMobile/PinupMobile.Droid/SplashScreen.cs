@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content.PM;
-using MvvmCross.Droid.Views;
+using MvvmCross.Core;
+using MvvmCross.Platforms.Android.Views;
 
 namespace PinupMobile.Droid
 {
@@ -15,6 +16,12 @@ namespace PinupMobile.Droid
     {
         public SplashScreen()
             : base(Resource.Layout.SplashScreen)
+        {
+            MvxSetup.RegisterSetupType<Setup>(this.GetType().Assembly);
+        }
+
+        // Stop the user from hitting back during the splash screen startup
+        public override void OnBackPressed()
         {
         }
     }
