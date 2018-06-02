@@ -1,6 +1,7 @@
 ﻿using System;
 using MvvmCross;
 using PinupMobile.Core.Remote;
+using PinupMobile.Core.Remote.Client;
 
 namespace PinupMobile.Core
 {
@@ -8,7 +9,8 @@ namespace PinupMobile.Core
     {
         public static void Register()
         {
-            Mvx.RegisterType<IPopperService, PopperService>();
+            Mvx.LazyConstructAndRegisterSingleton<IHttpClientFactory, HttpClientFactory>();
+            Mvx.LazyConstructAndRegisterSingleton<IPopperService, PopperService>();
         }
     }
 }

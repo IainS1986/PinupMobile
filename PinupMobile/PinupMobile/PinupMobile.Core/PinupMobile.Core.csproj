@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="MvvmCross" Version="6.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
     
   <ItemGroup>
@@ -15,5 +16,8 @@
     <Folder Include="Logging\" />
     <Folder Include="Remote\" />
     <Folder Include="Remote\API\" />
+    <Folder Include="Remote\DTO\" />
+    <Folder Include="Remote\Client\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>

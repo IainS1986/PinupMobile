@@ -13,8 +13,6 @@ namespace PinupMobile.Core.ViewModels
     public class AppStartupViewModel
         : MvxViewModel
     {
-        private const string RunBeforeKey = "run_before";
-
         private readonly IUserSettings _settings;
         private readonly IPopperService _server;
 
@@ -25,21 +23,18 @@ namespace PinupMobile.Core.ViewModels
             _server = server;
         }
 
-        public override Task Initialize()
+        public override async Task Initialize()
         {
-            //Test out Mvvm cross IoC working nicely
-            bool run_before = _settings.GetBool(RunBeforeKey);
-            if (!run_before)
-            {
-                Logger.Diagnostic("App Not Run before...");
-                _settings.SetBool(RunBeforeKey, true);
-            }
-            else
-            {
-                Logger.Diagnostic("App Run Before...");
-            }
+            await base.Initialize();
 
-            return base.Initialize();
+            // TODO First time run to setup Popper Server URL....
+            await Task.Run(async () =>
+            {
+                await _server.CheckPopperServerBroadcasting();
+
+            }).ConfigureAwait(false);
+
+            Logger.Debug("AppStartup Complete");
         }
     }
 }
