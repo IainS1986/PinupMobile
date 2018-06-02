@@ -20,6 +20,7 @@ namespace PinupMobile.iOS.Views
             base.ViewDidLoad();
 
             var set = this.CreateBindingSet<AppStartupView, AppStartupViewModel>();
+            set.Bind(CurrentItemName).For(v => v.Text).To(vm => vm.CurrentItemName);
             set.Apply();
         }
     }

@@ -19,5 +19,6 @@
     <Folder Include="Remote\DTO\" />
     <Folder Include="Remote\Client\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Remote\Model\" />
   </ItemGroup>
 </Project>

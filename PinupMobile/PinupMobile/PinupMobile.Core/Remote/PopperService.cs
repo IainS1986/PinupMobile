@@ -9,6 +9,7 @@ using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Remote.Client;
 using PinupMobile.Core.Remote.DTO;
+using PinupMobile.Core.Remote.Model;
 using PinupMobile.Core.Settings;
 
 namespace PinupMobile.Core.Remote
@@ -50,7 +51,7 @@ namespace PinupMobile.Core.Remote
             BaseUri = new Uri(url);
         }
 
-        public async Task<bool> CheckPopperServerBroadcasting()
+        public async Task<CurrentItem> GetCurrentItem()
         {
             // Popper has no endpoint to just get state, or any authentication to do a keep alive
             // so instead, make a call to "Get current item" which should respond but not alter
@@ -76,6 +77,7 @@ namespace PinupMobile.Core.Remote
 
             HttpResponseMessage response = null;
             string responseBody = null;
+            CurrentItem item = null;
 
             try
             {
@@ -89,6 +91,7 @@ namespace PinupMobile.Core.Remote
                 {
                     responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     CurrentItemDTO dto = JsonConvert.DeserializeObject<CurrentItemDTO>(responseBody);
+                    item = new CurrentItem(dto);
                 }
             }
             catch (Exception ex)
@@ -98,7 +101,7 @@ namespace PinupMobile.Core.Remote
             }
 
             // If no response, the VM/UI should trigger the "please input popper url" for a retry
-            return true;
+            return item;
         }
     }
 }

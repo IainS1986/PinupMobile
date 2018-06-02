@@ -16,6 +16,13 @@ namespace PinupMobile.Core.ViewModels
         private readonly IUserSettings _settings;
         private readonly IPopperService _server;
 
+        private string _currentItemName;
+        public string CurrentItemName
+        {
+            get { return _currentItemName; }
+            set { _currentItemName = value; RaisePropertyChanged(() => CurrentItemName); }
+        }
+
         public AppStartupViewModel(IUserSettings settings,
                                    IPopperService server)
         {
@@ -30,7 +37,16 @@ namespace PinupMobile.Core.ViewModels
             // TODO First time run to setup Popper Server URL....
             await Task.Run(async () =>
             {
-                await _server.CheckPopperServerBroadcasting();
+                var currentItem = await _server.GetCurrentItem();
+
+                if(currentItem!=null)
+                {
+                    CurrentItemName = currentItem.DisplayName;
+                }
+                else
+                {
+                    CurrentItemName = "No Popper Server running";
+                }
 
             }).ConfigureAwait(false);
 
