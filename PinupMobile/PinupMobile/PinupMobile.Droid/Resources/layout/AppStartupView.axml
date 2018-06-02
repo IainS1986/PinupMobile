@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:text="Pinup Startup"
             android:gravity="center"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            local:MvxBind="Text CurrentItemName" />
     </RelativeLayout>
 </RelativeLayout>
