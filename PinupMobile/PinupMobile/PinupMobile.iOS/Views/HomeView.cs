@@ -26,6 +26,7 @@ namespace PinupMobile.iOS.Views
             set.Bind(NextButton).To(vm => vm.OnGameNextCommand);
             set.Bind(PrevPageButton).To(vm => vm.OnPagePrevCommand);
             set.Bind(NextPageButton).To(vm => vm.OnPageNextCommand);
+            set.Bind(DisplayButton).To(vm => vm.OnShowDisplayViewCommand);
             set.Apply();
         }
     }

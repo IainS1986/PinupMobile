@@ -105,6 +105,10 @@
     <Compile Include="Views\HomeView.designer.cs">
       <DependentUpon>HomeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\DisplayView.cs" />
+    <Compile Include="Views\DisplayView.designer.cs">
+      <DependentUpon>DisplayView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
@@ -115,6 +119,9 @@
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Views\HomeView.xib">
       <DependentUpon>HomeView.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Views\DisplayView.xib">
+      <DependentUpon>DisplayView.cs</DependentUpon>
     </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>

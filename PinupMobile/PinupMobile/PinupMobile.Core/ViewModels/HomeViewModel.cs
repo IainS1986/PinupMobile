@@ -34,6 +34,8 @@ namespace PinupMobile.Core.ViewModels
 
         public MvxAsyncCommand OnPagePrevCommand => new MvxAsyncCommand(OnPagePrev);
 
+        public MvxAsyncCommand OnShowDisplayViewCommand => new MvxAsyncCommand(OnDisplayView);
+
         public HomeViewModel(IPopperService server,
                              IMvxNavigationService navigationService)
         {
@@ -48,19 +50,9 @@ namespace PinupMobile.Core.ViewModels
             await Refresh();
         }
 
-        private async Task ExecuteCommand(Func<Task<bool>> command)
+        public async Task OnDisplayView()
         {
-            await Task.Run(async () =>
-            {
-                bool success = await command();
-
-                if (success)
-                {
-                    // It appears popper needs "some" time to move onto a new game
-                    await Task.Delay(500);
-                    await Refresh();
-                }
-            });
+            await _navigationService.Navigate<DisplayViewModel>();
         }
 
         public async Task OnGameNext()
@@ -91,6 +83,21 @@ namespace PinupMobile.Core.ViewModels
                 CurrentItem = await _server.GetCurrentItem();
 
             }).ConfigureAwait(false);
+        }
+
+        private async Task ExecuteCommand(Func<Task<bool>> command)
+        {
+            await Task.Run(async () =>
+            {
+                bool success = await command();
+
+                if (success)
+                {
+                    // It appears popper needs "some" time to move onto a new game
+                    await Task.Delay(500);
+                    await Refresh();
+                }
+            });
         }
     }
 }

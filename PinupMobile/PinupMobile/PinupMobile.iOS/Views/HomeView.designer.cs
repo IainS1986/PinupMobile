@@ -16,6 +16,9 @@ namespace PinupMobile.iOS.Views
 		UIKit.UILabel CurrentItemName { get; set; }
 
 		[Outlet]
+		UIKit.UIButton DisplayButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton NextButton { get; set; }
 
 		[Outlet]
@@ -39,6 +42,11 @@ namespace PinupMobile.iOS.Views
 				NextButton = null;
 			}
 
+			if (NextPageButton != null) {
+				NextPageButton.Dispose ();
+				NextPageButton = null;
+			}
+
 			if (PrevButton != null) {
 				PrevButton.Dispose ();
 				PrevButton = null;
@@ -49,9 +57,9 @@ namespace PinupMobile.iOS.Views
 				PrevPageButton = null;
 			}
 
-			if (NextPageButton != null) {
-				NextPageButton.Dispose ();
-				NextPageButton = null;
+			if (DisplayButton != null) {
+				DisplayButton.Dispose ();
+				DisplayButton = null;
 			}
 		}
 	}

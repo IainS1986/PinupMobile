@@ -144,6 +144,7 @@
     <AndroidResource Include="Resources\values-v21\styles.xml" />
     <AndroidResource Include="Resources\layout\AppStartupView.axml" />
     <AndroidResource Include="Resources\layout\HomeView.axml" />
+    <AndroidResource Include="Resources\layout\DisplayView.axml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -159,6 +160,7 @@
     <Compile Include="Views\AppStartupView.cs" />
     <Compile Include="Settings\UserSettings.cs" />
     <Compile Include="Views\HomeView.cs" />
+    <Compile Include="Views\DisplayView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
