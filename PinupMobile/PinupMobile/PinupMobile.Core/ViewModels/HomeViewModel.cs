@@ -56,6 +56,7 @@ namespace PinupMobile.Core.ViewModels
 
                 if (success)
                 {
+                    // It appears popper needs "some" time to move onto a new game
                     await Task.Delay(500);
                     await Refresh();
                 }

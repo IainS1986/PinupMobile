@@ -19,7 +19,13 @@ namespace PinupMobile.iOS.Views
 		UIKit.UIButton NextButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton NextPageButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton PrevButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton PrevPageButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -28,14 +34,24 @@ namespace PinupMobile.iOS.Views
 				CurrentItemName = null;
 			}
 
+			if (NextButton != null) {
+				NextButton.Dispose ();
+				NextButton = null;
+			}
+
 			if (PrevButton != null) {
 				PrevButton.Dispose ();
 				PrevButton = null;
 			}
 
-			if (NextButton != null) {
-				NextButton.Dispose ();
-				NextButton = null;
+			if (PrevPageButton != null) {
+				PrevPageButton.Dispose ();
+				PrevPageButton = null;
+			}
+
+			if (NextPageButton != null) {
+				NextPageButton.Dispose ();
+				NextPageButton = null;
 			}
 		}
 	}

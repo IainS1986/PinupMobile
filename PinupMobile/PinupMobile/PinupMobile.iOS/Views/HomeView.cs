@@ -24,6 +24,8 @@ namespace PinupMobile.iOS.Views
             set.Bind(CurrentItemName).For(v => v.Text).To(vm => vm.CurrentItem).WithConversion<CurrentItemDisplayNameConverter>();
             set.Bind(PrevButton).To(vm => vm.OnGamePrevCommand);
             set.Bind(NextButton).To(vm => vm.OnGameNextCommand);
+            set.Bind(PrevPageButton).To(vm => vm.OnPagePrevCommand);
+            set.Bind(NextPageButton).To(vm => vm.OnPageNextCommand);
             set.Apply();
         }
     }

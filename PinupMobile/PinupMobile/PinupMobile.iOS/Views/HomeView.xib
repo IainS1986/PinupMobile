@@ -13,7 +13,9 @@
             <connections>
                 <outlet property="CurrentItemName" destination="pMv-Uh-Vlq" id="ERi-uY-OmD"/>
                 <outlet property="NextButton" destination="ZiE-Ic-A5W" id="Zsg-Lz-Rig"/>
+                <outlet property="NextPageButton" destination="Zdw-5k-kki" id="hGM-wW-GWb"/>
                 <outlet property="PrevButton" destination="WIK-F1-i1T" id="Qzf-ZM-neR"/>
+                <outlet property="PrevPageButton" destination="BVC-lY-a71" id="I3F-4A-Tab"/>
                 <outlet property="view" destination="1" id="RRd-Eg-VrN"/>
             </connections>
         </placeholder>
@@ -32,31 +34,52 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-lY-a71" userLabel="Page Down">
+                    <rect key="frame" x="16" y="382" width="80" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Zhd-0s-xa1"/>
+                        <constraint firstAttribute="height" constant="30" id="dDU-FD-8vR"/>
+                    </constraints>
+                    <state key="normal" title="Page Down"/>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIK-F1-i1T">
-                    <rect key="frame" x="58" y="382" width="100" height="30"/>
+                    <rect key="frame" x="103" y="382" width="80" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="C39-PW-v92"/>
-                        <constraint firstAttribute="width" constant="100" id="Zv3-gh-xJc"/>
+                        <constraint firstAttribute="width" constant="80" id="Zv3-gh-xJc"/>
                     </constraints>
                     <state key="normal" title="Prev"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiE-Ic-A5W">
-                    <rect key="frame" x="217" y="382" width="100" height="30"/>
+                    <rect key="frame" x="191" y="382" width="80" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="J0c-e0-YkU"/>
-                        <constraint firstAttribute="width" constant="100" id="RoH-29-Ygu"/>
+                        <constraint firstAttribute="width" constant="80" id="RoH-29-Ygu"/>
                     </constraints>
                     <state key="normal" title="Next"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-5k-kki" userLabel="Page Up">
+                    <rect key="frame" x="279" y="382" width="80" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Vrt-78-AUL"/>
+                        <constraint firstAttribute="height" constant="30" id="w4u-hh-o3c"/>
+                    </constraints>
+                    <state key="normal" title="Page Up"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="ZiE-Ic-A5W" secondAttribute="trailing" constant="58" id="02f-ly-U6G"/>
+                <constraint firstItem="WIK-F1-i1T" firstAttribute="leading" secondItem="BVC-lY-a71" secondAttribute="trailing" constant="7" id="0ET-kf-KIF"/>
                 <constraint firstItem="pMv-Uh-Vlq" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="2O3-sp-4pv"/>
-                <constraint firstItem="ZiE-Ic-A5W" firstAttribute="top" secondItem="WIK-F1-i1T" secondAttribute="top" id="Cb4-W8-slU"/>
+                <constraint firstItem="WIK-F1-i1T" firstAttribute="top" secondItem="BVC-lY-a71" secondAttribute="top" id="EJ3-jp-hWv"/>
+                <constraint firstItem="Zdw-5k-kki" firstAttribute="leading" secondItem="ZiE-Ic-A5W" secondAttribute="trailing" constant="8" id="Fsb-1Y-Jsd"/>
+                <constraint firstAttribute="trailing" secondItem="Zdw-5k-kki" secondAttribute="trailing" constant="16" id="GVz-Df-gN6"/>
+                <constraint firstItem="Zdw-5k-kki" firstAttribute="top" secondItem="ZiE-Ic-A5W" secondAttribute="top" id="adB-aj-f8B"/>
+                <constraint firstItem="ZiE-Ic-A5W" firstAttribute="top" secondItem="WIK-F1-i1T" secondAttribute="top" id="fKO-hw-yEA"/>
+                <constraint firstItem="BVC-lY-a71" firstAttribute="top" secondItem="pMv-Uh-Vlq" secondAttribute="bottom" constant="8" id="hRN-vK-l6b"/>
+                <constraint firstItem="BVC-lY-a71" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16" id="hxp-rS-9UO"/>
                 <constraint firstItem="pMv-Uh-Vlq" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="jGV-Ib-P60"/>
-                <constraint firstItem="WIK-F1-i1T" firstAttribute="top" secondItem="pMv-Uh-Vlq" secondAttribute="bottom" constant="8" id="msY-xn-WD0"/>
-                <constraint firstItem="WIK-F1-i1T" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="58" id="uv8-7f-vKj"/>
+                <constraint firstItem="ZiE-Ic-A5W" firstAttribute="leading" secondItem="WIK-F1-i1T" secondAttribute="trailing" constant="8" id="sO2-xQ-Kct"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
