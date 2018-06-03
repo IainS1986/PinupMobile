@@ -9,12 +9,18 @@ using System.CodeDom.Compiler;
 
 namespace PinupMobile.iOS.Views
 {
-	[Register ("AppStartupView")]
-	partial class AppStartupView
+    [Register ("HomeView")]
+    partial class HomeView
 	{
+		[Outlet]
+		UIKit.UILabel CurrentItemName { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (CurrentItemName != null) {
+				CurrentItemName.Dispose ();
+				CurrentItemName = null;
+			}
 		}
 	}
 }

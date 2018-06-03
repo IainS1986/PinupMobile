@@ -7,11 +7,10 @@ using UIKit;
 
 namespace PinupMobile.iOS.Views
 {
-    [MvxRootPresentation(WrapInNavigationController = false, AnimationDuration = 0.35f, AnimationOptions = UIViewAnimationOptions.TransitionCrossDissolve)]
-    public partial class AppStartupView : MvxViewController
+    public partial class HomeView : MvxViewController
     {
 
-        public AppStartupView() : base("AppStartupView", null)
+        public HomeView() : base("HomeView", null)
         {
         }
 
@@ -19,7 +18,8 @@ namespace PinupMobile.iOS.Views
         {
             base.ViewDidLoad();
 
-            var set = this.CreateBindingSet<AppStartupView, AppStartupViewModel>();
+            var set = this.CreateBindingSet<HomeView, HomeViewModel>();
+            set.Bind(CurrentItemName).For(v => v.Text).To(vm => vm.CurrentItemName);
             set.Apply();
         }
     }

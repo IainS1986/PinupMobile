@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote;
@@ -15,19 +16,15 @@ namespace PinupMobile.Core.ViewModels
     {
         private readonly IUserSettings _settings;
         private readonly IPopperService _server;
-
-        private string _currentItemName;
-        public string CurrentItemName
-        {
-            get { return _currentItemName; }
-            set { _currentItemName = value; RaisePropertyChanged(() => CurrentItemName); }
-        }
+        private readonly IMvxNavigationService _navigationService;
 
         public AppStartupViewModel(IUserSettings settings,
-                                   IPopperService server)
+                                   IPopperService server,
+                                   IMvxNavigationService navigationService)
         {
             _settings = settings;
             _server = server;
+            _navigationService = navigationService;
         }
 
         public override async Task Initialize()
@@ -41,11 +38,14 @@ namespace PinupMobile.Core.ViewModels
 
                 if(currentItem!=null)
                 {
-                    CurrentItemName = currentItem.DisplayName;
+                    // Go to home screen
+                    // TODO Pass in the current item, no need to reload in Homescreen
+                    await _navigationService.Navigate<HomeViewModel>();
                 }
                 else
                 {
-                    CurrentItemName = "No Popper Server running";
+                    // Go to Setup screen
+                    Logger.Debug("No Popper Server found and No Setup View made yet...");
                 }
 
             }).ConfigureAwait(false);

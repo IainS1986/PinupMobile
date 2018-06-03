@@ -101,12 +101,21 @@
       <DependentUpon>AppStartupView.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings\UserSettings.cs" />
+    <Compile Include="Views\HomeView.cs" />
+    <Compile Include="Views\HomeView.designer.cs">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
-    <InterfaceDefinition Include="Views\AppStartupView.xib" />
+    <InterfaceDefinition Include="Views\AppStartupView.xib">
+      <DependentUpon>AppStartupView.cs</DependentUpon>
+    </InterfaceDefinition>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="Views\HomeView.xib">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

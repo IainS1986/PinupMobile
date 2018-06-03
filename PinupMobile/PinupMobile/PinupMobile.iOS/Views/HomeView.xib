@@ -9,8 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppStartupView">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeView">
             <connections>
+                <outlet property="CurrentItemName" destination="pMv-Uh-Vlq" id="ERi-uY-OmD"/>
                 <outlet property="view" destination="1" id="RRd-Eg-VrN"/>
             </connections>
         </placeholder>
@@ -19,15 +20,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6e8-1J-Vbu">
-                    <rect key="frame" x="169" y="315" width="37" height="37"/>
-                    <color key="color" cocoaTouchSystemColor="darkTextColor"/>
-                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMv-Uh-Vlq">
+                    <rect key="frame" x="79" y="292" width="216" height="82"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="216" id="3yB-WL-kDi"/>
+                        <constraint firstAttribute="height" constant="82" id="8i2-HC-Tq7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="6e8-1J-Vbu" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="2n9-TV-Hsq"/>
-                <constraint firstItem="6e8-1J-Vbu" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="IpC-z9-cVD"/>
+                <constraint firstItem="pMv-Uh-Vlq" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="2O3-sp-4pv"/>
+                <constraint firstItem="pMv-Uh-Vlq" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="jGV-Ib-P60"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
