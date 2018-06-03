@@ -6,8 +6,4 @@ namespace PinupMobile.Core.Remote.API
     {
         public int id;
     }
-
-    public class LaunchRecordGameResponse
-    {
-    }
 }

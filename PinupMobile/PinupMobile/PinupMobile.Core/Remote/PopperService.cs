@@ -2,6 +2,8 @@
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PinupMobile.Core.Extensions;
@@ -79,47 +81,96 @@ namespace PinupMobile.Core.Remote
             }
         }
 
+        private async Task<PopperResponse<ResponseT>> MakeRequest<RequestT, ResponseT>(RequestT request) 
+            where RequestT : class
+            where ResponseT : class
+        {
+            var path = typeof(RequestT).GetAttributeValue((Route ra) => ra.Url);
+
+            // Use Regex to get all (if any) '{property}' instances.
+            var pattern = @"\{(.*?)\}";
+            var matches = Regex.Matches(path, pattern);
+
+            // For each match, use reflection to get the property valyue from request
+            // and replace in the path string
+            foreach (var match in matches)
+            {
+                string replace = match.ToString();
+                string property = replace.Substring(1, replace.Length - 2);
+
+                Type rType = typeof(RequestT);
+                FieldInfo info = rType.GetField(property);
+                var val = info.GetValue(request);
+
+                path = path.Replace(replace, val.ToString());
+            }
+
+            // HttpClient setup
+            Uri url = new Uri(BaseUri, path);
+            var client = _clientFactory.Create();
+            client.Timeout = TimeSpan.FromSeconds(5);//TODO Configurable in the request object?
+            var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);//TODO HttpMethod in the attribute
+
+            // Repsonse data
+            HttpResponseMessage httpResponse = null;
+            string responseBody = null;
+            PopperResponse<ResponseT> response = new PopperResponse<ResponseT>();
+            response.Success = false;
+
+            try
+            {
+                httpResponse = await client.GetAsync(url).ConfigureAwait(false);
+
+                HttpStatusCode code = httpResponse.StatusCode;
+                string message = httpResponse.ReasonPhrase;
+                HttpResponseHeaders headers = httpResponse.Headers;
+
+                response.Code = (int)code;
+                response.Messsage = message;
+                response.Success = code == HttpStatusCode.OK;
+
+                if (httpResponse.Content != null)
+                {
+                    responseBody = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    if (typeof(ResponseT) == typeof(string))
+                    {
+                        response.Data = (ResponseT)(object)responseBody;
+                    }
+                    else
+                    {
+                        response.Data = JsonConvert.DeserializeObject<ResponseT>(responseBody);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error fetching {url}");
+                response.Success = false;
+                response.Messsage = ex.Message;
+            }
+
+            return response;
+        }
+
         public async Task<CurrentItem> GetCurrentItem()
         {
             // Popper has no endpoint to just get state, or any authentication to do a keep alive
             // so instead, make a call to "Get current item" which should respond but not alter
             // anything on popper
             var request = new GetCurrentItemRequest();
+            var response = await MakeRequest<GetCurrentItemRequest, GetCurrentItemResponse>(request).ConfigureAwait(false);
 
-            // TODO Move all this into a handler ...
-            var relativePath = typeof(GetCurrentItemRequest).GetAttributeValue((Route ra) => ra.Url);
-            Uri url = new Uri(BaseUri, relativePath);
-            var client = _clientFactory.Create();
-            client.Timeout = TimeSpan.FromSeconds(5);
-            var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
-
-            HttpResponseMessage response = null;
-            string responseBody = null;
-            CurrentItem item = null;
-
-            try
+            if (response?.Success == true &&
+                response?.Data != null)
             {
-                response = await client.GetAsync(url).ConfigureAwait(false);
-
-                HttpStatusCode code = response.StatusCode;
-                string message = response.ReasonPhrase;
-                HttpResponseHeaders headers = response.Headers;
-
-                if (response.Content != null)
-                {
-                    responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CurrentItemDTO dto = JsonConvert.DeserializeObject<CurrentItemDTO>(responseBody);
-                    item = new CurrentItem(dto);
-                }
+                return new CurrentItem(response.Data);
             }
-            catch (Exception ex)
+            else
             {
-                Logger.Error($"Error fetching {url}");
-                Logger.Error(ex.Message);
+                //TODO Error handling???
+                Logger.Error($"Error requesting GetCurrentItem, responded with {response?.Code} and {response?.Messsage}");
+                return null;
             }
-
-            // If no response, the VM/UI should trigger the "please input popper url" for a retry
-            return item;
         }
 
         public async Task<bool> SendGameNext()
@@ -154,35 +205,16 @@ namespace PinupMobile.Core.Remote
             SendKeyInputRequest request = new SendKeyInputRequest();
             request.keyCode = keycode;
 
-            var relativePath = typeof(SendKeyInputRequest).GetAttributeValue((Route ra) => ra.Url);
-            relativePath = relativePath.Replace("{keyCode}", request.keyCode);
+            var response = await MakeRequest<SendKeyInputRequest, string>(request).ConfigureAwait(false);
 
-            Uri url = new Uri(BaseUri, relativePath);
-            var client = _clientFactory.Create();
-            client.Timeout = TimeSpan.FromSeconds(5);
-            var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
-
-            HttpResponseMessage response = null;
-
-            try
+            if (response?.Success == true)
             {
-                response = await client.GetAsync(url).ConfigureAwait(false);
-
-                HttpStatusCode code = response.StatusCode;
-                if(code == HttpStatusCode.OK)
-                {
-                    return true;
-                }
-                else
-                {
-                    Logger.Error($"Error sending pup key {keycode}, responded with {code} and {response.ReasonPhrase}");
-                    return false;
-                }
+                return true;
             }
-            catch (Exception ex)
+            else
             {
-                Logger.Error($"Error fetching {url}");
-                Logger.Error(ex.Message);
+                //TODO Error handling???
+                Logger.Error($"Error sending pup key {keycode}, responded with {response?.Code} and {response?.Messsage}");
                 return false;
             }
         }

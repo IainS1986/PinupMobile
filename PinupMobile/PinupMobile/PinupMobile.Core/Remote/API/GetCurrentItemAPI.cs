@@ -1,4 +1,6 @@
 ﻿using System;
+using PinupMobile.Core.Remote.DTO;
+
 namespace PinupMobile.Core.Remote.API
 {
     [Route("function/getcuritem")]
@@ -6,7 +8,7 @@ namespace PinupMobile.Core.Remote.API
     {
     }
 
-    public class GetCurrentItemResponse
+    public class GetCurrentItemResponse : CurrentItemDTO
     {
         
     }

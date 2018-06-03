@@ -6,8 +6,4 @@ namespace PinupMobile.Core.Remote.API
     {
         public string keyCode;
     }
-
-    public class SendKeyInputResponse
-    {
-    }
 }
