@@ -3,6 +3,7 @@ using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
+using PinupMobile.Core.Converters;
 using PinupMobile.Core.ViewModels;
 using UIKit;
 
@@ -20,7 +21,7 @@ namespace PinupMobile.iOS.Views
             base.ViewDidLoad();
 
             var set = this.CreateBindingSet<HomeView, HomeViewModel>();
-            set.Bind(CurrentItemName).For(v => v.Text).To(vm => vm.CurrentItemName);
+            set.Bind(CurrentItemName).For(v => v.Text).To(vm => vm.CurrentItem).WithConversion<CurrentItemDisplayNameConverter>();
             set.Bind(PrevButton).To(vm => vm.OnGamePrevCommand);
             set.Bind(NextButton).To(vm => vm.OnGameNextCommand);
             set.Apply();

@@ -156,7 +156,7 @@ namespace PinupMobile.Core.Remote
             return response;
         }
 
-        public async Task<CurrentItem> GetCurrentItem()
+        public async Task<Item> GetCurrentItem()
         {
             // Popper has no endpoint to just get state, or any authentication to do a keep alive
             // so instead, make a call to "Get current item" which should respond but not alter
@@ -167,7 +167,7 @@ namespace PinupMobile.Core.Remote
             if (response?.Success == true &&
                 response?.Data != null)
             {
-                return new CurrentItem(response.Data);
+                return new Item(response.Data);
             }
             else
             {

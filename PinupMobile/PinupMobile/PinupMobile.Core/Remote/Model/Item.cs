@@ -3,7 +3,7 @@ using PinupMobile.Core.Remote.DTO;
 
 namespace PinupMobile.Core.Remote.Model
 {
-    public class CurrentItem
+    public class Item
     {
         private string _displayName;
         public string DisplayName
@@ -12,9 +12,9 @@ namespace PinupMobile.Core.Remote.Model
             set { _displayName = value; }
         }
 
-        public CurrentItem(){}
+        public Item(){}
 
-        public CurrentItem(CurrentItemDTO dto)
+        public Item(CurrentItemDTO dto)
         {
             DisplayName = dto?.GameDisplay;
         }

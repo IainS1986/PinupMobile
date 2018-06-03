@@ -5,6 +5,7 @@ using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote;
+using PinupMobile.Core.Remote.Model;
 
 namespace PinupMobile.Core.ViewModels
 {
@@ -18,11 +19,11 @@ namespace PinupMobile.Core.ViewModels
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
 
-        private string _currentItemName;
-        public string CurrentItemName
+        private Item _currentItem;
+        public Item CurrentItem
         {
-            get { return _currentItemName; }
-            set { _currentItemName = value; RaisePropertyChanged(() => CurrentItemName); }
+            get { return _currentItem; }
+            set { _currentItem = value; RaisePropertyChanged(() => CurrentItem); }
         }
 
         public MvxAsyncCommand OnGameNextCommand => new MvxAsyncCommand(OnGameNext);
@@ -86,16 +87,7 @@ namespace PinupMobile.Core.ViewModels
             // TODO First time run to setup Popper Server URL....
             await Task.Run(async () =>
             {
-                var currentItem = await _server.GetCurrentItem();
-
-                if (currentItem != null)
-                {
-                    CurrentItemName = currentItem.DisplayName;
-                }
-                else
-                {
-                    CurrentItemName = "No Popper Server running";
-                }
+                CurrentItem = await _server.GetCurrentItem();
 
             }).ConfigureAwait(false);
         }

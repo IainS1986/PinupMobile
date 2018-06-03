@@ -6,7 +6,7 @@ namespace PinupMobile.Core.Remote
 {
     public interface IPopperService
     {
-        Task<CurrentItem> GetCurrentItem();
+        Task<Item> GetCurrentItem();
 
         Task<bool> ServerExists();
 

@@ -24,7 +24,7 @@
             android:textSize="20dp"
             android:gravity="center"
             android:layout_centerInParent="true"
-            local:MvxBind="Text CurrentItemName" />
+            local:MvxBind="Text CurrentItemDisplayName(CurrentItem)" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

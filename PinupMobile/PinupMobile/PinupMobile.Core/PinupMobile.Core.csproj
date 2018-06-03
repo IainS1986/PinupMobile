@@ -20,5 +20,6 @@
     <Folder Include="Remote\Client\" />
     <Folder Include="Extensions\" />
     <Folder Include="Remote\Model\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>
