@@ -27,16 +27,16 @@ namespace PinupMobile.Core.ViewModels
             _navigationService = navigationService;
         }
 
-        public override async Task Initialize()
+        public override async void ViewAppearing()
         {
-            await base.Initialize();
+            base.ViewAppearing();
 
             // TODO First time run to setup Popper Server URL....
             await Task.Run(async () =>
             {
-                var currentItem = await _server.GetCurrentItem();
-
-                if(currentItem!=null)
+                var popperConnected = await _server.ServerExists();
+                
+                if (popperConnected)
                 {
                     // Go to home screen
                     // TODO Pass in the current item, no need to reload in Homescreen
@@ -47,9 +47,9 @@ namespace PinupMobile.Core.ViewModels
                     // Go to Setup screen
                     Logger.Debug("No Popper Server found and No Setup View made yet...");
                 }
-
+                
             }).ConfigureAwait(false);
-
+            
             Logger.Debug("AppStartup Complete");
         }
     }

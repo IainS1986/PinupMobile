@@ -51,6 +51,34 @@ namespace PinupMobile.Core.Remote
             BaseUri = new Uri(url);
         }
 
+        public async Task<bool> ServerExists()
+        {
+            try
+            {
+                // I was going to use this code to ping, but this might incorrectly say
+                // the host exists, even if popper server is not working! So, unfortunately for now
+                // we've got to do a GetItem.
+                //var ping = new System.Net.NetworkInformation.Ping();
+                //var result = await ping.SendPingAsync(BaseUri.AbsoluteUri);
+
+                //if (result.Status != System.Net.NetworkInformation.IPStatus.Success)
+                //return false;
+
+                var item = await GetCurrentItem();
+
+                if (item == null)
+                    return false;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error pinging {BaseUri}");
+                Logger.Error(ex.Message);
+                return false;
+            }
+        }
+
         public async Task<CurrentItem> GetCurrentItem()
         {
             // Popper has no endpoint to just get state, or any authentication to do a keep alive
@@ -62,18 +90,8 @@ namespace PinupMobile.Core.Remote
             var relativePath = typeof(GetCurrentItemRequest).GetAttributeValue((Route ra) => ra.Url);
             Uri url = new Uri(BaseUri, relativePath);
             var client = _clientFactory.Create();
+            client.Timeout = TimeSpan.FromSeconds(5);
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
-
-            var requestBody = string.Empty;
-            var ContentType = "application/json";
-            if (requestBody != null)
-            {
-                requestMessage.Content = new StringContent(requestBody);
-                if (ContentType != null)
-                {
-                    requestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue(ContentType);
-                }
-            }
 
             HttpResponseMessage response = null;
             string responseBody = null;
@@ -102,6 +120,71 @@ namespace PinupMobile.Core.Remote
 
             // If no response, the VM/UI should trigger the "please input popper url" for a retry
             return item;
+        }
+
+        public async Task<bool> SendGameNext()
+        {
+            return await SendPupKey("2");
+        }
+
+        public async Task<bool> SendGamePrev()
+        {
+            return await SendPupKey("1");
+        }
+
+        /// <summary>
+        /// Send pup the given key. Here are key codes..
+        /// 
+        /// 1 - Game Prior
+        /// 2 - Game Next
+        /// 14 - Select
+        /// 6 - Page Prior
+        /// 5 - Page Next
+        /// 9 - Home
+        /// 15 - Exit Emulator
+        /// 11 - Menu System
+        /// 56 - Restart PC
+        /// 12 - Shut down Windows
+        /// </summary>
+        /// <returns>The pup key.</returns>
+        /// <param name="keycode">Keycode.</param>
+        public async Task<bool> SendPupKey(string keycode)
+        {
+            // TODO Move all this into a handler ...
+            SendKeyInputRequest request = new SendKeyInputRequest();
+            request.keyCode = keycode;
+
+            var relativePath = typeof(SendKeyInputRequest).GetAttributeValue((Route ra) => ra.Url);
+            relativePath = relativePath.Replace("{keyCode}", request.keyCode);
+
+            Uri url = new Uri(BaseUri, relativePath);
+            var client = _clientFactory.Create();
+            client.Timeout = TimeSpan.FromSeconds(5);
+            var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+
+            HttpResponseMessage response = null;
+
+            try
+            {
+                response = await client.GetAsync(url).ConfigureAwait(false);
+
+                HttpStatusCode code = response.StatusCode;
+                if(code == HttpStatusCode.OK)
+                {
+                    return true;
+                }
+                else
+                {
+                    Logger.Error($"Error sending pup key {keycode}, responded with {code} and {response.ReasonPhrase}");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error fetching {url}");
+                Logger.Error(ex.Message);
+                return false;
+            }
         }
     }
 }

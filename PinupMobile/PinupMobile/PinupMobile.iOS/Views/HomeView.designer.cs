@@ -9,17 +9,33 @@ using System.CodeDom.Compiler;
 
 namespace PinupMobile.iOS.Views
 {
-    [Register ("HomeView")]
-    partial class HomeView
+	[Register ("HomeView")]
+	partial class HomeView
 	{
 		[Outlet]
 		UIKit.UILabel CurrentItemName { get; set; }
+
+		[Outlet]
+		UIKit.UIButton NextButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton PrevButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (CurrentItemName != null) {
 				CurrentItemName.Dispose ();
 				CurrentItemName = null;
+			}
+
+			if (PrevButton != null) {
+				PrevButton.Dispose ();
+				PrevButton = null;
+			}
+
+			if (NextButton != null) {
+				NextButton.Dispose ();
+				NextButton = null;
 			}
 		}
 	}
