@@ -9,11 +9,18 @@ using System.CodeDom.Compiler;
 
 namespace PinupMobile.iOS.Views
 {
-    [Register ("DisplayView")]
-    partial class DisplayView
+	[Register ("DisplayView")]
+	partial class DisplayView
 	{
+		[Outlet]
+		UIKit.UIActivityIndicatorView LoadingSpinner { get; set; }
+		
 		void ReleaseDesignerOutlets ()
 		{
+			if (LoadingSpinner != null) {
+				LoadingSpinner.Dispose ();
+				LoadingSpinner = null;
+			}
 		}
 	}
 }

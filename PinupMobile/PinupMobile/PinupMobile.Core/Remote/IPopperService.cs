@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Remote.Model;
 
 namespace PinupMobile.Core.Remote
@@ -17,5 +18,7 @@ namespace PinupMobile.Core.Remote
         Task<bool> SendPageNext();
 
         Task<bool> SendPagePrev();
+
+        Task<string> GetDisplay(string display);
     }
 }

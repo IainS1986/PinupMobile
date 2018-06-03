@@ -6,6 +6,7 @@ namespace PinupMobile.Core.Remote.Model
         public int Code;
         public string Messsage;
         public T Data;
+        public byte[] Raw;
         public bool Success;
 
         public PopperResponse()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -117,7 +118,6 @@ namespace PinupMobile.Core.Remote
 
             // Repsonse data
             HttpResponseMessage httpResponse = null;
-            string responseBody = null;
             PopperResponse<ResponseT> response = new PopperResponse<ResponseT>();
             response.Success = false;
 
@@ -135,14 +135,32 @@ namespace PinupMobile.Core.Remote
 
                 if (httpResponse.Content != null)
                 {
-                    responseBody = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    if (typeof(ResponseT) == typeof(string))
+                    var contentType = httpResponse.Content.Headers.ContentType;
+
+                    if(contentType.MediaType == "application/json")
                     {
-                        response.Data = (ResponseT)(object)responseBody;
+                        string responseBody = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        response.Data = JsonConvert.DeserializeObject<ResponseT>(responseBody);
+                    }
+                    else if (contentType.MediaType == "video/mp4")
+                    {
+                        byte[] responseBody = await httpResponse.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                        response.Raw = responseBody;
+                    }
+                    else if(contentType.MediaType == "image/png")
+                    {
+                        byte[] responseBody = await httpResponse.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                        response.Raw = responseBody;
+                    }
+                    else if(contentType.MediaType == "text/html")
+                    {
+                        string responseBody = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        response.Data = (ResponseT)(object) responseBody;
                     }
                     else
                     {
-                        response.Data = JsonConvert.DeserializeObject<ResponseT>(responseBody);
+                        Logger.Error($"Recieved MediaType {contentType.MediaType} but have no support for this yet");
+                        response.Success = false;
                     }
                 }
             }
@@ -154,6 +172,42 @@ namespace PinupMobile.Core.Remote
             }
 
             return response;
+        }
+
+        public async Task<string> GetDisplay(string display)
+        {
+            GetDisplayRequest request = new GetDisplayRequest();
+            request.display = display;
+
+            var response = await MakeRequest<GetDisplayRequest, string>(request).ConfigureAwait(false);
+
+            if(response.Success == true)
+            {
+                try
+                {
+                    // Save video to temp file
+                    string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    string localFilename = "test.mp4";
+                    string localPath = Path.Combine(documentsPath, localFilename);
+
+                    File.WriteAllBytes(localPath, response.Raw);
+                    
+                    return localPath;
+                    
+                }
+                catch(Exception ex)
+                {
+                    Logger.Error($"Error saving off display data for playback");
+                    Logger.Error(ex.Message);
+                    return string.Empty;
+                }
+            }
+            else
+            {
+                //TODO Error handling???
+                Logger.Error($"Error requesting Display {display}, responded with {response?.Code} and {response?.Messsage}");
+                return string.Empty;  
+            }
         }
 
         public async Task<Item> GetCurrentItem()
