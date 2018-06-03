@@ -101,8 +101,12 @@ namespace PinupMobile.Core.Remote
                 Type rType = typeof(RequestT);
                 FieldInfo info = rType.GetField(property);
                 var val = info.GetValue(request);
-
-                path = path.Replace(replace, val.ToString());
+                string val_s = val.ToString();
+                if (val.GetType().IsEnum)
+                {
+                    val_s = ((int)val).ToString();
+                }
+                path = path.Replace(replace, val_s);
             }
 
             // HttpClient setup
@@ -175,35 +179,34 @@ namespace PinupMobile.Core.Remote
 
         public async Task<bool> SendGameNext()
         {
-            return await SendPupKey("2");
+            return await SendPupKey(PopperCommand.KEY_NEXT_GAME);
         }
 
         public async Task<bool> SendGamePrev()
         {
-            return await SendPupKey("1");
+            return await SendPupKey(PopperCommand.KEY_PREV_GAME);
+        }
+
+        public async Task<bool> SendPagePrev()
+        {
+            return await SendPupKey(PopperCommand.KEY_PREV_PAGE);
+        }
+
+        public async Task<bool> SendPageNext()
+        {
+            return await SendPupKey(PopperCommand.KEY_NEXT_PAGE);
         }
 
         /// <summary>
-        /// Send pup the given key. Here are key codes..
-        /// 
-        /// 1 - Game Prior
-        /// 2 - Game Next
-        /// 14 - Select
-        /// 6 - Page Prior
-        /// 5 - Page Next
-        /// 9 - Home
-        /// 15 - Exit Emulator
-        /// 11 - Menu System
-        /// 56 - Restart PC
-        /// 12 - Shut down Windows
+        /// Send pup the given key.
         /// </summary>
         /// <returns>The pup key.</returns>
         /// <param name="keycode">Keycode.</param>
-        public async Task<bool> SendPupKey(string keycode)
+        public async Task<bool> SendPupKey(PopperCommand command)
         {
             // TODO Move all this into a handler ...
             SendKeyInputRequest request = new SendKeyInputRequest();
-            request.keyCode = keycode;
+            request.command = command;
 
             var response = await MakeRequest<SendKeyInputRequest, string>(request).ConfigureAwait(false);
 
@@ -214,7 +217,7 @@ namespace PinupMobile.Core.Remote
             else
             {
                 //TODO Error handling???
-                Logger.Error($"Error sending pup key {keycode}, responded with {response?.Code} and {response?.Messsage}");
+                Logger.Error($"Error sending pup key {command}, responded with {response?.Code} and {response?.Messsage}");
                 return false;
             }
         }

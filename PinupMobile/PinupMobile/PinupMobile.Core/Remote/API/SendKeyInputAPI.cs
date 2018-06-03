@@ -1,9 +1,9 @@
 ﻿using System;
 namespace PinupMobile.Core.Remote.API
 {
-    [Route("pupkey/{keyCode}")]
+    [Route("pupkey/{command}")]
     public class SendKeyInputRequest
     {
-        public string keyCode;
+        public PopperCommand command;
     }
 }

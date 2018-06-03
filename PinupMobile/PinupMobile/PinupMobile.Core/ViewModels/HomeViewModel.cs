@@ -29,6 +29,10 @@ namespace PinupMobile.Core.ViewModels
 
         public MvxAsyncCommand OnGamePrevCommand => new MvxAsyncCommand(OnGamePrev);
 
+        public MvxAsyncCommand OnPageNextCommand => new MvxAsyncCommand(OnPageNext);
+
+        public MvxAsyncCommand OnPagePrevCommand => new MvxAsyncCommand(OnPagePrev);
+
         public HomeViewModel(IPopperService server,
                              IMvxNavigationService navigationService)
         {
@@ -43,32 +47,38 @@ namespace PinupMobile.Core.ViewModels
             await Refresh();
         }
 
-        public async Task OnGameNext()
+        private async Task ExecuteCommand(Func<Task<bool>> command)
         {
             await Task.Run(async () =>
             {
-                bool success = await _server.SendGameNext();
-
-                if(success)
-                {
-                    await Task.Delay(500);
-                    await Refresh();
-                }
-            }).ConfigureAwait(false);
-        }
-
-        public async Task OnGamePrev()
-        {
-            await Task.Run(async () =>
-            {
-                bool success = await _server.SendGamePrev();
+                bool success = await command();
 
                 if (success)
                 {
                     await Task.Delay(500);
                     await Refresh();
                 }
-            }).ConfigureAwait(false);
+            });
+        }
+
+        public async Task OnGameNext()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendGameNext)).ConfigureAwait(false);
+        }
+
+        public async Task OnGamePrev()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendGamePrev)).ConfigureAwait(false);
+        }
+
+        public async Task OnPageNext()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendPageNext)).ConfigureAwait(false);
+        }
+
+        public async Task OnPagePrev()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendPagePrev)).ConfigureAwait(false);
         }
 
         private async Task Refresh()
