@@ -124,6 +124,7 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Settings\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.png" />
@@ -161,6 +162,7 @@
     <Compile Include="Settings\UserSettings.cs" />
     <Compile Include="Views\HomeView.cs" />
     <Compile Include="Views\DisplayView.cs" />
+    <Compile Include="Controls\AutoFitTextureView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />

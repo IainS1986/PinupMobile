@@ -58,15 +58,6 @@ namespace PinupMobile.Core.Remote
         {
             try
             {
-                // I was going to use this code to ping, but this might incorrectly say
-                // the host exists, even if popper server is not working! So, unfortunately for now
-                // we've got to do a GetItem.
-                //var ping = new System.Net.NetworkInformation.Ping();
-                //var result = await ping.SendPingAsync(BaseUri.AbsoluteUri);
-
-                //if (result.Status != System.Net.NetworkInformation.IPStatus.Success)
-                //return false;
-
                 var item = await GetCurrentItem();
 
                 if (item == null)
@@ -145,11 +136,13 @@ namespace PinupMobile.Core.Remote
                     else if (contentType.MediaType == "video/mp4")
                     {
                         byte[] responseBody = await httpResponse.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                        response.Data = (ResponseT)(object)contentType.MediaType;
                         response.Raw = responseBody;
                     }
                     else if(contentType.MediaType == "image/png")
                     {
                         byte[] responseBody = await httpResponse.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                        response.Data = (ResponseT)(object)contentType.MediaType;
                         response.Raw = responseBody;
                     }
                     else if(contentType.MediaType == "text/html")
