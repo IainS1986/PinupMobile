@@ -24,16 +24,17 @@ namespace PinupMobile.Droid.Views
         protected Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
 
         private AutoFitTextureView _textureView;
+        private ImageView _imageView;
         private MediaPlayer _mediaPlayer;
         private ProgressBar _loadingSpinner;
 
         private bool _videoSizeSetupDone = false;
 
-        private string _videoUrl = string.Empty;
-        public string VideoUrl
+        private string _mediaUrl = string.Empty;
+        public string MediaUrl
         {
-            get { return _videoUrl; }
-            set { _videoUrl = value; Play(); }
+            get { return _mediaUrl; }
+            set { _mediaUrl = value; Play(); }
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -51,10 +52,11 @@ namespace PinupMobile.Droid.Views
             }
 
             _textureView = FindViewById<AutoFitTextureView>(Resource.Id.texture_view);
+            _imageView = FindViewById<ImageView>(Resource.Id.image_view);
             _loadingSpinner = FindViewById<ProgressBar>(Resource.Id.progressBar1);
 
             var set = this.CreateBindingSet<DisplayView, DisplayViewModel>();
-            set.Bind(this).For(v => v.VideoUrl).To(vm => vm.VideoUrl);
+            set.Bind(this).For(v => v.MediaUrl).To(vm => vm.MediaUrl);
             set.Apply();
         }
 
@@ -104,17 +106,34 @@ namespace PinupMobile.Droid.Views
 
         private async void Play()
         {
-            if (string.IsNullOrEmpty(VideoUrl))
+            if (string.IsNullOrEmpty(MediaUrl))
             {
                 return;
             }
 
             try
             {
-                await _mediaPlayer.SetDataSourceAsync(VideoUrl);
-                _mediaPlayer.Prepare();
-                _mediaPlayer.Looping = true;
-                _mediaPlayer.Start();
+                // Video Support
+                if (MediaUrl.EndsWith(".mp4"))
+                {
+                    _imageView.Visibility = ViewStates.Invisible;
+
+                    await _mediaPlayer.SetDataSourceAsync(MediaUrl);
+                    _mediaPlayer.Prepare();
+                    _mediaPlayer.Looping = true;
+                    _mediaPlayer.Start();
+                }
+                // PNG Support
+                else if (MediaUrl.EndsWith(".png"))
+                {
+                    _textureView.Visibility = ViewStates.Invisible;
+                    _mediaPlayer.Release();
+                    _mediaPlayer.Dispose();
+                    _mediaPlayer = null;
+
+                    _imageView.SetImageURI(Android.Net.Uri.FromFile(new Java.IO.File(MediaUrl)));
+                    _loadingSpinner.Visibility = ViewStates.Invisible;
+                }
             }
             catch(Exception ex)
             {

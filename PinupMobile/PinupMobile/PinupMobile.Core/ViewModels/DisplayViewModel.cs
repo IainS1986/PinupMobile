@@ -20,11 +20,11 @@ namespace PinupMobile.Core.ViewModels
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
 
-        private string _videoUrl;
-        public string VideoUrl
+        private string _mediaUrl;
+        public string MediaUrl
         {
-            get { return _videoUrl; }
-            set { _videoUrl = value; RaisePropertyChanged(() => VideoUrl); }
+            get { return _mediaUrl; }
+            set { _mediaUrl = value; RaisePropertyChanged(() => MediaUrl); }
         }
 
         public DisplayViewModel(IPopperService server,
@@ -38,12 +38,12 @@ namespace PinupMobile.Core.ViewModels
         {
             base.ViewAppearing();
 
-            VideoUrl = string.Empty;
+            MediaUrl = string.Empty;
 
             // Download the Playfield Display
             await Task.Run(async () =>
             {
-                VideoUrl = await _server.GetDisplay(PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD);
+                MediaUrl = await _server.GetDisplay(PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD);
             }).ConfigureAwait(false);
         }
     }

@@ -48,7 +48,7 @@ namespace PinupMobile.iOS.Views
             View.BringSubviewToFront(LoadingSpinner);
 
             var set = this.CreateBindingSet<DisplayView, DisplayViewModel>();
-            set.Bind(this).For(v => v.VideoUrl).To(vm => vm.VideoUrl);
+            set.Bind(this).For(v => v.VideoUrl).To(vm => vm.MediaUrl);
             set.Apply();
         }
 

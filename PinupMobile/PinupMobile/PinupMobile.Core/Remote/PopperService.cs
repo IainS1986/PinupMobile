@@ -178,11 +178,20 @@ namespace PinupMobile.Core.Remote
             {
                 try
                 {
-                    // Save video to temp file
+                    // Check Response data to determine what format to save the byte[] too
                     string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                    string localFilename = "test.mp4";
+                    string localFilename = "test.txt";
+                    if (response.Data.Contains("video"))
+                    {
+                        localFilename = "test.mp4";
+                    }
+                    else if (response.Data.Contains("image"))
+                    {
+                        localFilename = "test.png";
+                    }
+                    
+                    // Save 
                     string localPath = Path.Combine(documentsPath, localFilename);
-
                     File.WriteAllBytes(localPath, response.Raw);
                     
                     return localPath;
