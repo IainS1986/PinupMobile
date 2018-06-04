@@ -13,6 +13,9 @@ namespace PinupMobile.iOS.Views
 	partial class DisplayView
 	{
 		[Outlet]
+		UIKit.UIImageView ImageView { get; set; }
+
+		[Outlet]
 		UIKit.UIActivityIndicatorView LoadingSpinner { get; set; }
 		
 		void ReleaseDesignerOutlets ()
@@ -20,6 +23,11 @@ namespace PinupMobile.iOS.Views
 			if (LoadingSpinner != null) {
 				LoadingSpinner.Dispose ();
 				LoadingSpinner = null;
+			}
+
+			if (ImageView != null) {
+				ImageView.Dispose ();
+				ImageView = null;
 			}
 		}
 	}

@@ -18,11 +18,11 @@ namespace PinupMobile.iOS.Views
         private AVPlayerViewController _avplayerController;
         private AVPlayerLooper _avLooper;
 
-        private string _videoUrl = string.Empty;
-        public string VideoUrl
+        private string _mediaUrl = string.Empty;
+        public string MediaUrl
         {
-            get { return _videoUrl; }
-            set { _videoUrl = value; Play(); }
+            get { return _mediaUrl; }
+            set { _mediaUrl = value; Play(); }
         }
 
         public DisplayView() : base("DisplayView", null)
@@ -41,6 +41,9 @@ namespace PinupMobile.iOS.Views
             View.AddSubview(_avplayerController.View);
 
             _avplayerController.View.Transform = CoreGraphics.CGAffineTransform.MakeRotation((nfloat)1.5708);
+            ImageView.Transform = CoreGraphics.CGAffineTransform.MakeRotation((nfloat)1.5708);
+            ImageView.Frame = View.Frame;
+
             _avplayerController.View.Frame = View.Frame;
             _avplayerController.ShowsPlaybackControls = false;
 
@@ -48,25 +51,46 @@ namespace PinupMobile.iOS.Views
             View.BringSubviewToFront(LoadingSpinner);
 
             var set = this.CreateBindingSet<DisplayView, DisplayViewModel>();
-            set.Bind(this).For(v => v.VideoUrl).To(vm => vm.MediaUrl);
+            set.Bind(this).For(v => v.MediaUrl).To(vm => vm.MediaUrl);
             set.Apply();
         }
 
         private void Play()
         {
-            if (string.IsNullOrEmpty(VideoUrl))
+            if (string.IsNullOrEmpty(MediaUrl))
             {
                 return;
             }
 
-            NSUrl url = NSUrl.CreateFileUrl(VideoUrl, null);
-            AVPlayerItem item = new AVPlayerItem(url);
+            if (MediaUrl.EndsWith(".mp4"))
+            {
+                ImageView.Hidden = true;
 
-            _avLooper = new AVPlayerLooper(_avplayer, item, CoreMedia.CMTimeRange.InvalidRange);
-            _avplayer.ReplaceCurrentItemWithPlayerItem(item);
-            _avplayer.Play();
+                NSUrl url = NSUrl.CreateFileUrl(MediaUrl, null);
+                AVPlayerItem item = new AVPlayerItem(url);
+                
+                _avLooper = new AVPlayerLooper(_avplayer, item, CoreMedia.CMTimeRange.InvalidRange);
+                _avplayer.ReplaceCurrentItemWithPlayerItem(item);
+                _avplayer.Play();
+
+            }
+            else if(MediaUrl.EndsWith(".png"))
+            {
+                _avplayer.Dispose();
+                _avplayer = null;
+
+                _avplayerController.RemoveFromParentViewController();
+                _avplayerController.View.RemoveFromSuperview();
+                _avplayerController.Dispose();
+                _avplayerController = null;
+
+                UIImage image = UIImage.FromFile(MediaUrl);
+                ImageView.Image = image;
+            }
+
 
             LoadingSpinner.Hidden = true;
+
         }
     }
 }
