@@ -1,26 +1,33 @@
 using System;
 using Android.App;
+using Android.Content;
 using Android.Graphics;
 using Android.Media;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V7.Widget;
+using Android.Util;
 using Android.Views;
+using Android.Widget;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using PinupMobile.Core.Logging;
 using PinupMobile.Core.ViewModels;
 using PinupMobile.Droid.Controls;
+using static Android.Media.MediaPlayer;
 
 namespace PinupMobile.Droid.Views
 {
     [Activity(Label = "Display", HardwareAccelerated = true, ParentActivity = typeof(HomeView))]
-    public class DisplayView : MvxAppCompatActivity<DisplayViewModel>
+    public class DisplayView : MvxAppCompatActivity<DisplayViewModel>, IOnVideoSizeChangedListener
     {
-        protected Toolbar Toolbar { get; set; }
+        protected Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
 
         private AutoFitTextureView _textureView;
-
         private MediaPlayer _mediaPlayer;
+        private ProgressBar _loadingSpinner;
+
+        private bool _videoSizeSetupDone = false;
 
         private string _videoUrl = string.Empty;
         public string VideoUrl
@@ -35,7 +42,7 @@ namespace PinupMobile.Droid.Views
 
             SetContentView(Resource.Layout.DisplayView);
 
-            Toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            Toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             if (Toolbar != null)
             {
                 SetSupportActionBar(Toolbar);
@@ -44,37 +51,11 @@ namespace PinupMobile.Droid.Views
             }
 
             _textureView = FindViewById<AutoFitTextureView>(Resource.Id.texture_view);
+            _loadingSpinner = FindViewById<ProgressBar>(Resource.Id.progressBar1);
 
             var set = this.CreateBindingSet<DisplayView, DisplayViewModel>();
             set.Bind(this).For(v => v.VideoUrl).To(vm => vm.VideoUrl);
             set.Apply();
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            //SetupMatrix(this.Window.DecorView.Width, this.Window.DecorView.Height, 90);
-        }
-
-        private void SetupMatrix(int width, int height, int degrees)
-        {
-            Matrix matrix = new Matrix();
-            //The video will be streched if the aspect ratio is in 1,5(recording at 480)
-            RectF src;
-            src = new RectF(0, 0, _textureView.MeasuredWidth, _textureView.MeasuredHeight);
-            RectF dst = new RectF(0, 0, width, height);
-            RectF screen = new RectF(dst);
-            matrix.PostRotate(degrees, screen.CenterX(), screen.CenterY());
-            matrix.MapRect(dst);
-
-            matrix.SetRectToRect(src, dst, Matrix.ScaleToFit.Center);
-            matrix.MapRect(src);
-
-            matrix.SetRectToRect(screen, src, Matrix.ScaleToFit.Fill);
-            matrix.PostRotate(degrees, screen.CenterX(), screen.CenterY());
-
-            _textureView.SetTransform(matrix);
         }
 
         protected override void OnStart()
@@ -91,6 +72,14 @@ namespace PinupMobile.Droid.Views
         {
             base.OnStop();
 
+            if(_mediaPlayer != null)
+            {
+                _mediaPlayer.Stop();
+                _mediaPlayer.Release();
+                _mediaPlayer.Dispose();
+                _mediaPlayer = null;
+            }
+
             if(_textureView != null)
             {
                 _textureView.SurfaceTextureAvailable -= OnSurfaceTextureAvailable;
@@ -104,6 +93,7 @@ namespace PinupMobile.Droid.Views
             {
                 _mediaPlayer = new MediaPlayer();
                 _mediaPlayer.SetSurface(surface);
+                _mediaPlayer.SetOnVideoSizeChangedListener(this);
             }
             catch(Exception ex)
             {
@@ -131,6 +121,35 @@ namespace PinupMobile.Droid.Views
                 Logger.Error($"Error trying to start media player");
                 Logger.Error(ex.Message);
             }
+        }
+
+        public void OnVideoSizeChanged(MediaPlayer mp, int width, int height)
+        {
+            if (width > 0 && height > 0 && !_videoSizeSetupDone)
+            {
+                Logger.Debug($"Video size changed: {width} x {height}");
+                _loadingSpinner.Visibility = ViewStates.Invisible;
+                ChangeVideoSize(width, height);
+            }
+        }
+
+        private void ChangeVideoSize(int width, int height)
+        {
+            DisplayMetrics metrics = new DisplayMetrics();
+            RelativeLayout.LayoutParams layoutParams;
+
+            IWindowManager manager = ApplicationContext.GetSystemService(Context.WindowService).JavaCast<IWindowManager>();
+            manager.DefaultDisplay.GetMetrics(metrics);
+
+            float rotation = 90.0f;
+            layoutParams = new RelativeLayout.LayoutParams(metrics.HeightPixels, metrics.WidthPixels);
+            float scale = (width * 1.0f) / (height * 1.0f);
+            _textureView.Rotation = rotation;
+            _textureView.ScaleX = scale;
+
+            layoutParams.AddRule(LayoutRules.CenterInParent, -1);
+            _textureView.LayoutParameters = layoutParams;
+            _videoSizeSetupDone = true;
         }
     }
 }
