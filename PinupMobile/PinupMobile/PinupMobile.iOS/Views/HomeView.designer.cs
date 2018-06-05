@@ -29,12 +29,20 @@ namespace PinupMobile.iOS.Views
 
 		[Outlet]
 		UIKit.UIButton PrevPageButton { get; set; }
+
+		[Outlet]
+		UIKit.UIImageView WheeImage { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (CurrentItemName != null) {
 				CurrentItemName.Dispose ();
 				CurrentItemName = null;
+			}
+
+			if (DisplayButton != null) {
+				DisplayButton.Dispose ();
+				DisplayButton = null;
 			}
 
 			if (NextButton != null) {
@@ -57,9 +65,9 @@ namespace PinupMobile.iOS.Views
 				PrevPageButton = null;
 			}
 
-			if (DisplayButton != null) {
-				DisplayButton.Dispose ();
-				DisplayButton = null;
+			if (WheeImage != null) {
+				WheeImage.Dispose ();
+				WheeImage = null;
 			}
 		}
 	}

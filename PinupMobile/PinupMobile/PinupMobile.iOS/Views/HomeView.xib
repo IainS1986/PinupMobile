@@ -17,6 +17,7 @@
                 <outlet property="NextPageButton" destination="Zdw-5k-kki" id="hGM-wW-GWb"/>
                 <outlet property="PrevButton" destination="WIK-F1-i1T" id="Qzf-ZM-neR"/>
                 <outlet property="PrevPageButton" destination="BVC-lY-a71" id="I3F-4A-Tab"/>
+                <outlet property="WheeImage" destination="c3g-UK-oL4" id="j2t-U3-GE8"/>
                 <outlet property="view" destination="1" id="RRd-Eg-VrN"/>
             </connections>
         </placeholder>
@@ -25,18 +26,24 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMv-Uh-Vlq">
-                    <rect key="frame" x="79" y="292" width="216" height="82"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c3g-UK-oL4">
+                    <rect key="frame" x="37" y="91" width="300" height="220"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="216" id="3yB-WL-kDi"/>
-                        <constraint firstAttribute="height" constant="82" id="8i2-HC-Tq7"/>
+                        <constraint firstAttribute="width" constant="300" id="Ifa-Mw-95V"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMv-Uh-Vlq">
+                    <rect key="frame" x="16" y="311" width="343" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="343" id="3yB-WL-kDi"/>
+                        <constraint firstAttribute="height" constant="44" id="8i2-HC-Tq7"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-lY-a71" userLabel="Page Down">
-                    <rect key="frame" x="16" y="382" width="80" height="30"/>
+                    <rect key="frame" x="16" y="363" width="80" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="Zhd-0s-xa1"/>
                         <constraint firstAttribute="height" constant="30" id="dDU-FD-8vR"/>
@@ -44,7 +51,7 @@
                     <state key="normal" title="Page Down"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIK-F1-i1T">
-                    <rect key="frame" x="103" y="382" width="80" height="30"/>
+                    <rect key="frame" x="103" y="363" width="80" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="C39-PW-v92"/>
                         <constraint firstAttribute="width" constant="80" id="Zv3-gh-xJc"/>
@@ -52,7 +59,7 @@
                     <state key="normal" title="Prev"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiE-Ic-A5W">
-                    <rect key="frame" x="191" y="382" width="80" height="30"/>
+                    <rect key="frame" x="191" y="363" width="80" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="J0c-e0-YkU"/>
                         <constraint firstAttribute="width" constant="80" id="RoH-29-Ygu"/>
@@ -60,7 +67,7 @@
                     <state key="normal" title="Next"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-5k-kki" userLabel="Page Up">
-                    <rect key="frame" x="279" y="382" width="80" height="30"/>
+                    <rect key="frame" x="279" y="363" width="80" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="Vrt-78-AUL"/>
                         <constraint firstAttribute="height" constant="30" id="w4u-hh-o3c"/>
@@ -85,11 +92,14 @@
                 <constraint firstItem="WIK-F1-i1T" firstAttribute="top" secondItem="BVC-lY-a71" secondAttribute="top" id="EJ3-jp-hWv"/>
                 <constraint firstItem="Zdw-5k-kki" firstAttribute="leading" secondItem="ZiE-Ic-A5W" secondAttribute="trailing" constant="8" id="Fsb-1Y-Jsd"/>
                 <constraint firstAttribute="trailing" secondItem="Zdw-5k-kki" secondAttribute="trailing" constant="16" id="GVz-Df-gN6"/>
+                <constraint firstItem="c3g-UK-oL4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="91" id="MTV-y5-AC2"/>
                 <constraint firstItem="Zdw-5k-kki" firstAttribute="top" secondItem="ZiE-Ic-A5W" secondAttribute="top" id="adB-aj-f8B"/>
                 <constraint firstItem="ZiE-Ic-A5W" firstAttribute="top" secondItem="WIK-F1-i1T" secondAttribute="top" id="fKO-hw-yEA"/>
                 <constraint firstItem="BVC-lY-a71" firstAttribute="top" secondItem="pMv-Uh-Vlq" secondAttribute="bottom" constant="8" id="hRN-vK-l6b"/>
                 <constraint firstItem="BVC-lY-a71" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16" id="hxp-rS-9UO"/>
                 <constraint firstItem="pMv-Uh-Vlq" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="jGV-Ib-P60"/>
+                <constraint firstItem="pMv-Uh-Vlq" firstAttribute="top" secondItem="c3g-UK-oL4" secondAttribute="bottom" id="nvX-hj-4iL"/>
+                <constraint firstItem="c3g-UK-oL4" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="r56-1y-W3T"/>
                 <constraint firstItem="ZiE-Ic-A5W" firstAttribute="leading" secondItem="WIK-F1-i1T" secondAttribute="trailing" constant="8" id="sO2-xQ-Kct"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>

@@ -5,6 +5,7 @@ using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote;
+using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Remote.Model;
 
 namespace PinupMobile.Core.ViewModels
@@ -26,6 +27,13 @@ namespace PinupMobile.Core.ViewModels
             set { _currentItem = value; RaisePropertyChanged(() => CurrentItem); }
         }
 
+        private string _wheelIconPath;
+        public string WheelIconPath
+        {
+            get { return _wheelIconPath; }
+            set { _wheelIconPath = value; RaisePropertyChanged(() => WheelIconPath); }
+        }
+
         public MvxAsyncCommand OnGameNextCommand => new MvxAsyncCommand(OnGameNext);
 
         public MvxAsyncCommand OnGamePrevCommand => new MvxAsyncCommand(OnGamePrev);
@@ -35,6 +43,8 @@ namespace PinupMobile.Core.ViewModels
         public MvxAsyncCommand OnPagePrevCommand => new MvxAsyncCommand(OnPagePrev);
 
         public MvxAsyncCommand OnShowDisplayViewCommand => new MvxAsyncCommand(OnDisplayView);
+
+        public MvxAsyncCommand OnRefreshCommand => new MvxAsyncCommand(Refresh);
 
         public HomeViewModel(IPopperService server,
                              IMvxNavigationService navigationService)
@@ -80,7 +90,14 @@ namespace PinupMobile.Core.ViewModels
             // TODO First time run to setup Popper Server URL....
             await Task.Run(async () =>
             {
-                CurrentItem = await _server.GetCurrentItem();
+                var itemReq = _server.GetCurrentItem();
+                var wheelReq = _server.GetDisplay(PopperDisplayConstants.POPPER_DISPLAY_WHEEL);
+
+                var itemRes = await itemReq;
+                var wheelRes = await wheelReq;
+
+                CurrentItem = itemRes;
+                WheelIconPath = wheelRes;
 
             }).ConfigureAwait(false);
         }
