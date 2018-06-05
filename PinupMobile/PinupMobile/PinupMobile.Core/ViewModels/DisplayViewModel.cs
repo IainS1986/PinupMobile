@@ -20,6 +20,8 @@ namespace PinupMobile.Core.ViewModels
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
 
+        public MvxAsyncCommand CloseCommand => new MvxAsyncCommand(async () => await _navigationService.Close(this));
+
         private string _mediaUrl;
         public string MediaUrl
         {

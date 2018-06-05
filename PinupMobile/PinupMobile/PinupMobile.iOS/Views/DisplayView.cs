@@ -12,11 +12,17 @@ using UIKit;
 
 namespace PinupMobile.iOS.Views
 {
+    [MvxModalPresentation(Animated = true,
+                          WrapInNavigationController = true,
+                          ModalTransitionStyle = UIModalTransitionStyle.FlipHorizontal,
+                          ModalPresentationStyle = UIModalPresentationStyle.FullScreen)]
     public partial class DisplayView : MvxViewController<DisplayViewModel>
     {
         private AVQueuePlayer _avplayer;
         private AVPlayerViewController _avplayerController;
         private AVPlayerLooper _avLooper;
+
+        private UIBarButtonItem _closeButton;
 
         private string _mediaUrl = string.Empty;
         public string MediaUrl
@@ -32,6 +38,9 @@ namespace PinupMobile.iOS.Views
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            _closeButton = new UIBarButtonItem("Close", UIBarButtonItemStyle.Plain, null);
+            NavigationItem.LeftBarButtonItem = _closeButton;
 
             _avplayer = new AVQueuePlayer();
             _avplayerController = new AVPlayerViewController();
@@ -52,6 +61,7 @@ namespace PinupMobile.iOS.Views
 
             var set = this.CreateBindingSet<DisplayView, DisplayViewModel>();
             set.Bind(this).For(v => v.MediaUrl).To(vm => vm.MediaUrl);
+            set.Bind(_closeButton).To(vm => vm.CloseCommand);
             set.Apply();
         }
 
