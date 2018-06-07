@@ -88,7 +88,7 @@
                     <state key="normal" title="Display"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Brf-Wl-0Vk" userLabel="Play Button">
-                    <rect key="frame" x="162" y="535" width="50" height="50"/>
+                    <rect key="frame" x="162" y="555" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="JUB-m4-w9G"/>
                         <constraint firstAttribute="height" constant="50" id="ovX-lk-kcP"/>
@@ -96,7 +96,7 @@
                     <state key="normal" image="ic_play"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gC1-YX-5GA" userLabel="Home Button">
-                    <rect key="frame" x="31" y="535" width="50" height="50"/>
+                    <rect key="frame" x="31" y="555" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Pe3-su-V7d"/>
                         <constraint firstAttribute="width" constant="50" id="lQC-BY-3bg"/>
@@ -104,7 +104,7 @@
                     <state key="normal" image="ic_home"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOQ-uD-7pP" userLabel="Exit Button">
-                    <rect key="frame" x="294" y="535" width="50" height="50"/>
+                    <rect key="frame" x="294" y="555" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="FPd-5t-mpc"/>
                         <constraint firstAttribute="width" constant="50" id="p2g-Hi-Juj"/>
@@ -130,7 +130,7 @@
                 <constraint firstAttribute="trailing" secondItem="Zdw-5k-kki" secondAttribute="trailing" constant="16" id="GVz-Df-gN6"/>
                 <constraint firstItem="cRp-iC-EQT" firstAttribute="height" secondItem="pMv-Uh-Vlq" secondAttribute="height" id="KAc-9H-nCR"/>
                 <constraint firstItem="cRp-iC-EQT" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="Lxz-I4-1cr"/>
-                <constraint firstItem="Brf-Wl-0Vk" firstAttribute="top" secondItem="ZiE-Ic-A5W" secondAttribute="bottom" constant="20" id="MJd-1t-rkj"/>
+                <constraint firstItem="Brf-Wl-0Vk" firstAttribute="top" secondItem="ZiE-Ic-A5W" secondAttribute="bottom" constant="40" id="MJd-1t-rkj"/>
                 <constraint firstItem="c3g-UK-oL4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="141" id="MTV-y5-AC2"/>
                 <constraint firstItem="Brf-Wl-0Vk" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="VSg-pA-Ga1"/>
                 <constraint firstItem="Zdw-5k-kki" firstAttribute="top" secondItem="ZiE-Ic-A5W" secondAttribute="top" id="adB-aj-f8B"/>
