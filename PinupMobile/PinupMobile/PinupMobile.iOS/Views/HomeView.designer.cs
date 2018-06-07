@@ -19,10 +19,19 @@ namespace PinupMobile.iOS.Views
 		UIKit.UIButton DisplayButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton ExitButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton HomeButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton NextButton { get; set; }
 
 		[Outlet]
 		UIKit.UIButton NextPageButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton PlayButton { get; set; }
 
 		[Outlet]
 		UIKit.UIButton PrevButton { get; set; }
@@ -55,6 +64,11 @@ namespace PinupMobile.iOS.Views
 				NextPageButton = null;
 			}
 
+			if (PlayButton != null) {
+				PlayButton.Dispose ();
+				PlayButton = null;
+			}
+
 			if (PrevButton != null) {
 				PrevButton.Dispose ();
 				PrevButton = null;
@@ -68,6 +82,16 @@ namespace PinupMobile.iOS.Views
 			if (WheeImage != null) {
 				WheeImage.Dispose ();
 				WheeImage = null;
+			}
+
+			if (HomeButton != null) {
+				HomeButton.Dispose ();
+				HomeButton = null;
+			}
+
+			if (ExitButton != null) {
+				ExitButton.Dispose ();
+				ExitButton = null;
 			}
 		}
 	}

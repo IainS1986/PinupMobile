@@ -13,8 +13,11 @@
             <connections>
                 <outlet property="CurrentItemName" destination="pMv-Uh-Vlq" id="ERi-uY-OmD"/>
                 <outlet property="DisplayButton" destination="Dbv-yJ-cdY" id="M61-c2-wks"/>
+                <outlet property="ExitButton" destination="oOQ-uD-7pP" id="lMg-k0-MYb"/>
+                <outlet property="HomeButton" destination="gC1-YX-5GA" id="CMJ-8V-aUL"/>
                 <outlet property="NextButton" destination="ZiE-Ic-A5W" id="Zsg-Lz-Rig"/>
                 <outlet property="NextPageButton" destination="Zdw-5k-kki" id="hGM-wW-GWb"/>
+                <outlet property="PlayButton" destination="Brf-Wl-0Vk" id="NLr-Ov-MgA"/>
                 <outlet property="PrevButton" destination="WIK-F1-i1T" id="Qzf-ZM-neR"/>
                 <outlet property="PrevPageButton" destination="BVC-lY-a71" id="I3F-4A-Tab"/>
                 <outlet property="WheeImage" destination="c3g-UK-oL4" id="j2t-U3-GE8"/>
@@ -27,13 +30,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c3g-UK-oL4">
-                    <rect key="frame" x="37" y="91" width="300" height="220"/>
+                    <rect key="frame" x="37" y="141" width="300" height="250"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="Ifa-Mw-95V"/>
+                        <constraint firstAttribute="height" constant="250" id="JUa-Rq-kB9"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMv-Uh-Vlq">
-                    <rect key="frame" x="16" y="311" width="343" height="44"/>
+                    <rect key="frame" x="16" y="391" width="343" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="343" id="3yB-WL-kDi"/>
                         <constraint firstAttribute="height" constant="44" id="8i2-HC-Tq7"/>
@@ -42,37 +46,37 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-lY-a71" userLabel="Page Down">
-                    <rect key="frame" x="16" y="363" width="80" height="30"/>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-lY-a71" userLabel="Page Down">
+                    <rect key="frame" x="16" y="465" width="80" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="Zhd-0s-xa1"/>
-                        <constraint firstAttribute="height" constant="30" id="dDU-FD-8vR"/>
+                        <constraint firstAttribute="height" constant="50" id="dDU-FD-8vR"/>
                     </constraints>
-                    <state key="normal" title="Page Down"/>
+                    <state key="normal" image="ic_page_prev"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIK-F1-i1T">
-                    <rect key="frame" x="103" y="363" width="80" height="30"/>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIK-F1-i1T">
+                    <rect key="frame" x="103" y="465" width="80" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="C39-PW-v92"/>
+                        <constraint firstAttribute="height" constant="50" id="C39-PW-v92"/>
                         <constraint firstAttribute="width" constant="80" id="Zv3-gh-xJc"/>
                     </constraints>
-                    <state key="normal" title="Prev"/>
+                    <state key="normal" image="ic_prev"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiE-Ic-A5W">
-                    <rect key="frame" x="191" y="363" width="80" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiE-Ic-A5W">
+                    <rect key="frame" x="191" y="465" width="80" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="J0c-e0-YkU"/>
+                        <constraint firstAttribute="height" constant="50" id="J0c-e0-YkU"/>
                         <constraint firstAttribute="width" constant="80" id="RoH-29-Ygu"/>
                     </constraints>
-                    <state key="normal" title="Next"/>
+                    <state key="normal" image="ic_next"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-5k-kki" userLabel="Page Up">
-                    <rect key="frame" x="279" y="363" width="80" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-5k-kki" userLabel="Page Up">
+                    <rect key="frame" x="279" y="465" width="80" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="Vrt-78-AUL"/>
-                        <constraint firstAttribute="height" constant="30" id="w4u-hh-o3c"/>
+                        <constraint firstAttribute="height" constant="50" id="w4u-hh-o3c"/>
                     </constraints>
-                    <state key="normal" title="Page Up"/>
+                    <state key="normal" image="ic_page_next"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbv-yJ-cdY">
                     <rect key="frame" x="137" y="617" width="100" height="30"/>
@@ -82,27 +86,65 @@
                     </constraints>
                     <state key="normal" title="Display"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Brf-Wl-0Vk" userLabel="Play Button">
+                    <rect key="frame" x="162" y="535" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="JUB-m4-w9G"/>
+                        <constraint firstAttribute="height" constant="50" id="ovX-lk-kcP"/>
+                    </constraints>
+                    <state key="normal" image="ic_play"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gC1-YX-5GA" userLabel="Home Button">
+                    <rect key="frame" x="31" y="535" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Pe3-su-V7d"/>
+                        <constraint firstAttribute="width" constant="50" id="lQC-BY-3bg"/>
+                    </constraints>
+                    <state key="normal" image="ic_home"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOQ-uD-7pP" userLabel="Exit Button">
+                    <rect key="frame" x="294" y="535" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="FPd-5t-mpc"/>
+                        <constraint firstAttribute="width" constant="50" id="p2g-Hi-Juj"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="ic_exit"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="WIK-F1-i1T" firstAttribute="leading" secondItem="BVC-lY-a71" secondAttribute="trailing" constant="7" id="0ET-kf-KIF"/>
+                <constraint firstItem="Brf-Wl-0Vk" firstAttribute="leading" secondItem="gC1-YX-5GA" secondAttribute="trailing" constant="81" id="0J0-Jb-glE"/>
                 <constraint firstItem="pMv-Uh-Vlq" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="2O3-sp-4pv"/>
                 <constraint firstAttribute="bottom" secondItem="Dbv-yJ-cdY" secondAttribute="bottom" constant="20" id="4Qh-eY-Hwx"/>
+                <constraint firstItem="oOQ-uD-7pP" firstAttribute="leading" secondItem="Brf-Wl-0Vk" secondAttribute="trailing" constant="82" id="BOD-rJ-zHq"/>
                 <constraint firstItem="Dbv-yJ-cdY" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="CgA-IJ-a4C"/>
                 <constraint firstItem="WIK-F1-i1T" firstAttribute="top" secondItem="BVC-lY-a71" secondAttribute="top" id="EJ3-jp-hWv"/>
                 <constraint firstItem="Zdw-5k-kki" firstAttribute="leading" secondItem="ZiE-Ic-A5W" secondAttribute="trailing" constant="8" id="Fsb-1Y-Jsd"/>
                 <constraint firstAttribute="trailing" secondItem="Zdw-5k-kki" secondAttribute="trailing" constant="16" id="GVz-Df-gN6"/>
-                <constraint firstItem="c3g-UK-oL4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="91" id="MTV-y5-AC2"/>
+                <constraint firstItem="Brf-Wl-0Vk" firstAttribute="top" secondItem="ZiE-Ic-A5W" secondAttribute="bottom" constant="20" id="MJd-1t-rkj"/>
+                <constraint firstItem="c3g-UK-oL4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="141" id="MTV-y5-AC2"/>
+                <constraint firstItem="Brf-Wl-0Vk" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="VSg-pA-Ga1"/>
                 <constraint firstItem="Zdw-5k-kki" firstAttribute="top" secondItem="ZiE-Ic-A5W" secondAttribute="top" id="adB-aj-f8B"/>
+                <constraint firstItem="gC1-YX-5GA" firstAttribute="top" secondItem="Brf-Wl-0Vk" secondAttribute="top" id="fEx-L5-7xL"/>
                 <constraint firstItem="ZiE-Ic-A5W" firstAttribute="top" secondItem="WIK-F1-i1T" secondAttribute="top" id="fKO-hw-yEA"/>
-                <constraint firstItem="BVC-lY-a71" firstAttribute="top" secondItem="pMv-Uh-Vlq" secondAttribute="bottom" constant="8" id="hRN-vK-l6b"/>
+                <constraint firstItem="pMv-Uh-Vlq" firstAttribute="top" secondItem="c3g-UK-oL4" secondAttribute="bottom" id="fc5-Pn-OM9"/>
+                <constraint firstItem="oOQ-uD-7pP" firstAttribute="top" secondItem="Brf-Wl-0Vk" secondAttribute="top" id="gd3-3x-fYR"/>
+                <constraint firstItem="BVC-lY-a71" firstAttribute="top" secondItem="pMv-Uh-Vlq" secondAttribute="bottom" constant="30" id="hRN-vK-l6b"/>
                 <constraint firstItem="BVC-lY-a71" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="16" id="hxp-rS-9UO"/>
-                <constraint firstItem="pMv-Uh-Vlq" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="jGV-Ib-P60"/>
-                <constraint firstItem="pMv-Uh-Vlq" firstAttribute="top" secondItem="c3g-UK-oL4" secondAttribute="bottom" id="nvX-hj-4iL"/>
                 <constraint firstItem="c3g-UK-oL4" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="r56-1y-W3T"/>
                 <constraint firstItem="ZiE-Ic-A5W" firstAttribute="leading" secondItem="WIK-F1-i1T" secondAttribute="trailing" constant="8" id="sO2-xQ-Kct"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_exit" width="48" height="48"/>
+        <image name="ic_home" width="48" height="48"/>
+        <image name="ic_next" width="48" height="48"/>
+        <image name="ic_page_next" width="48" height="48"/>
+        <image name="ic_page_prev" width="48" height="48"/>
+        <image name="ic_play" width="48" height="48"/>
+        <image name="ic_prev" width="48" height="48"/>
+    </resources>
 </document>

@@ -42,6 +42,8 @@ namespace PinupMobile.Core.ViewModels
 
         public MvxAsyncCommand OnPagePrevCommand => new MvxAsyncCommand(OnPagePrev);
 
+        public MvxAsyncCommand OnPlayCommand => new MvxAsyncCommand(OnPlay);
+
         public MvxAsyncCommand OnShowDisplayViewCommand => new MvxAsyncCommand(OnDisplayView);
 
         public MvxAsyncCommand OnRefreshCommand => new MvxAsyncCommand(Refresh);
@@ -83,6 +85,21 @@ namespace PinupMobile.Core.ViewModels
         public async Task OnPagePrev()
         {
             await Task.Run(() => ExecuteCommand(_server.SendPagePrev)).ConfigureAwait(false);
+        }
+
+        public async Task OnPlay()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendPlayGame)).ConfigureAwait(false);
+        }
+
+        public async Task OnExitEmulator()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendExitEmulator)).ConfigureAwait(false);
+        }
+
+        public async Task OnHome()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendHome)).ConfigureAwait(false);
         }
 
         private async Task Refresh()

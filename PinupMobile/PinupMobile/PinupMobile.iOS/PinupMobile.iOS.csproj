@@ -204,22 +204,38 @@
       <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_18pt.xcassets\round_cached_black_18pt.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_18pt.xcassets\round_cached_black_18pt.imageset\round_cached_black_18pt_1x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_18pt.xcassets\round_cached_black_18pt.imageset\round_cached_black_18pt_2x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_18pt.xcassets\round_cached_black_18pt.imageset\round_cached_black_18pt_3x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_24pt.xcassets\round_cached_black_24pt.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_24pt.xcassets\round_cached_black_24pt.imageset\round_cached_black_24pt_1x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_24pt.xcassets\round_cached_black_24pt.imageset\round_cached_black_24pt_2x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_24pt.xcassets\round_cached_black_24pt.imageset\round_cached_black_24pt_3x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_36pt.xcassets\round_cached_black_36pt.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_36pt.xcassets\round_cached_black_36pt.imageset\round_cached_black_36pt_1x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_36pt.xcassets\round_cached_black_36pt.imageset\round_cached_black_36pt_2x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_36pt.xcassets\round_cached_black_36pt.imageset\round_cached_black_36pt_3x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_48pt.xcassets\round_cached_black_48pt.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_48pt.xcassets\round_cached_black_48pt.imageset\round_cached_black_48pt_1x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_48pt.xcassets\round_cached_black_48pt.imageset\round_cached_black_48pt_2x.png" />
-    <ImageAsset Include="Assets.xcassets\round_cached_black_48pt.xcassets\round_cached_black_48pt.imageset\round_cached_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_refresh.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_next.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_prev.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_page_next.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_page_prev.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_play.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_play.imageset\round_play_circle_filled_white_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_play.imageset\round_play_circle_filled_white_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_play.imageset\round_play_circle_filled_white_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_page_prev.imageset\round_fast_rewind_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_page_prev.imageset\round_fast_rewind_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_page_prev.imageset\round_fast_rewind_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_page_next.imageset\round_fast_forward_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_page_next.imageset\round_fast_forward_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_page_next.imageset\round_fast_forward_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_prev.imageset\round_skip_previous_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_prev.imageset\round_skip_previous_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_prev.imageset\round_skip_previous_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_next.imageset\round_skip_next_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_next.imageset\round_skip_next_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_next.imageset\round_skip_next_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_refresh.imageset\round_cached_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_refresh.imageset\round_cached_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_refresh.imageset\round_cached_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_home.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_exit.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_home.imageset\round_home_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_home.imageset\round_home_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_home.imageset\round_home_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_exit.imageset\round_exit_to_app_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_exit.imageset\round_exit_to_app_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_exit.imageset\round_exit_to_app_black_48pt_3x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PinupMobile.Core\PinupMobile.Core.csproj">
@@ -229,6 +245,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Settings\" />
+    <Folder Include="Assets.xcassets\ic_refresh.imageset\" />
+    <Folder Include="Assets.xcassets\ic_next.imageset\" />
+    <Folder Include="Assets.xcassets\ic_prev.imageset\" />
+    <Folder Include="Assets.xcassets\ic_page_next.imageset\" />
+    <Folder Include="Assets.xcassets\ic_page_prev.imageset\" />
+    <Folder Include="Assets.xcassets\ic_play.imageset\" />
+    <Folder Include="Assets.xcassets\ic_home.imageset\" />
+    <Folder Include="Assets.xcassets\ic_exit.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

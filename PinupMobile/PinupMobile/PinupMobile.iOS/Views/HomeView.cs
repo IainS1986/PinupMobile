@@ -29,7 +29,8 @@ namespace PinupMobile.iOS.Views
         {
             base.ViewDidLoad();
 
-            _refreshButton = new UIBarButtonItem(UIImage.FromBundle("round_cached_black_24pt"), UIBarButtonItemStyle.Plain, null);
+            var icon = UIImage.FromBundle("ic_refresh");
+            _refreshButton = new UIBarButtonItem(icon, UIBarButtonItemStyle.Plain, null);
             NavigationItem.RightBarButtonItem = _refreshButton;
 
             //Rotate Wheel Icon image as they will be rotated 90

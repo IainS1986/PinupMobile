@@ -253,6 +253,21 @@ namespace PinupMobile.Core.Remote
             return await SendPupKey(PopperCommand.KEY_NEXT_PAGE);
         }
 
+        public async Task<bool> SendPlayGame()
+        {
+            return await SendPupKey(PopperCommand.KEY_SELECT);
+        }
+
+        public async Task<bool> SendExitEmulator()
+        {
+            return await SendPupKey(PopperCommand.KEY_EXIT_EMULATOR);
+        }
+
+        public async Task<bool> SendHome()
+        {
+            return await SendPupKey(PopperCommand.KEY_HOME);
+        }
+
         /// <summary>
         /// Send pup the given key.
         /// </summary>

@@ -19,6 +19,12 @@ namespace PinupMobile.Core.Remote
 
         Task<bool> SendPagePrev();
 
+        Task<bool> SendPlayGame();
+
+        Task<bool> SendExitEmulator();
+
+        Task<bool> SendHome();
+
         Task<string> GetDisplay(string display);
     }
 }
