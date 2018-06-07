@@ -24,12 +24,19 @@
             android:textSize="20dp"
             android:gravity="center"
             android:layout_centerInParent="true"
-            local:MvxBind="Text CurrentItemDisplayName(CurrentItem)" />
+            local:MvxBind="Text CurrentItemDisplayName(CurrentItem); Visibility InvertedVisibility(TitleHidden);" />
+        <FrameLayout
+            android:id="@+id/title_anchor"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            local:MvxBind="Click OnTitleTappedCommand;" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@id/game_title">
+            android:layout_below="@id/title_anchor">
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
