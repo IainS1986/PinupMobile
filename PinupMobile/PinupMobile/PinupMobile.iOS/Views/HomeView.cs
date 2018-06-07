@@ -21,6 +21,8 @@ namespace PinupMobile.iOS.Views
             set { _wheelImagePath = value; UpdateWheel(); }
         }
 
+        public int TitleClickCount { get; set; }
+
         public HomeView() : base("HomeView", null)
         {
         }
@@ -47,6 +49,11 @@ namespace PinupMobile.iOS.Views
             set.Bind(PrevPageButton).To(vm => vm.OnPagePrevCommand);
             set.Bind(NextPageButton).To(vm => vm.OnPageNextCommand);
             set.Bind(DisplayButton).To(vm => vm.OnShowDisplayViewCommand);
+            set.Bind(PlayButton).To(vm => vm.OnPlayCommand);
+            set.Bind(HomeButton).To(vm => vm.OnHomeCommand);
+            set.Bind(ExitButton).To(vm => vm.OnExitEmulatorCommand);
+            set.Bind(HiddenNameButton).To(vm => vm.OnTitleTappedCommand);
+            set.Bind(CurrentItemName).For(v => v.Hidden).To(vm => vm.TitleHidden);
             set.Apply();
         }
 

@@ -22,6 +22,9 @@ namespace PinupMobile.iOS.Views
 		UIKit.UIButton ExitButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton HiddenNameButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton HomeButton { get; set; }
 
 		[Outlet]
@@ -54,6 +57,16 @@ namespace PinupMobile.iOS.Views
 				DisplayButton = null;
 			}
 
+			if (ExitButton != null) {
+				ExitButton.Dispose ();
+				ExitButton = null;
+			}
+
+			if (HomeButton != null) {
+				HomeButton.Dispose ();
+				HomeButton = null;
+			}
+
 			if (NextButton != null) {
 				NextButton.Dispose ();
 				NextButton = null;
@@ -84,14 +97,9 @@ namespace PinupMobile.iOS.Views
 				WheeImage = null;
 			}
 
-			if (HomeButton != null) {
-				HomeButton.Dispose ();
-				HomeButton = null;
-			}
-
-			if (ExitButton != null) {
-				ExitButton.Dispose ();
-				ExitButton = null;
+			if (HiddenNameButton != null) {
+				HiddenNameButton.Dispose ();
+				HiddenNameButton = null;
 			}
 		}
 	}

@@ -7,6 +7,7 @@ using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote;
 using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Remote.Model;
+using PinupMobile.Core.Settings;
 
 namespace PinupMobile.Core.ViewModels
 {
@@ -17,8 +18,11 @@ namespace PinupMobile.Core.ViewModels
     public class HomeViewModel
         : MvxViewModel
     {
+        private const string TITLE_VISIBLE_KEY = "TitleVisible";
+
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
+        private readonly IUserSettings _userSettings;
 
         private Item _currentItem;
         public Item CurrentItem
@@ -34,6 +38,13 @@ namespace PinupMobile.Core.ViewModels
             set { _wheelIconPath = value; RaisePropertyChanged(() => WheelIconPath); }
         }
 
+        private bool _titleVisible;
+        public bool TitleHidden
+        {
+            get { return _titleVisible; }
+            set { _titleVisible = value; RaisePropertyChanged(() => TitleHidden);  }
+        }
+
         public MvxAsyncCommand OnGameNextCommand => new MvxAsyncCommand(OnGameNext);
 
         public MvxAsyncCommand OnGamePrevCommand => new MvxAsyncCommand(OnGamePrev);
@@ -44,20 +55,30 @@ namespace PinupMobile.Core.ViewModels
 
         public MvxAsyncCommand OnPlayCommand => new MvxAsyncCommand(OnPlay);
 
+        public MvxAsyncCommand OnHomeCommand => new MvxAsyncCommand(OnHome);
+
+        public MvxAsyncCommand OnExitEmulatorCommand => new MvxAsyncCommand(OnExitEmulator);
+
         public MvxAsyncCommand OnShowDisplayViewCommand => new MvxAsyncCommand(OnDisplayView);
 
         public MvxAsyncCommand OnRefreshCommand => new MvxAsyncCommand(Refresh);
 
+        public MvxCommand OnTitleTappedCommand => new MvxCommand(OnTitleTapped);
+
         public HomeViewModel(IPopperService server,
-                             IMvxNavigationService navigationService)
+                             IMvxNavigationService navigationService,
+                             IUserSettings userSettings)
         {
             _server = server;
             _navigationService = navigationService;
+            _userSettings = userSettings;
         }
 
         public override async void ViewAppearing()
         {
             base.ViewAppearing();
+
+            TitleHidden = _userSettings.GetBool(TITLE_VISIBLE_KEY);
 
             await Refresh();
         }
@@ -132,6 +153,13 @@ namespace PinupMobile.Core.ViewModels
                     await Refresh();
                 }
             });
+        }
+
+        private void OnTitleTapped()
+        {
+            TitleHidden = !TitleHidden;
+
+            _userSettings.SetBool(TITLE_VISIBLE_KEY, TitleHidden);
         }
     }
 }
