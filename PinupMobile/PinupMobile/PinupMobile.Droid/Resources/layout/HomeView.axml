@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@id/title_anchor">
-            <Button
+            <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -45,12 +45,12 @@
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:textSize="16dp"
                 android:gravity="center"
-                android:text="Page Down"
+                android:background="#00ffffff"
                 android:enabled="true"
-                local:MvxBind="Click OnPagePrevCommand" />
-            <Button
+                local:MvxBind="Click OnPagePrevCommand"
+                android:src="@drawable/selector_button_fast_rewind" />
+            <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -58,12 +58,12 @@
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:textSize="16dp"
                 android:gravity="center"
-                android:text="Prev"
+                android:background="#00ffffff"
                 android:enabled="true"
-                local:MvxBind="Click OnGamePrevCommand" />
-            <Button
+                local:MvxBind="Click OnGamePrevCommand"
+                android:src="@drawable/selector_button_skip_prev" />
+            <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -71,12 +71,12 @@
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:textSize="16dp"
                 android:gravity="center"
-                android:text="Next"
+                android:background="#00ffffff"
                 android:enabled="true"
-                local:MvxBind="Click OnGameNextCommand" />
-            <Button
+                local:MvxBind="Click OnGameNextCommand"
+                android:src="@drawable/selector_button_skip_next" />
+            <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -84,11 +84,11 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:textSize="16dp"
                 android:gravity="center"
-                android:text="Page Up"
+                android:background="#00ffffff"
                 android:enabled="true"
-                local:MvxBind="Click OnPageNextCommand" />
+                local:MvxBind="Click OnPageNextCommand"
+                android:src="@drawable/selector_button_fast_forward" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
