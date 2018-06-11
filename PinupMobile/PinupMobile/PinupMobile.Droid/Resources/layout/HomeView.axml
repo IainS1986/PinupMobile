@@ -17,6 +17,13 @@
         android:layout_below="@id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:rotation="90" />
         <TextView
             android:id="@+id/game_title"
             android:layout_width="match_parent"
@@ -24,6 +31,7 @@
             android:textSize="20dp"
             android:gravity="center"
             android:layout_centerInParent="true"
+            android:layout_below="@id/image_view"
             local:MvxBind="Text CurrentItemDisplayName(CurrentItem); Visibility InvertedVisibility(TitleHidden);" />
         <FrameLayout
             android:id="@+id/title_anchor"
@@ -31,6 +39,7 @@
             android:layout_height="30dp"
             android:gravity="center"
             android:layout_centerInParent="true"
+            android:layout_below="@id/image_view"
             local:MvxBind="Click OnTitleTappedCommand;" />
         <LinearLayout
             android:layout_width="match_parent"
