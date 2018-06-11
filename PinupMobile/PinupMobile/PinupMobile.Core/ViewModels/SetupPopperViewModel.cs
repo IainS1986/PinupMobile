@@ -18,6 +18,9 @@ namespace PinupMobile.Core.ViewModels
     public class SetupPopperViewModel
         : MvxViewModel
     {
+        private readonly IPopperService _server;
+        private readonly IMvxNavigationService _navigationService;
+        private readonly IUserSettings _userSettings;
 
         private string _url;
         public string Url
@@ -45,10 +48,48 @@ namespace PinupMobile.Core.ViewModels
             get { return !Connecting && !string.IsNullOrEmpty(Url); }
         }
 
+        public MvxAsyncCommand OnConnectCommand => new MvxAsyncCommand(TryConnect);
+
         public SetupPopperViewModel(IPopperService server,
                                     IMvxNavigationService navigationService,
                                     IUserSettings userSettings)
         {
+            _server = server;
+            _navigationService = navigationService;
+            _userSettings = userSettings;
+        }
+
+        private async Task TryConnect()
+        {
+            if (!CanConnect)
+            {
+                return;
+            }
+
+            FailedToConnect = false;
+            Connecting = true;
+
+            // Try and connect
+            // Ensure at least a few seconds so the user knows it actually
+            // happened.
+            var minTime = Task.Delay(2000);
+            var connectReq = _server.ServerExistsWithUrl($"http://{Url}");
+
+            var popperConnected = await connectReq;
+            await minTime;
+
+            Connecting = false;
+
+            if (popperConnected)
+            {
+                //Go to Home
+                await _navigationService.Navigate<HomeViewModel>();
+            }
+            else
+            {
+                //Display error
+                FailedToConnect = true;
+            }
         }
     }
 }

@@ -9,6 +9,8 @@ using UIKit;
 
 namespace PinupMobile.iOS.Views
 {
+    [MvxRootPresentation(AnimationDuration = 0.35f,
+                         AnimationOptions = UIViewAnimationOptions.TransitionCrossDissolve)]
     public partial class HomeView : MvxViewController<HomeViewModel>
     {
         private UIImage _currentWheelImage;

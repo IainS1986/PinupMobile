@@ -24,6 +24,13 @@ namespace PinupMobile.iOS.Views
             UrlInput.ShouldReturn = delegate
             {
                 UrlInput.ResignFirstResponder();
+
+                //Try and Connect
+                if(ViewModel != null)
+                {
+                    ViewModel.OnConnectCommand.ExecuteAsync();
+                }
+
                 return true;
             };
 
@@ -33,6 +40,7 @@ namespace PinupMobile.iOS.Views
             set.Bind(ConnectingSpinner).For(v => v.Hidden).To(vm => vm.Connecting).WithConversion("IsFalse");
             set.Bind(ErrorLabel).For(v => v.Hidden).To(vm => vm.FailedToConnect).WithConversion("IsFalse");
             set.Bind(ConnectButton).For(v => v.Enabled).To(vm => vm.CanConnect);
+            set.Bind(ConnectButton).To(vm => vm.OnConnectCommand);
             set.Apply();
         }
     }

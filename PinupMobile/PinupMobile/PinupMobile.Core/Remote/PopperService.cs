@@ -74,6 +74,21 @@ namespace PinupMobile.Core.Remote
             }
         }
 
+        public async Task<bool> ServerExistsWithUrl(string url)
+        {
+            BaseUri = new Uri(url);
+
+            bool connected = await ServerExists();
+
+            if (connected)
+            {
+                //Save off the URL so we autoconnect next time
+                _settings.SetString(PopperURLSettingKey, url);
+            }
+
+            return connected;
+        }
+
         private async Task<PopperResponse<ResponseT>> MakeRequest<RequestT, ResponseT>(RequestT request) 
             where RequestT : class
             where ResponseT : class

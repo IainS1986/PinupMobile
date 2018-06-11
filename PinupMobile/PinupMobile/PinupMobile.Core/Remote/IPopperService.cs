@@ -11,6 +11,8 @@ namespace PinupMobile.Core.Remote
 
         Task<bool> ServerExists();
 
+        Task<bool> ServerExistsWithUrl(string url);
+
         Task<bool> SendGameNext();
 
         Task<bool> SendGamePrev();
