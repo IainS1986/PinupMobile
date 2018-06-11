@@ -6933,6 +6933,9 @@ namespace PinupMobile.Droid
 			// aapt resource value: 0x7f090042
 			public const int enterAlwaysCollapsed = 2131296322;
 			
+			// aapt resource value: 0x7f0900ba
+			public const int error_label = 2131296442;
+			
 			// aapt resource value: 0x7f090043
 			public const int exitUntilCollapsed = 2131296323;
 			
@@ -6987,6 +6990,9 @@ namespace PinupMobile.Droid
 			// aapt resource value: 0x7f0900b2
 			public const int info = 2131296434;
 			
+			// aapt resource value: 0x7f0900b8
+			public const int input_root = 2131296440;
+			
 			// aapt resource value: 0x7f09005b
 			public const int italic = 2131296347;
 			
@@ -7011,14 +7017,14 @@ namespace PinupMobile.Droid
 			// aapt resource value: 0x7f090063
 			public const int list_item = 2131296355;
 			
-			// aapt resource value: 0x7f0900ba
-			public const int masked = 2131296442;
+			// aapt resource value: 0x7f0900be
+			public const int masked = 2131296446;
 			
 			// aapt resource value: 0x7f0900ab
 			public const int media_actions = 2131296427;
 			
-			// aapt resource value: 0x7f0900b8
-			public const int message = 2131296440;
+			// aapt resource value: 0x7f0900bc
+			public const int message = 2131296444;
 			
 			// aapt resource value: 0x7f090033
 			public const int middle = 2131296307;
@@ -7145,6 +7151,9 @@ namespace PinupMobile.Droid
 			
 			// aapt resource value: 0x7f09008c
 			public const int select_dialog_listview = 2131296396;
+			
+			// aapt resource value: 0x7f0900bb
+			public const int setup_footer_label = 2131296443;
 			
 			// aapt resource value: 0x7f090076
 			public const int shortcut = 2131296374;
@@ -7278,14 +7287,17 @@ namespace PinupMobile.Droid
 			// aapt resource value: 0x7f090009
 			public const int up = 2131296265;
 			
+			// aapt resource value: 0x7f0900b9
+			public const int url_input = 2131296441;
+			
 			// aapt resource value: 0x7f090028
 			public const int useLogo = 2131296296;
 			
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900b9
-			public const int visible = 2131296441;
+			// aapt resource value: 0x7f0900bd
+			public const int visible = 2131296445;
 			
 			// aapt resource value: 0x7f09003e
 			public const int withText = 2131296318;
@@ -7701,6 +7713,12 @@ namespace PinupMobile.Droid
 			
 			// aapt resource value: 0x7f0a0011
 			public const int search_menu_title = 2131361809;
+			
+			// aapt resource value: 0x7f0a002c
+			public const int setup_error = 2131361836;
+			
+			// aapt resource value: 0x7f0a002d
+			public const int setup_footer = 2131361837;
 			
 			// aapt resource value: 0x7f0a002b
 			public const int setup_top_text = 2131361835;

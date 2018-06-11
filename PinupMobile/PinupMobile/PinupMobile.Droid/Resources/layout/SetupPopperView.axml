@@ -28,6 +28,81 @@
             android:layout_centerInParent="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
+            android:textAlignment="center"
             android:text="@string/setup_top_text" />
+        <LinearLayout
+            android:id="@+id/input_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/game_title">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:gravity="center"
+                android:text="http://" />
+            <EditText
+                android:id="@+id/url_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"
+                android:hint="192.168.0.1"
+                local:MvxBind="Text Url, Mode=TwoWay;" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/error_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_below="@id/input_root"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:padding="8dp"
+            android:text="@string/setup_error"
+            android:background="#ff5252"
+            android:textColor="#EEEEEE"
+            local:MvxBind="Visibility Visibility(FailedToConnect);" />
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/error_label"
+            android:layout_alignBottom="@id/error_label"
+            android:layout_centerHorizontal="true"
+            local:MvxBind="Visibility Visibility(Connecting);" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:text="Connect"
+            android:enabled="true"
+            android:layout_below="@id/error_label"
+            local:MvxBind="Click OnConnectCommand; Enabled CanConnect;" />
+        <TextView
+            android:id="@+id/setup_footer_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:padding="8dp"
+            android:text="@string/setup_footer"
+            android:layout_alignParentBottom="true"
+            android:autoLink="web"
+            android:linksClickable="true" />
     </RelativeLayout>
 </RelativeLayout>
