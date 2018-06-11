@@ -7536,16 +7536,19 @@ namespace PinupMobile.Droid
 			public const int select_dialog_singlechoice_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int SplashScreen = 2130968637;
+			public const int SetupPopperView = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int support_simple_spinner_dropdown_item = 2130968638;
+			public const int SplashScreen = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int toolbar = 2130968639;
+			public const int support_simple_spinner_dropdown_item = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int tooltip = 2130968640;
+			public const int toolbar = 2130968640;
+			
+			// aapt resource value: 0x7f040041
+			public const int tooltip = 2130968641;
 			
 			static Layout()
 			{
@@ -7698,6 +7701,9 @@ namespace PinupMobile.Droid
 			
 			// aapt resource value: 0x7f0a0011
 			public const int search_menu_title = 2131361809;
+			
+			// aapt resource value: 0x7f0a002b
+			public const int setup_top_text = 2131361835;
 			
 			// aapt resource value: 0x7f0a0026
 			public const int status_bar_notification_info_overflow = 2131361830;

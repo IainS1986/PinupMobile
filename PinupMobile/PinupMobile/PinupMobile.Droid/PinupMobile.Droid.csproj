@@ -506,6 +506,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\round_play_circle_filled_white_white_24.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\round_play_circle_filled_white_white_36.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\round_play_circle_filled_white_white_48.png" />
+    <AndroidResource Include="Resources\layout\SetupPopperView.axml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -523,6 +524,7 @@
     <Compile Include="Views\HomeView.cs" />
     <Compile Include="Views\DisplayView.cs" />
     <Compile Include="Controls\AutoFitTextureView.cs" />
+    <Compile Include="Views\SetupPopperView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
