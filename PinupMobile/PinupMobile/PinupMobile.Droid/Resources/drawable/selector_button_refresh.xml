@@ -2,14 +2,14 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="false">
         <bitmap android:src="@drawable/round_cached_white_48"
-                android:tint="@color/button_disabled"/>
+                android:tint="@color/button_disabled_light"/>
     </item>
     <item android:state_pressed="true">
         <bitmap android:src="@drawable/round_cached_white_48"
-                android:tint="@color/button_disabled"/>
+                android:tint="@color/button_disabled_light"/>
     </item>
     <item>
         <bitmap android:src="@drawable/round_cached_white_48"
-                android:tint="@color/button_enabled"/>
+                android:tint="@color/button_enabled_light"/>
     </item>
 </selector>

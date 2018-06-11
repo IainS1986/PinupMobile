@@ -7,9 +7,11 @@ using PinupMobile.Core.ViewModels;
 
 namespace PinupMobile.Droid.Views
 {
-    [Activity(Label = "PinupPopper")]
+    [Activity(Label = "PinupPopper Remote")]
     public class HomeView : MvxAppCompatActivity<HomeViewModel>
     {
+        protected Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
+
         private ImageView _imageView;
 
         private string _wheelUrl = string.Empty;
@@ -24,6 +26,13 @@ namespace PinupMobile.Droid.Views
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.HomeView);
+
+            Toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            if (Toolbar != null)
+            {
+                SetSupportActionBar(Toolbar);
+                SupportActionBar.Title = string.Empty;
+            }
 
             _imageView = FindViewById<ImageView>(Resource.Id.image_view);
 

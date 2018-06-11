@@ -4,13 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.design.widget.AppBarLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
         android:id="@+id/toolbar_layout">
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"
-            local:layout_scrollFlags="scroll|enterAlways" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:id="@+id/refresh"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/selector_button_refresh"
+            android:paddingRight="8dp"
+            local:MvxBind="Click OnRefreshCommand" />
     </android.support.design.widget.AppBarLayout>
     <RelativeLayout
         android:id="@+id/content_frame"
