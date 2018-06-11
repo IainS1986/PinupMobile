@@ -50,64 +50,7 @@
             android:layout_below="@id/image_view"
             local:MvxBind="Click OnTitleTappedCommand;" />
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/title_anchor">
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:background="#00ffffff"
-                android:enabled="true"
-                local:MvxBind="Click OnPagePrevCommand"
-                android:src="@drawable/selector_button_fast_rewind" />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:background="#00ffffff"
-                android:enabled="true"
-                local:MvxBind="Click OnGamePrevCommand"
-                android:src="@drawable/selector_button_skip_prev" />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:background="#00ffffff"
-                android:enabled="true"
-                local:MvxBind="Click OnGameNextCommand"
-                android:src="@drawable/selector_button_skip_next" />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:background="#00ffffff"
-                android:enabled="true"
-                local:MvxBind="Click OnPageNextCommand"
-                android:src="@drawable/selector_button_fast_forward" />
-        </LinearLayout>
-        <LinearLayout
+            android:id="@+id/display_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -122,6 +65,123 @@
                 android:text="Display"
                 android:enabled="true"
                 local:MvxBind="Click OnShowDisplayViewCommand" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/title_anchor"
+            android:layout_above="@id/display_footer">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="true"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnPagePrevCommand"
+                    android:src="@drawable/selector_button_fast_rewind" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="true"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnGamePrevCommand"
+                    android:src="@drawable/selector_button_skip_prev" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="true"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnGameNextCommand"
+                    android:src="@drawable/selector_button_skip_next" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="true"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnPageNextCommand"
+                    android:src="@drawable/selector_button_fast_forward" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="true"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnHomeCommand"
+                    android:src="@drawable/selector_button_home" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="true"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnPlayCommand"
+                    android:src="@drawable/selector_button_play" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="true"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnExitEmulatorCommand"
+                    android:src="@drawable/selector_button_exit" />
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>
