@@ -45,7 +45,7 @@ namespace PinupMobile.Core.ViewModels
                 else
                 {
                     // Go to Setup screen
-                    Logger.Debug("No Popper Server found and No Setup View made yet...");
+                    await _navigationService.Navigate<SetupPopperViewModel>();
                 }
                 
             }).ConfigureAwait(false);

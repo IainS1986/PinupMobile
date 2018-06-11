@@ -109,6 +109,10 @@
     <Compile Include="Views\DisplayView.designer.cs">
       <DependentUpon>DisplayView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\SetupPopperView.cs" />
+    <Compile Include="Views\SetupPopperView.designer.cs">
+      <DependentUpon>SetupPopperView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
@@ -122,6 +126,9 @@
     </InterfaceDefinition>
     <InterfaceDefinition Include="Views\DisplayView.xib">
       <DependentUpon>DisplayView.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Views\SetupPopperView.xib">
+      <DependentUpon>SetupPopperView.cs</DependentUpon>
     </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
