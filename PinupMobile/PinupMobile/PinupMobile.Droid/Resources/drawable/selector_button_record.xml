@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <bitmap android:src="@drawable/round_fiber_manual_record_white_48"
+                android:tint="@color/button_record_disabled_light"/>
+    </item>
+    <item android:state_pressed="true">
+        <bitmap android:src="@drawable/round_fiber_manual_record_white_48"
+                android:tint="@color/button_record_disabled_light"/>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/round_fiber_manual_record_white_48"
+                android:tint="@color/button_record_enabled_light"/>
+    </item>
+</selector>

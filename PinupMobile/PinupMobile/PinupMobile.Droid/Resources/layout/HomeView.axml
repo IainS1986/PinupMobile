@@ -12,12 +12,16 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:id="@+id/record"
+            android:src="@drawable/selector_button_record"
+            local:MvxBind="Click OnRecordCommand" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="right"
             android:id="@+id/refresh"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:src="@drawable/selector_button_refresh"
-            android:paddingRight="8dp"
             local:MvxBind="Click OnRefreshCommand" />
     </android.support.design.widget.AppBarLayout>
     <RelativeLayout
@@ -28,7 +32,7 @@
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="240dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
             android:rotation="90" />
@@ -72,6 +76,54 @@
             android:orientation="vertical"
             android:layout_below="@id/title_anchor"
             android:layout_above="@id/display_footer">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="true"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnSystemMenuCommand"
+                    android:src="@drawable/selector_button_power" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="true"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnSelectCommand"
+                    android:src="@drawable/selector_button_select" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:enabled="false"
+                    android:scaleType="fitCenter"
+                    local:MvxBind="Click OnMenuReturnCommand"
+                    android:src="@drawable/selector_button_menu_return" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

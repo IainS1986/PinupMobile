@@ -16,4 +16,6 @@
 
     <color name="button_enabled_light">#FFFFFF</color>
     <color name="button_disabled_light">#CCCCCC</color>
+    <color name="button_record_enabled_light">#FF0000</color>
+    <color name="button_record_disabled_light">#FFCCCC</color>
 </resources>
