@@ -13,6 +13,9 @@ namespace PinupMobile.iOS.Views
 	partial class HomeView
 	{
 		[Outlet]
+		UIKit.UIButton BackButton { get; set; }
+
+		[Outlet]
 		UIKit.UILabel CurrentItemName { get; set; }
 
 		[Outlet]
@@ -43,6 +46,12 @@ namespace PinupMobile.iOS.Views
 		UIKit.UIButton PrevPageButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton SelectButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton ShutdownButton { get; set; }
+
+		[Outlet]
 		UIKit.UIImageView WheeImage { get; set; }
 		
 		void ReleaseDesignerOutlets ()
@@ -60,6 +69,11 @@ namespace PinupMobile.iOS.Views
 			if (ExitButton != null) {
 				ExitButton.Dispose ();
 				ExitButton = null;
+			}
+
+			if (HiddenNameButton != null) {
+				HiddenNameButton.Dispose ();
+				HiddenNameButton = null;
 			}
 
 			if (HomeButton != null) {
@@ -97,9 +111,19 @@ namespace PinupMobile.iOS.Views
 				WheeImage = null;
 			}
 
-			if (HiddenNameButton != null) {
-				HiddenNameButton.Dispose ();
-				HiddenNameButton = null;
+			if (ShutdownButton != null) {
+				ShutdownButton.Dispose ();
+				ShutdownButton = null;
+			}
+
+			if (BackButton != null) {
+				BackButton.Dispose ();
+				BackButton = null;
+			}
+
+			if (SelectButton != null) {
+				SelectButton.Dispose ();
+				SelectButton = null;
 			}
 		}
 	}

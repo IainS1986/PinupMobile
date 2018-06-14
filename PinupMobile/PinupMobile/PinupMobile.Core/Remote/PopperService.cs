@@ -249,6 +249,25 @@ namespace PinupMobile.Core.Remote
             }
         }
 
+        public async Task<bool> SendPlayGame(int gameid)
+        {
+            var request = new LaunchGameRequest();
+            request.id = gameid;
+
+            var response = await MakeRequest<LaunchGameRequest, string>(request).ConfigureAwait(false);
+
+            if (response?.Success == true)
+            {
+                return true;
+            }
+            else
+            {
+                //TODO Error handling???
+                Logger.Error($"Error launching game {gameid}, responded with {response?.Code} and {response?.Messsage}");
+                return false;
+            }
+        }
+
         public async Task<bool> SendGameNext()
         {
             return await SendPupKey(PopperCommand.KEY_NEXT_GAME);
@@ -269,11 +288,6 @@ namespace PinupMobile.Core.Remote
             return await SendPupKey(PopperCommand.KEY_NEXT_PAGE);
         }
 
-        public async Task<bool> SendPlayGame()
-        {
-            return await SendPupKey(PopperCommand.KEY_SELECT);
-        }
-
         public async Task<bool> SendExitEmulator()
         {
             return await SendPupKey(PopperCommand.KEY_EXIT_EMULATOR);
@@ -282,6 +296,31 @@ namespace PinupMobile.Core.Remote
         public async Task<bool> SendHome()
         {
             return await SendPupKey(PopperCommand.KEY_HOME);
+        }
+
+        public async Task<bool> SendSelect()
+        {
+            return await SendPupKey(PopperCommand.KEY_SELECT);
+        }
+
+        public async Task<bool> SendMenuReturn()
+        {
+            return await SendPupKey(PopperCommand.KEY_MENU_RETURN);
+        }
+
+        public async Task<bool> SendSystemMenu()
+        {
+            return await SendPupKey(PopperCommand.KEY_SYSTEM_MENU);
+        }
+
+        public async Task<bool> SendShutdown()
+        {
+            return await SendPupKey(PopperCommand.KEY_SHUTDOWN_PC);
+        }
+
+        public async Task<bool> SendRestart()
+        {
+            return await SendPupKey(PopperCommand.KEY_RESTART_PC);
         }
 
         /// <summary>

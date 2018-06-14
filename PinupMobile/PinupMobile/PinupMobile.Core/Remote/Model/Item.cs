@@ -12,11 +12,19 @@ namespace PinupMobile.Core.Remote.Model
             set { _displayName = value; }
         }
 
+        private int _gameId;
+        public int GameID
+        {
+            get { return _gameId; }
+            set { _gameId = value; }
+        }
+
         public Item(){}
 
         public Item(CurrentItemDTO dto)
         {
             DisplayName = dto?.GameDisplay;
+            GameID = dto.GameID;
         }
     }
 }

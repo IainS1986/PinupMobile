@@ -16,6 +16,7 @@ namespace PinupMobile.iOS.Views
     {
         private UIImage _currentWheelImage;
         private UIBarButtonItem _refreshButton;
+        private UIBarButtonItem _recordButton;
 
         private string _wheelImagePath;
         public string WheelImagePath
@@ -34,19 +35,28 @@ namespace PinupMobile.iOS.Views
         {
             base.ViewDidLoad();
 
-            var icon = UIImage.FromBundle("ic_refresh");
-            _refreshButton = new UIBarButtonItem(icon, UIBarButtonItemStyle.Plain, null);
+            var refreshImg = UIImage.FromBundle("ic_refresh");
+            _refreshButton = new UIBarButtonItem(refreshImg, UIBarButtonItemStyle.Plain, null);
             NavigationItem.RightBarButtonItem = _refreshButton;
+
+            var recordImg = UIImage.FromBundle("ic_record");
+            _recordButton = new UIBarButtonItem(recordImg, UIBarButtonItemStyle.Plain, null);
+            _recordButton.TintColor = UIColor.Red;
+            NavigationItem.LeftBarButtonItem = _recordButton;
 
             //Rotate Wheel Icon image as they will be rotated 90
             var rect = WheeImage.Frame;
             WheeImage.Transform = CoreGraphics.CGAffineTransform.MakeRotation((nfloat)1.5708);
             WheeImage.Frame = rect;
 
+            //Gotta find out the button ID
+            BackButton.Enabled = false;
+
             var set = this.CreateBindingSet<HomeView, HomeViewModel>();
             set.Bind(CurrentItemName).For(v => v.Text).To(vm => vm.CurrentItem).WithConversion<CurrentItemDisplayNameConverter>();
             set.Bind(this).For(v => v.WheelImagePath).To(vm => vm.WheelIconPath);
             set.Bind(_refreshButton).To(vm => vm.OnRefreshCommand);
+            set.Bind(_recordButton).To(vm => vm.OnRecordCommand);
             set.Bind(PrevButton).To(vm => vm.OnGamePrevCommand);
             set.Bind(NextButton).To(vm => vm.OnGameNextCommand);
             set.Bind(PrevPageButton).To(vm => vm.OnPagePrevCommand);
@@ -55,6 +65,9 @@ namespace PinupMobile.iOS.Views
             set.Bind(PlayButton).To(vm => vm.OnPlayCommand);
             set.Bind(HomeButton).To(vm => vm.OnHomeCommand);
             set.Bind(ExitButton).To(vm => vm.OnExitEmulatorCommand);
+            set.Bind(ShutdownButton).To(vm => vm.OnSystemMenuCommand);
+            set.Bind(SelectButton).To(vm => vm.OnSelectCommand);
+            set.Bind(BackButton).To(vm => vm.OnMenuReturnCommand);
             set.Bind(HiddenNameButton).To(vm => vm.OnTitleTappedCommand);
             set.Bind(CurrentItemName).For(v => v.Hidden).To(vm => vm.TitleHidden);
             set.Apply();

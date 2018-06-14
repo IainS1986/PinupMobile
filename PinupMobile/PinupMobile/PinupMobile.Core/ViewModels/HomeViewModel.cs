@@ -55,6 +55,16 @@ namespace PinupMobile.Core.ViewModels
 
         public MvxAsyncCommand OnPlayCommand => new MvxAsyncCommand(OnPlay);
 
+        public MvxAsyncCommand OnSelectCommand => new MvxAsyncCommand(OnSelect);
+
+        public MvxAsyncCommand OnMenuReturnCommand => new MvxAsyncCommand(OnMenuReturn);
+
+        public MvxAsyncCommand OnShutdownCommand => new MvxAsyncCommand(OnShutdown);
+
+        public MvxAsyncCommand OnSystemMenuCommand => new MvxAsyncCommand(OnSystemMenu);
+
+        public MvxAsyncCommand OnRestartCommand => new MvxAsyncCommand(OnRestart);
+
         public MvxAsyncCommand OnHomeCommand => new MvxAsyncCommand(OnHome);
 
         public MvxAsyncCommand OnExitEmulatorCommand => new MvxAsyncCommand(OnExitEmulator);
@@ -62,6 +72,8 @@ namespace PinupMobile.Core.ViewModels
         public MvxAsyncCommand OnShowDisplayViewCommand => new MvxAsyncCommand(OnDisplayView);
 
         public MvxAsyncCommand OnRefreshCommand => new MvxAsyncCommand(Refresh);
+
+        public MvxAsyncCommand OnRecordCommand => new MvxAsyncCommand(OnRecordStarted);
 
         public MvxCommand OnTitleTappedCommand => new MvxCommand(OnTitleTapped);
 
@@ -108,11 +120,6 @@ namespace PinupMobile.Core.ViewModels
             await Task.Run(() => ExecuteCommand(_server.SendPagePrev)).ConfigureAwait(false);
         }
 
-        public async Task OnPlay()
-        {
-            await Task.Run(() => ExecuteCommand(_server.SendPlayGame)).ConfigureAwait(false);
-        }
-
         public async Task OnExitEmulator()
         {
             await Task.Run(() => ExecuteCommand(_server.SendExitEmulator)).ConfigureAwait(false);
@@ -121,6 +128,31 @@ namespace PinupMobile.Core.ViewModels
         public async Task OnHome()
         {
             await Task.Run(() => ExecuteCommand(_server.SendHome)).ConfigureAwait(false);
+        }
+
+        public async Task OnSelect()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendSelect)).ConfigureAwait(false);
+        }
+
+        public async Task OnMenuReturn()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendMenuReturn)).ConfigureAwait(false);
+        }
+
+        public async Task OnShutdown()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendShutdown)).ConfigureAwait(false);
+        }
+
+        public async Task OnSystemMenu()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendSystemMenu)).ConfigureAwait(false);
+        }
+
+        public async Task OnRestart()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendRestart)).ConfigureAwait(false);
         }
 
         private async Task Refresh()
@@ -137,6 +169,30 @@ namespace PinupMobile.Core.ViewModels
                 CurrentItem = itemRes;
                 WheelIconPath = wheelRes;
 
+            }).ConfigureAwait(false);
+        }
+
+        private async Task OnRecordStarted()
+        {
+            await Task.Delay(2000);
+
+            //TODO Navigate to record view
+            await _navigationService.Navigate<DisplayViewModel>();
+        }
+
+        public async Task OnPlay()
+        {
+            await Task.Run(async () =>
+            {
+
+                bool success = await _server.SendPlayGame(CurrentItem.GameID);
+
+                if (success)
+                {
+                    // It appears popper needs "some" time to move onto a new game
+                    await Task.Delay(500);
+                    await Refresh();
+                }
             }).ConfigureAwait(false);
         }
 

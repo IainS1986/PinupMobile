@@ -12,6 +12,7 @@ namespace PinupMobile.Core.Remote.API
         KEY_EXIT_EMULATOR = 15,
         KEY_SYSTEM_MENU = 11,
         KEY_RESTART_PC = 56,
-        KEY_SHUTDOWN_PC = 12
+        KEY_SHUTDOWN_PC = 12,
+        KEY_MENU_RETURN = 0
     }
 }
