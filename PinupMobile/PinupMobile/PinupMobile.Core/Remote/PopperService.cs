@@ -89,6 +89,11 @@ namespace PinupMobile.Core.Remote
             return connected;
         }
 
+        public string GetCurrentSavedPopperURL()
+        {
+            return _settings.GetString(PopperURLSettingKey);
+        }
+
         private async Task<PopperResponse<ResponseT>> MakeRequest<RequestT, ResponseT>(RequestT request) 
             where RequestT : class
             where ResponseT : class

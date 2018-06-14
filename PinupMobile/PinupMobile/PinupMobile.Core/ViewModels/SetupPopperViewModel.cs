@@ -59,6 +59,19 @@ namespace PinupMobile.Core.ViewModels
             _userSettings = userSettings;
         }
 
+        public override Task Initialize()
+        {
+            //See if we have a saved Popper URL thats failed an preload it
+            string currentURL = _server.GetCurrentSavedPopperURL();
+
+            if (!string.IsNullOrEmpty(currentURL))
+            {
+                Url = currentURL.Substring(7);//Remove the http://
+            }
+
+            return base.Initialize();
+        }
+
         private async Task TryConnect()
         {
             if (!CanConnect)
