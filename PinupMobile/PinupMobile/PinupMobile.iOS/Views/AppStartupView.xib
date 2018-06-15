@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppStartupView">
             <connections>
+                <outlet property="LoadingSpinner" destination="6e8-1J-Vbu" id="Gwc-mw-NFS"/>
                 <outlet property="view" destination="1" id="RRd-Eg-VrN"/>
             </connections>
         </placeholder>

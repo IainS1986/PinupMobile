@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreGraphics;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
@@ -68,6 +69,33 @@ namespace PinupMobile.iOS.Views
             set.Bind(HiddenNameButton).To(vm => vm.OnTitleTappedCommand);
             set.Bind(CurrentItemName).For(v => v.Hidden).To(vm => vm.TitleHidden);
             set.Apply();
+
+            IntroAnimation();
+        }
+
+        private void IntroAnimation()
+        {
+            //Fade in Wheel
+            WheeImage.Alpha = 0;
+            UIView.Animate(1,
+                           0,
+                           UIViewAnimationOptions.CurveEaseInOut | UIViewAnimationOptions.BeginFromCurrentState,
+                           () => WheeImage.Alpha = 1,
+                           null);
+            
+            //Animate buttons in sequence
+            for (int i = 0; i < RemoteButtons.Length; i++)
+            {
+                //CGRect originalFrame = RemoteButtons[i].Frame;
+                //RemoteButtons[i].Frame = new CGRect(originalFrame.X, originalFrame.Y, 0, 0);
+                RemoteButtons[i].Alpha = 0;
+                UIView.Animate(0.25,
+                               0.1 + (0.1 * i),
+                               UIViewAnimationOptions.CurveEaseInOut | UIViewAnimationOptions.BeginFromCurrentState,
+                               //() => RemoteButtons[i].Frame = originalFrame,
+                               () => RemoteButtons[i].Alpha = 1,
+                               null);
+            }
         }
 
         private void UpdateWheel()

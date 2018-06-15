@@ -12,9 +12,15 @@ namespace PinupMobile.iOS.Views
 	[Register ("AppStartupView")]
 	partial class AppStartupView
 	{
+		[Outlet]
+		UIKit.UIActivityIndicatorView LoadingSpinner { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (LoadingSpinner != null) {
+				LoadingSpinner.Dispose ();
+				LoadingSpinner = null;
+			}
 		}
 	}
 }

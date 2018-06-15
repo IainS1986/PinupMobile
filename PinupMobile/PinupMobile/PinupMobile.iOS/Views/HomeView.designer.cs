@@ -46,6 +46,9 @@ namespace PinupMobile.iOS.Views
 		UIKit.UIButton PrevPageButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton[] RemoteButtons { get; set; }
+
+		[Outlet]
 		UIKit.UIButton SelectButton { get; set; }
 
 		[Outlet]
@@ -56,6 +59,11 @@ namespace PinupMobile.iOS.Views
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (BackButton != null) {
+				BackButton.Dispose ();
+				BackButton = null;
+			}
+
 			if (CurrentItemName != null) {
 				CurrentItemName.Dispose ();
 				CurrentItemName = null;
@@ -106,9 +114,9 @@ namespace PinupMobile.iOS.Views
 				PrevPageButton = null;
 			}
 
-			if (WheeImage != null) {
-				WheeImage.Dispose ();
-				WheeImage = null;
+			if (SelectButton != null) {
+				SelectButton.Dispose ();
+				SelectButton = null;
 			}
 
 			if (ShutdownButton != null) {
@@ -116,14 +124,9 @@ namespace PinupMobile.iOS.Views
 				ShutdownButton = null;
 			}
 
-			if (BackButton != null) {
-				BackButton.Dispose ();
-				BackButton = null;
-			}
-
-			if (SelectButton != null) {
-				SelectButton.Dispose ();
-				SelectButton = null;
+			if (WheeImage != null) {
+				WheeImage.Dispose ();
+				WheeImage = null;
 			}
 		}
 	}

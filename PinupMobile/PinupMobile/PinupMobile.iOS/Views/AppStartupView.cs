@@ -20,6 +20,14 @@ namespace PinupMobile.iOS.Views
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            //Fade spinner in
+            LoadingSpinner.Alpha = 0;
+            UIView.Animate(0.5,
+                           0,
+                           UIViewAnimationOptions.CurveEaseInOut | UIViewAnimationOptions.BeginFromCurrentState,
+                           () => { LoadingSpinner.Alpha = 1; },
+                           null);
           
             var set = this.CreateBindingSet<AppStartupView, AppStartupViewModel>();
             set.Apply();
