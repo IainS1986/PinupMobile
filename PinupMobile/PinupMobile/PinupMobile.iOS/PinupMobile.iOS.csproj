@@ -277,5 +277,8 @@
     <Folder Include="Assets.xcassets\ic_home.imageset\" />
     <Folder Include="Assets.xcassets\ic_exit.imageset\" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\test.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

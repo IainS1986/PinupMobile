@@ -13,6 +13,7 @@ using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Remote.Client;
 using PinupMobile.Core.Remote.DTO;
 using PinupMobile.Core.Remote.Model;
+using PinupMobile.Core.Remote.Model.Debug;
 using PinupMobile.Core.Settings;
 
 namespace PinupMobile.Core.Remote
@@ -20,7 +21,8 @@ namespace PinupMobile.Core.Remote
     public class PopperService : IPopperService
     {
         private const string PopperURLSettingKey = "popperServerURL";
-        
+        private const string DebugPopperURL = "http://debug/";
+
         private readonly IUserSettings _settings;
         private readonly IHttpClientFactory _clientFactory;
 
@@ -29,6 +31,11 @@ namespace PinupMobile.Core.Remote
         {
             get { return _baseUri; }
             set { _baseUri = value; }
+        }
+
+        public bool IsDebugMode
+        {
+            get { return BaseUri.AbsoluteUri.Equals(DebugPopperURL, StringComparison.CurrentCultureIgnoreCase); }
         }
 
         public PopperService(IUserSettings settings,
@@ -80,7 +87,7 @@ namespace PinupMobile.Core.Remote
 
             bool connected = await ServerExists();
 
-            if (connected)
+            if (connected && !IsDebugMode)
             {
                 //Save off the URL so we autoconnect next time
                 _settings.SetString(PopperURLSettingKey, url);
@@ -190,6 +197,22 @@ namespace PinupMobile.Core.Remote
 
         public async Task<string> GetDisplay(string display)
         {
+            if (IsDebugMode)
+            {
+                Logger.Debug($"Sent popper request for {display} feed");
+
+                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                string localFilename = "test.mp4";
+                //Slight hacky fudge
+                if (display.Equals("Wheel", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    localFilename = "test.png";
+                }
+
+                //return Path.Combine(documentsPath, localFilename);
+                return localFilename;
+            }
+
             GetDisplayRequest request = new GetDisplayRequest();
             request.display = display;
 
@@ -235,6 +258,11 @@ namespace PinupMobile.Core.Remote
 
         public async Task<Item> GetCurrentItem()
         {
+            if (IsDebugMode)
+            {
+                return new MockItem();
+            }
+
             // Popper has no endpoint to just get state, or any authentication to do a keep alive
             // so instead, make a call to "Get current item" which should respond but not alter
             // anything on popper
@@ -256,6 +284,12 @@ namespace PinupMobile.Core.Remote
 
         public async Task<bool> SendPlayGame(int gameid)
         {
+            if (IsDebugMode)
+            {
+                Logger.Debug($"Sent popper command to start playing game with id {gameid}");
+                return true;
+            }
+
             var request = new LaunchGameRequest();
             request.id = gameid;
 
@@ -345,6 +379,12 @@ namespace PinupMobile.Core.Remote
         /// <param name="keycode">Keycode.</param>
         public async Task<bool> SendPupKey(PopperCommand command)
         {
+            if (IsDebugMode)
+            {
+                Logger.Debug($"Sent Pupper keycode {command}");
+                return true;
+            }
+
             // TODO Move all this into a handler ...
             SendKeyInputRequest request = new SendKeyInputRequest();
             request.command = command;

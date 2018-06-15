@@ -37,6 +37,10 @@ namespace PinupMobile.Core.Remote
 
         Task<bool> SendRestart();
 
+        Task<bool> SendGameStart();
+
+        Task<bool> SendRecordStart();
+
         Task<string> GetDisplay(string display);
 
         string GetCurrentSavedPopperURL();

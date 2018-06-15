@@ -21,5 +21,6 @@
     <Folder Include="Extensions\" />
     <Folder Include="Remote\Model\" />
     <Folder Include="Converters\" />
+    <Folder Include="Remote\Model\Debug\" />
   </ItemGroup>
 </Project>
