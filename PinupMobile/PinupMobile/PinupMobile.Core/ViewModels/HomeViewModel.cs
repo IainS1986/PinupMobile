@@ -73,7 +73,11 @@ namespace PinupMobile.Core.ViewModels
 
         public MvxAsyncCommand OnRefreshCommand => new MvxAsyncCommand(Refresh);
 
-        public MvxAsyncCommand OnRecordCommand => new MvxAsyncCommand(OnRecordStarted);
+        public MvxAsyncCommand OnRecordCommand => new MvxAsyncCommand(OnRecord);
+
+        public MvxAsyncCommand OnGameStartCommand => new MvxAsyncCommand(OnGameStart);
+
+        public MvxAsyncCommand OnRecordStartCommand => new MvxAsyncCommand(OnRecordStart);
 
         public MvxCommand OnTitleTappedCommand => new MvxCommand(OnTitleTapped);
 
@@ -155,6 +159,16 @@ namespace PinupMobile.Core.ViewModels
             await Task.Run(() => ExecuteCommand(_server.SendRestart)).ConfigureAwait(false);
         }
 
+        public async Task OnGameStart()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendGameStart)).ConfigureAwait(false);
+        }
+
+        public async Task OnRecordStart()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendRecordStart)).ConfigureAwait(false);
+        }
+
         private async Task Refresh()
         {
             // TODO First time run to setup Popper Server URL....
@@ -172,7 +186,7 @@ namespace PinupMobile.Core.ViewModels
             }).ConfigureAwait(false);
         }
 
-        private async Task OnRecordStarted()
+        private async Task OnRecord()
         {
             await Task.Delay(2000);
 

@@ -328,6 +328,16 @@ namespace PinupMobile.Core.Remote
             return await SendPupKey(PopperCommand.KEY_RESTART_PC);
         }
 
+        public async Task<bool> SendGameStart()
+        {
+            return await SendPupKey(PopperCommand.KEY_GAME_START);
+        }
+
+        public async Task<bool> SendRecordStart()
+        {
+            return await SendPupKey(PopperCommand.KEY_START_RECORD);
+        }
+
         /// <summary>
         /// Send pup the given key.
         /// </summary>
