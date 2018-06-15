@@ -49,9 +49,6 @@ namespace PinupMobile.iOS.Views
             WheeImage.Transform = CoreGraphics.CGAffineTransform.MakeRotation((nfloat)1.5708);
             WheeImage.Frame = rect;
 
-            //Gotta find out the button ID
-            BackButton.Enabled = false;
-
             var set = this.CreateBindingSet<HomeView, HomeViewModel>();
             set.Bind(CurrentItemName).For(v => v.Text).To(vm => vm.CurrentItem).WithConversion<CurrentItemDisplayNameConverter>();
             set.Bind(this).For(v => v.WheelImagePath).To(vm => vm.WheelIconPath);
@@ -62,7 +59,7 @@ namespace PinupMobile.iOS.Views
             set.Bind(PrevPageButton).To(vm => vm.OnPagePrevCommand);
             set.Bind(NextPageButton).To(vm => vm.OnPageNextCommand);
             set.Bind(DisplayButton).To(vm => vm.OnShowDisplayViewCommand);
-            set.Bind(PlayButton).To(vm => vm.OnPlayCommand);
+            set.Bind(PlayButton).To(vm => vm.OnGameStartCommand);
             set.Bind(HomeButton).To(vm => vm.OnHomeCommand);
             set.Bind(ExitButton).To(vm => vm.OnExitEmulatorCommand);
             set.Bind(ShutdownButton).To(vm => vm.OnSystemMenuCommand);
