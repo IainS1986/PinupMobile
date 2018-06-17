@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Content;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
@@ -12,7 +13,9 @@ using PinupMobile.Droid.Extensions;
 
 namespace PinupMobile.Droid.Views
 {
-    [Activity(Label = "PinupPopper Remote")]
+    [Activity(Label = "PinupPopper Remote",
+              LaunchMode = Android.Content.PM.LaunchMode.SingleInstance,
+              ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class HomeView : MvxAppCompatActivity<HomeViewModel>
     {
         protected Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
@@ -22,13 +25,14 @@ namespace PinupMobile.Droid.Views
         private ImageView _imageView;
         private TextView _gameTitle;
         private ImageButton[] _buttons;
+        private bool _introPlayed;
 
         private string _wheelUrl = string.Empty;
         public string WheelImagePath
         {
             get { return _wheelUrl; }
             set { _wheelUrl = value; UpdateWheel(); }
-        }
+        }        
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -69,7 +73,10 @@ namespace PinupMobile.Droid.Views
         {
             base.OnStart();
 
-            IntroAnimation();
+            if (!_introPlayed)
+            {
+                IntroAnimation();
+            }
         }
 
         private void IntroAnimation()
@@ -87,6 +94,8 @@ namespace PinupMobile.Droid.Views
             {
                 _buttons[i].FadeIn(250, 100 + (100 * i));
             }
+
+            _introPlayed = true;
         }
 
         private void UpdateWheel()
@@ -109,7 +118,6 @@ namespace PinupMobile.Droid.Views
                 _imageView.SetImageURI(null);
                 _imageView.SetImageURI(Android.Net.Uri.FromFile(new Java.IO.File(WheelImagePath)));
             }
-
         }
     }
 }

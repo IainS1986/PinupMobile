@@ -23,7 +23,10 @@ using static Android.Media.MediaPlayer;
 
 namespace PinupMobile.Droid.Views
 {
-    [Activity(Label = "Display", HardwareAccelerated = true, ParentActivity = typeof(HomeView))]
+    [Activity(Label = "Display",
+              HardwareAccelerated = true,
+              ParentActivity = typeof(HomeView),
+              ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class DisplayView : MvxAppCompatActivity<DisplayViewModel>, IOnVideoSizeChangedListener
     {
         protected Android.Support.V7.Widget.Toolbar Toolbar { get; set; }

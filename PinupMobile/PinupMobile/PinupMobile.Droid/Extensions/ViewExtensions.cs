@@ -15,6 +15,7 @@ namespace PinupMobile.Droid.Extensions
             AlphaAnimation animation = new AlphaAnimation(0, 1);
             animation.Duration = durationMS;
             animation.StartOffset = delayMS;
+            animation.Interpolator = new AccelerateDecelerateInterpolator();
             //animation.AnimationEnd += (sender, e) => view.Visibility = ViewStates.Visible;
 
             view.StartAnimation(animation);

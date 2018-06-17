@@ -4157,10 +4157,16 @@ namespace PinupMobile.Droid
 			public const int design_snackbar_out = 2131034125;
 			
 			// aapt resource value: 0x7f05000e
-			public const int tooltip_enter = 2131034126;
+			public const int flip_from = 2131034126;
 			
 			// aapt resource value: 0x7f05000f
-			public const int tooltip_exit = 2131034127;
+			public const int flip_to = 2131034127;
+			
+			// aapt resource value: 0x7f050010
+			public const int tooltip_enter = 2131034128;
+			
+			// aapt resource value: 0x7f050011
+			public const int tooltip_exit = 2131034129;
 			
 			static Animation()
 			{
@@ -4177,6 +4183,18 @@ namespace PinupMobile.Droid
 			
 			// aapt resource value: 0x7f060000
 			public const int design_appbar_state_list_animator = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int flip_left_in = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int flip_left_out = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int flip_right_in = 2131099651;
+			
+			// aapt resource value: 0x7f060004
+			public const int flip_right_out = 2131099652;
 			
 			static Animator()
 			{
@@ -7428,6 +7446,12 @@ namespace PinupMobile.Droid
 			
 			// aapt resource value: 0x7f0e0002
 			public const int cancel_button_image_alpha = 2131623938;
+			
+			// aapt resource value: 0x7f0e000b
+			public const int card_flip_time_full = 2131623947;
+			
+			// aapt resource value: 0x7f0e000c
+			public const int card_flip_time_half = 2131623948;
 			
 			// aapt resource value: 0x7f0e0003
 			public const int config_tooltipAnimTime = 2131623939;

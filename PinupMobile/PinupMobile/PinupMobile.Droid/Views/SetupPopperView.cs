@@ -8,7 +8,8 @@ using PinupMobile.Droid.Extensions;
 
 namespace PinupMobile.Droid.Views
 {
-    [Activity(Label = "Setup")]
+    [Activity(NoHistory = true,
+              ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class SetupPopperView : MvxAppCompatActivity<SetupPopperViewModel>
     {
         protected Android.Support.V7.Widget.Toolbar Toolbar { get; set; }

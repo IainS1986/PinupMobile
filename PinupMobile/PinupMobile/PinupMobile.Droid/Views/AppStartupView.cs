@@ -5,7 +5,8 @@ using PinupMobile.Core.ViewModels;
 
 namespace PinupMobile.Droid.Views
 {
-    [Activity(NoHistory = true)]
+    [Activity(NoHistory = true,
+              ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class AppStartupView : MvxAppCompatActivity<AppStartupViewModel>
     {
 

@@ -130,6 +130,8 @@
     <Folder Include="Controls\" />
     <Folder Include="Alerts\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Resources\animator\" />
+    <Folder Include="Resources\anim\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.png" />
@@ -576,6 +578,12 @@
     <AndroidResource Include="Resources\drawable\selector_button_select.xml" />
     <AndroidResource Include="Resources\drawable\selector_button_power.xml" />
     <AndroidResource Include="Resources\drawable\selector_button_record.xml" />
+    <AndroidResource Include="Resources\animator\flip_left_in.xml" />
+    <AndroidResource Include="Resources\animator\flip_left_out.xml" />
+    <AndroidResource Include="Resources\animator\flip_right_in.xml" />
+    <AndroidResource Include="Resources\animator\flip_right_out.xml" />
+    <AndroidResource Include="Resources\anim\flip_from.xml" />
+    <AndroidResource Include="Resources\anim\flip_to.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -596,6 +604,7 @@
     <Compile Include="Views\SetupPopperView.cs" />
     <Compile Include="Alerts\Dialog.cs" />
     <Compile Include="Extensions\ViewExtensions.cs" />
+    <Compile Include="Controls\CustomPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
