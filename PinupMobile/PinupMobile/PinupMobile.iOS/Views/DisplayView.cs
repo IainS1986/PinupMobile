@@ -3,10 +3,12 @@ using System.IO;
 using AVFoundation;
 using AVKit;
 using Foundation;
+using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using PinupMobile.Core.Converters;
+using PinupMobile.Core.Alerts;
 using PinupMobile.Core.ViewModels;
 using UIKit;
 
@@ -18,6 +20,8 @@ namespace PinupMobile.iOS.Views
                           ModalPresentationStyle = UIModalPresentationStyle.FullScreen)]
     public partial class DisplayView : MvxViewController<DisplayViewModel>
     {
+        private IDialog _dialog;
+
         private AVQueuePlayer _avplayer;
         private AVPlayerViewController _avplayerController;
         private AVPlayerLooper _avLooper;
@@ -33,6 +37,7 @@ namespace PinupMobile.iOS.Views
 
         public DisplayView() : base("DisplayView", null)
         {
+            _dialog = Mvx.Resolve<IDialog>();
         }
 
         public override void ViewDidLoad()
@@ -65,14 +70,32 @@ namespace PinupMobile.iOS.Views
             set.Apply();
         }
 
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+        }
+
         private void Play()
         {
             if (string.IsNullOrEmpty(MediaUrl))
             {
+                LoadingSpinner.Hidden = true;
                 return;
             }
 
-            if (MediaUrl.EndsWith(".mp4"))
+            //f4v is not supported on iOS (thanks Apple)
+            if(MediaUrl.EndsWith(".f4v", StringComparison.CurrentCultureIgnoreCase))
+            {
+                //Show alert
+                LoadingSpinner.Hidden = true;
+                _dialog.Show("Playback Failed", "Sorry, f4v format is not supported on iOS devices. If you autorecord new videos with Popper they will be in mp4 format.", 
+                             "Close",
+                             async () => { await ViewModel?.CloseCommand?.ExecuteAsync(); });
+                return;
+            }
+
+            if (MediaUrl.EndsWith(".mp4", StringComparison.CurrentCultureIgnoreCase) ||
+                MediaUrl.EndsWith(".m4v", StringComparison.CurrentCultureIgnoreCase))
             {
                 ImageView.Hidden = true;
 
@@ -84,7 +107,7 @@ namespace PinupMobile.iOS.Views
                 _avplayer.Play();
 
             }
-            else if(MediaUrl.EndsWith(".png"))
+            else if(MediaUrl.EndsWith(".png", StringComparison.CurrentCultureIgnoreCase))
             {
                 _avplayer.Dispose();
                 _avplayer = null;

@@ -16,6 +16,7 @@
                 <outlet property="ErrorLabel" destination="T0p-sH-PMQ" id="q51-3s-PYf"/>
                 <outlet property="HeaderLabel" destination="jE3-y9-yBs" id="hpV-pE-5jv"/>
                 <outlet property="HelpText" destination="jxA-2w-dmK" id="WkN-IL-F3p"/>
+                <outlet property="HttpPrefixLabel" destination="5xz-hw-LtD" id="I6x-8b-EXk"/>
                 <outlet property="UrlInput" destination="qCI-vl-9bs" id="V9k-xH-1Mt"/>
                 <outlet property="view" destination="1" id="RRd-Eg-VrN"/>
             </connections>

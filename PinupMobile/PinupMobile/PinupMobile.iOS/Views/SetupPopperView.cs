@@ -5,6 +5,7 @@ using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using PinupMobile.Core.Converters;
 using PinupMobile.Core.ViewModels;
+using PinupMobile.iOS.Extensions;
 using UIKit;
 
 namespace PinupMobile.iOS.Views
@@ -42,6 +43,13 @@ namespace PinupMobile.iOS.Views
             set.Bind(ConnectButton).For(v => v.Enabled).To(vm => vm.CanConnect);
             set.Bind(ConnectButton).To(vm => vm.OnConnectCommand);
             set.Apply();
+
+            //Fade all in
+            HeaderLabel.FadeIn();
+            HttpPrefixLabel.FadeIn();
+            UrlInput.FadeIn();
+            HelpText.FadeIn();
+            ConnectButton.FadeIn();
         }
     }
 }

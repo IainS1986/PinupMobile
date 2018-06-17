@@ -161,13 +161,13 @@ namespace PinupMobile.Core.Remote
                         string responseBody = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                         response.Data = JsonConvert.DeserializeObject<ResponseT>(responseBody);
                     }
-                    else if (contentType.MediaType == "video/mp4")
+                    else if (contentType.MediaType.StartsWith("video", StringComparison.CurrentCultureIgnoreCase))
                     {
                         byte[] responseBody = await httpResponse.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
                         response.Data = (ResponseT)(object)contentType.MediaType;
                         response.Raw = responseBody;
                     }
-                    else if(contentType.MediaType == "image/png")
+                    else if(contentType.MediaType.StartsWith("image", StringComparison.CurrentCultureIgnoreCase))
                     {
                         byte[] responseBody = await httpResponse.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
                         response.Data = (ResponseT)(object)contentType.MediaType;
@@ -202,7 +202,7 @@ namespace PinupMobile.Core.Remote
                 Logger.Debug($"Sent popper request for {display} feed");
 
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                string localFilename = "test.mp4";
+                string localFilename = "test.f4v";
                 //Slight hacky fudge
                 if (display.Equals("Wheel", StringComparison.CurrentCultureIgnoreCase))
                 {
@@ -225,13 +225,11 @@ namespace PinupMobile.Core.Remote
                     // Check Response data to determine what format to save the byte[] too
                     string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                     string localFilename = "test.txt";
-                    if (response.Data.Contains("video"))
+                    if (response.Data.Contains("video") ||
+                        response.Data.Contains("image"))
                     {
-                        localFilename = "test.mp4";
-                    }
-                    else if (response.Data.Contains("image"))
-                    {
-                        localFilename = "test.png";
+                        string format = response.Data.Split('/')[1];
+                        localFilename = $"test.{format}";
                     }
                     
                     // Save 

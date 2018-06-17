@@ -28,10 +28,18 @@ namespace PinupMobile.iOS.Views
 		UIKit.UITextView HelpText { get; set; }
 
 		[Outlet]
+		UIKit.UILabel HttpPrefixLabel { get; set; }
+
+		[Outlet]
 		UIKit.UITextField UrlInput { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (HttpPrefixLabel != null) {
+				HttpPrefixLabel.Dispose ();
+				HttpPrefixLabel = null;
+			}
+
 			if (ConnectButton != null) {
 				ConnectButton.Dispose ();
 				ConnectButton = null;
@@ -52,14 +60,14 @@ namespace PinupMobile.iOS.Views
 				HeaderLabel = null;
 			}
 
-			if (UrlInput != null) {
-				UrlInput.Dispose ();
-				UrlInput = null;
-			}
-
 			if (HelpText != null) {
 				HelpText.Dispose ();
 				HelpText = null;
+			}
+
+			if (UrlInput != null) {
+				UrlInput.Dispose ();
+				UrlInput = null;
 			}
 		}
 	}

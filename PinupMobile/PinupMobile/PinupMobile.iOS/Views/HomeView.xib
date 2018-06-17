@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="BackButton" destination="2x8-nE-rus" id="gKf-ks-Ihk"/>
                 <outlet property="CurrentItemName" destination="pMv-Uh-Vlq" id="ERi-uY-OmD"/>
+                <outlet property="DisplayButton" destination="Dbv-yJ-cdY" id="8dA-Ve-L6d"/>
                 <outlet property="ExitButton" destination="oOQ-uD-7pP" id="lMg-k0-MYb"/>
                 <outlet property="HiddenNameButton" destination="cRp-iC-EQT" id="zB8-7A-NIT"/>
                 <outlet property="HomeButton" destination="gC1-YX-5GA" id="CMJ-8V-aUL"/>

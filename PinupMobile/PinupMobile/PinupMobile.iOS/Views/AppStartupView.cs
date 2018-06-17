@@ -3,6 +3,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using PinupMobile.Core.ViewModels;
+using PinupMobile.iOS.Extensions;
 using UIKit;
 
 namespace PinupMobile.iOS.Views
@@ -22,12 +23,7 @@ namespace PinupMobile.iOS.Views
             base.ViewDidLoad();
 
             //Fade spinner in
-            LoadingSpinner.Alpha = 0;
-            UIView.Animate(0.5,
-                           0,
-                           UIViewAnimationOptions.CurveEaseInOut | UIViewAnimationOptions.BeginFromCurrentState,
-                           () => { LoadingSpinner.Alpha = 1; },
-                           null);
+            LoadingSpinner.FadeIn(0.5);
           
             var set = this.CreateBindingSet<AppStartupView, AppStartupViewModel>();
             set.Apply();

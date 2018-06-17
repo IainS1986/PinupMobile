@@ -113,6 +113,8 @@
     <Compile Include="Views\SetupPopperView.designer.cs">
       <DependentUpon>SetupPopperView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\UIViewExtensions.cs" />
+    <Compile Include="Alerts\Dialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
@@ -276,9 +278,13 @@
     <Folder Include="Assets.xcassets\ic_play.imageset\" />
     <Folder Include="Assets.xcassets\ic_home.imageset\" />
     <Folder Include="Assets.xcassets\ic_exit.imageset\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Alerts\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\test.png" />
+    <BundleResource Include="Resources\test.m4v" />
+    <BundleResource Include="Resources\test.f4v" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

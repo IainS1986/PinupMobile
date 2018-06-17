@@ -6,6 +6,7 @@ using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using PinupMobile.Core.Converters;
 using PinupMobile.Core.ViewModels;
+using PinupMobile.iOS.Extensions;
 using UIKit;
 
 namespace PinupMobile.iOS.Views
@@ -76,25 +77,12 @@ namespace PinupMobile.iOS.Views
         private void IntroAnimation()
         {
             //Fade in Wheel
-            WheeImage.Alpha = 0;
-            UIView.Animate(1,
-                           0,
-                           UIViewAnimationOptions.CurveEaseInOut | UIViewAnimationOptions.BeginFromCurrentState,
-                           () => WheeImage.Alpha = 1,
-                           null);
+            WheeImage.FadeIn();
             
             //Animate buttons in sequence
             for (int i = 0; i < RemoteButtons.Length; i++)
             {
-                //CGRect originalFrame = RemoteButtons[i].Frame;
-                //RemoteButtons[i].Frame = new CGRect(originalFrame.X, originalFrame.Y, 0, 0);
-                RemoteButtons[i].Alpha = 0;
-                UIView.Animate(0.25,
-                               0.1 + (0.1 * i),
-                               UIViewAnimationOptions.CurveEaseInOut | UIViewAnimationOptions.BeginFromCurrentState,
-                               //() => RemoteButtons[i].Frame = originalFrame,
-                               () => RemoteButtons[i].Alpha = 1,
-                               null);
+                RemoteButtons[i].FadeIn(0.25, 0.1 + (0.1 * i));
             }
         }
 
