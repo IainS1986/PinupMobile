@@ -88,7 +88,8 @@ namespace PinupMobile.iOS.Views
             {
                 //Show alert
                 LoadingSpinner.Hidden = true;
-                _dialog.Show("Playback Failed", "Sorry, f4v format is not supported on iOS devices. If you autorecord new videos with Popper they will be in mp4 format.", 
+                _dialog.Show("Playback Failed",
+                             "Sorry, f4v format is not supported on iOS devices. If you autorecord new videos with Popper they will be in mp4 format.", 
                              "Close",
                              async () => { await ViewModel?.CloseCommand?.ExecuteAsync(); });
                 return;

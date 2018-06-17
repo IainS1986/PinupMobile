@@ -202,7 +202,7 @@ namespace PinupMobile.Core.Remote
                 Logger.Debug($"Sent popper request for {display} feed");
 
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                string localFilename = "test.f4v";
+                string localFilename = "test.m4v";
                 //Slight hacky fudge
                 if (display.Equals("Wheel", StringComparison.CurrentCultureIgnoreCase))
                 {

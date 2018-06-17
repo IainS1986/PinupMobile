@@ -1,8 +1,11 @@
 using Android.App;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Widget;
+using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using PinupMobile.Core.Remote;
 using PinupMobile.Core.ViewModels;
 
 namespace PinupMobile.Droid.Views
@@ -11,6 +14,8 @@ namespace PinupMobile.Droid.Views
     public class HomeView : MvxAppCompatActivity<HomeViewModel>
     {
         protected Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
+
+        private IPopperService _popper;
 
         private ImageView _imageView;
 
@@ -24,6 +29,8 @@ namespace PinupMobile.Droid.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            _popper = Mvx.Resolve<IPopperService>();
 
             SetContentView(Resource.Layout.HomeView);
 
@@ -48,10 +55,20 @@ namespace PinupMobile.Droid.Views
                 return;
             }
 
-            //Android is a wee bit annoying. Setting the *same* URI, even if the file it points too
-            //has changed, won't refresh the image. So we need ot null then reset for now
-            _imageView.SetImageURI(null);
-            _imageView.SetImageURI(Android.Net.Uri.FromFile(new Java.IO.File(WheelImagePath)));
+            if (_popper.IsDebugMode)
+            {
+                System.IO.Stream ims = Assets.Open(WheelImagePath);
+                Drawable d = Drawable.CreateFromStream(ims, null);
+                _imageView.SetImageDrawable(d);
+            }
+            else
+            {
+                //Android is a wee bit annoying. Setting the *same* URI, even if the file it points too
+                //has changed, won't refresh the image. So we need ot null then reset for now
+                _imageView.SetImageURI(null);
+                _imageView.SetImageURI(Android.Net.Uri.FromFile(new Java.IO.File(WheelImagePath)));
+            }
+
         }
     }
 }

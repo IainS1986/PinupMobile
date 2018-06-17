@@ -1,7 +1,9 @@
 using System;
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Media;
 using Android.OS;
 using Android.Runtime;
@@ -9,9 +11,12 @@ using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Java.IO;
+using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using PinupMobile.Core.Logging;
+using PinupMobile.Core.Remote;
 using PinupMobile.Core.ViewModels;
 using PinupMobile.Droid.Controls;
 using static Android.Media.MediaPlayer;
@@ -22,6 +27,8 @@ namespace PinupMobile.Droid.Views
     public class DisplayView : MvxAppCompatActivity<DisplayViewModel>, IOnVideoSizeChangedListener
     {
         protected Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
+
+        private IPopperService _popper;
 
         private AutoFitTextureView _textureView;
         private ImageView _imageView;
@@ -40,6 +47,8 @@ namespace PinupMobile.Droid.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            _popper = Mvx.Resolve<IPopperService>();
 
             SetContentView(Resource.Layout.DisplayView);
 
@@ -96,6 +105,9 @@ namespace PinupMobile.Droid.Views
                 _mediaPlayer = new MediaPlayer();
                 _mediaPlayer.SetSurface(surface);
                 _mediaPlayer.SetOnVideoSizeChangedListener(this);
+
+                //Start Play incase the URL came in before we were ready
+                Play();
             }
             catch(Exception ex)
             {
@@ -106,7 +118,8 @@ namespace PinupMobile.Droid.Views
 
         private async void Play()
         {
-            if (string.IsNullOrEmpty(MediaUrl))
+            if (string.IsNullOrEmpty(MediaUrl) ||
+                _mediaPlayer == null)
             {
                 return;
             }
@@ -114,24 +127,45 @@ namespace PinupMobile.Droid.Views
             try
             {
                 // Video Support
-                if (MediaUrl.EndsWith(".mp4"))
+                if (MediaUrl.EndsWith(".mp4", StringComparison.CurrentCultureIgnoreCase) ||
+                    MediaUrl.EndsWith(".f4v", StringComparison.CurrentCultureIgnoreCase) ||
+                    MediaUrl.EndsWith(".m4v", StringComparison.CurrentCultureIgnoreCase))
                 {
                     _imageView.Visibility = ViewStates.Invisible;
 
-                    await _mediaPlayer.SetDataSourceAsync(MediaUrl);
+                    if(_popper.IsDebugMode)
+                    {
+                        AssetFileDescriptor afd = Assets.OpenFd(MediaUrl);
+                        await _mediaPlayer.SetDataSourceAsync(afd);
+                    }
+                    else
+                    {
+                        await _mediaPlayer.SetDataSourceAsync(MediaUrl);
+                    }
+
                     _mediaPlayer.Prepare();
                     _mediaPlayer.Looping = true;
                     _mediaPlayer.Start();
                 }
                 // PNG Support
-                else if (MediaUrl.EndsWith(".png"))
+                else if (MediaUrl.EndsWith(".png", StringComparison.CurrentCultureIgnoreCase))
                 {
                     _textureView.Visibility = ViewStates.Invisible;
                     _mediaPlayer.Release();
                     _mediaPlayer.Dispose();
                     _mediaPlayer = null;
 
-                    _imageView.SetImageURI(Android.Net.Uri.FromFile(new Java.IO.File(MediaUrl)));
+                    if (_popper.IsDebugMode)
+                    {
+                        System.IO.Stream ims = Assets.Open(MediaUrl);
+                        Drawable d = Drawable.CreateFromStream(ims, null);
+                        _imageView.SetImageDrawable(d);
+                    }
+                    else
+                    {
+                        _imageView.SetImageURI(Android.Net.Uri.FromFile(new Java.IO.File(MediaUrl)));
+                    }
+
                     _loadingSpinner.Visibility = ViewStates.Invisible;
                 }
             }
