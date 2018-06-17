@@ -129,6 +129,7 @@
     <Folder Include="Settings\" />
     <Folder Include="Controls\" />
     <Folder Include="Alerts\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.png" />
@@ -594,6 +595,7 @@
     <Compile Include="Controls\AutoFitTextureView.cs" />
     <Compile Include="Views\SetupPopperView.cs" />
     <Compile Include="Alerts\Dialog.cs" />
+    <Compile Include="Extensions\ViewExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />

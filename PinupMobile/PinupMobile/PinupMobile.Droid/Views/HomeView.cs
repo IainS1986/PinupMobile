@@ -1,12 +1,14 @@
 using Android.App;
 using Android.Graphics.Drawables;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using PinupMobile.Core.Remote;
 using PinupMobile.Core.ViewModels;
+using PinupMobile.Droid.Extensions;
 
 namespace PinupMobile.Droid.Views
 {
@@ -18,6 +20,8 @@ namespace PinupMobile.Droid.Views
         private IPopperService _popper;
 
         private ImageView _imageView;
+        private TextView _gameTitle;
+        private ImageButton[] _buttons;
 
         private string _wheelUrl = string.Empty;
         public string WheelImagePath
@@ -42,10 +46,47 @@ namespace PinupMobile.Droid.Views
             }
 
             _imageView = FindViewById<ImageView>(Resource.Id.image_view);
+            _gameTitle = FindViewById<TextView>(Resource.Id.game_title);
+            _buttons = new ImageButton[10];
+            _buttons[0] = FindViewById<ImageButton>(Resource.Id.button_power);
+            _buttons[1] = FindViewById<ImageButton>(Resource.Id.button_select);
+            _buttons[2] = FindViewById<ImageButton>(Resource.Id.button_menu_return);
+            _buttons[3] = FindViewById<ImageButton>(Resource.Id.button_page_prev);
+            _buttons[4] = FindViewById<ImageButton>(Resource.Id.button_skip_prev);
+            _buttons[5] = FindViewById<ImageButton>(Resource.Id.button_skip_next);
+            _buttons[6] = FindViewById<ImageButton>(Resource.Id.button_page_next);
+            _buttons[7] = FindViewById<ImageButton>(Resource.Id.button_home);
+            _buttons[8] = FindViewById<ImageButton>(Resource.Id.button_play);
+            _buttons[9] = FindViewById<ImageButton>(Resource.Id.button_exit_emulator);
 
             var set = this.CreateBindingSet<HomeView, HomeViewModel>();
             set.Bind(this).For(v => v.WheelImagePath).To(vm => vm.WheelIconPath);
             set.Apply();
+
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            IntroAnimation();
+        }
+
+        private void IntroAnimation()
+        {
+            //Fade in Wheel
+            _imageView.FadeIn();
+
+            if (_gameTitle.Visibility == ViewStates.Visible)
+            {
+                _gameTitle.FadeIn();
+            }
+
+            //Animate buttons in sequence
+            for (int i = 0; i < _buttons.Length; i++)
+            {
+                _buttons[i].FadeIn(250, 100 + (100 * i));
+            }
         }
 
         private void UpdateWheel()

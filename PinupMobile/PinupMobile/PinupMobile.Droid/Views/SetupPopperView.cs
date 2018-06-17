@@ -4,6 +4,7 @@ using Android.Widget;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using PinupMobile.Core.ViewModels;
+using PinupMobile.Droid.Extensions;
 
 namespace PinupMobile.Droid.Views
 {
@@ -27,6 +28,9 @@ namespace PinupMobile.Droid.Views
 
             var set = this.CreateBindingSet<SetupPopperView, SetupPopperViewModel>();
             set.Apply();
+
+            var root = FindViewById<RelativeLayout>(Resource.Id.content_frame);
+            root.FadeIn();
         }
     }
 }

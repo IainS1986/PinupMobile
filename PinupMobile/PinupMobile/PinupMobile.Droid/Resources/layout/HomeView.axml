@@ -9,13 +9,13 @@
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:id="@+id/toolbar_layout">
-        <ImageView
+    <!--<ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:id="@+id/record"
             android:src="@drawable/selector_button_record"
-            local:MvxBind="Click OnRecordCommand" />
+            local:MvxBind="Click OnRecordCommand" />-->
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -44,6 +44,7 @@
             android:gravity="center"
             android:layout_centerInParent="true"
             android:layout_below="@id/image_view"
+            android:visibility="invisible"
             local:MvxBind="Text CurrentItemDisplayName(CurrentItem); Visibility InvertedVisibility(TitleHidden);" />
         <FrameLayout
             android:id="@+id/title_anchor"
@@ -82,6 +83,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageButton
+                    android:id="@+id/button_power"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -96,6 +98,7 @@
                     local:MvxBind="Click OnSystemMenuCommand"
                     android:src="@drawable/selector_button_power" />
                 <ImageButton
+                    android:id="@+id/button_select"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -110,6 +113,7 @@
                     local:MvxBind="Click OnSelectCommand"
                     android:src="@drawable/selector_button_select" />
                 <ImageButton
+                    android:id="@+id/button_menu_return"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -130,6 +134,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageButton
+                    android:id="@+id/button_page_prev"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -144,6 +149,7 @@
                     local:MvxBind="Click OnPagePrevCommand"
                     android:src="@drawable/selector_button_fast_rewind" />
                 <ImageButton
+                    android:id="@+id/button_skip_prev"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -158,6 +164,7 @@
                     local:MvxBind="Click OnGamePrevCommand"
                     android:src="@drawable/selector_button_skip_prev" />
                 <ImageButton
+                    android:id="@+id/button_skip_next"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -172,6 +179,7 @@
                     local:MvxBind="Click OnGameNextCommand"
                     android:src="@drawable/selector_button_skip_next" />
                 <ImageButton
+                    android:id="@+id/button_page_next"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -192,6 +200,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <ImageButton
+                    android:id="@+id/button_home"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -206,6 +215,7 @@
                     local:MvxBind="Click OnHomeCommand"
                     android:src="@drawable/selector_button_home" />
                 <ImageButton
+                    android:id="@+id/button_play"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -220,6 +230,7 @@
                     local:MvxBind="Click OnGameStartCommand"
                     android:src="@drawable/selector_button_play" />
                 <ImageButton
+                    android:id="@+id/button_exit_emulator"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

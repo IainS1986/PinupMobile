@@ -78,6 +78,11 @@ namespace PinupMobile.iOS.Views
         {
             //Fade in Wheel
             WheeImage.FadeIn();
+
+            if(CurrentItemName.Hidden == false)
+            {
+                CurrentItemName.FadeIn();
+            }
             
             //Animate buttons in sequence
             for (int i = 0; i < RemoteButtons.Length; i++)
