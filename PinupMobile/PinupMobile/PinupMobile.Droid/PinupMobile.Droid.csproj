@@ -30,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidKeyStore>True</AndroidKeyStore>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +41,11 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>/Users/iainstanford/Library/Developer/Xamarin/Keystore/Pinup Remote/Pinup Remote.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Stanford1986</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>Pinup Remote</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Stanford1986</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MvvmCross">

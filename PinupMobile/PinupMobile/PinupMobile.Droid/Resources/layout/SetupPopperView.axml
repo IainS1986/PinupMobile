@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_below="@id/game_title">
@@ -62,8 +62,8 @@
             android:layout_height="120dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
         <TextView
             android:id="@+id/error_label"
             android:layout_width="wrap_content"
@@ -100,7 +100,7 @@
             android:enabled="true"
             android:layout_below="@id/error_region"
             local:MvxBind="Click OnConnectCommand; Enabled CanConnect;" />
-        <TextView
+    <!--<TextView
             android:id="@+id/setup_footer_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,6 +114,6 @@
             android:text="@string/setup_footer"
             android:layout_alignParentBottom="true"
             android:autoLink="web"
-            android:linksClickable="true" />
+            android:linksClickable="true" />-->
     </RelativeLayout>
 </RelativeLayout>

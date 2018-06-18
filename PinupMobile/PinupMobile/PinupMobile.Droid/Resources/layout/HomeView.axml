@@ -22,6 +22,7 @@
             android:layout_gravity="right"
             android:id="@+id/refresh"
             android:src="@drawable/selector_button_refresh"
+            android:paddingRight="16dp"
             local:MvxBind="Click OnRefreshCommand" />
     </android.support.design.widget.AppBarLayout>
     <RelativeLayout
