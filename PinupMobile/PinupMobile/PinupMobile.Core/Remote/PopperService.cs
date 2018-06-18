@@ -13,7 +13,7 @@ using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Remote.Client;
 using PinupMobile.Core.Remote.DTO;
 using PinupMobile.Core.Remote.Model;
-using PinupMobile.Core.Remote.Model.Debug;
+using PinupMobile.Core.Remote.Model.Mock;
 using PinupMobile.Core.Settings;
 
 namespace PinupMobile.Core.Remote
