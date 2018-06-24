@@ -191,7 +191,7 @@ namespace PinupMobile.Core.ViewModels
 
         public async Task OnRecordMenu()
         {
-            _dialogService.Show("Record Display", "Is the table you want to record already running, or do you need to launch it first?", "Cancel", new List<(string, Action)>
+            _dialogService.Show("Record Display", "Is the table ready to record?", "Cancel", new List<(string, Action)>
             {
                 //("The table is already running", async () => await _navigationService.Navigate<RecordDisplayViewModel>()),
                 ("Launch table in Record Mode", async () => await OnRecordStart()),

@@ -9,21 +9,29 @@
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:id="@+id/toolbar_layout">
-    <!--<ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:id="@+id/record"
-            android:src="@drawable/selector_button_record"
-            local:MvxBind="Click OnRecordCommand" />-->
-        <ImageView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:id="@+id/refresh"
-            android:src="@drawable/selector_button_refresh"
-            android:paddingRight="16dp"
-            local:MvxBind="Click OnRefreshCommand" />
+            android:orientation="horizontal"
+            android:paddingRight="8dp">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/record"
+                android:src="@drawable/selector_button_record"
+                android:scaleType="centerInside"
+                android:background="@android:color/transparent"
+                local:MvxBind="Click OnRecordCommand" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/refresh"
+                android:src="@drawable/selector_button_refresh"
+                android:scaleType="centerInside"
+                android:background="@android:color/transparent"
+                local:MvxBind="Click OnRefreshCommand" />
+        </LinearLayout>
     </android.support.design.widget.AppBarLayout>
     <RelativeLayout
         android:id="@+id/content_frame"
