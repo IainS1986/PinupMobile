@@ -29,7 +29,7 @@ namespace PinupMobile.Core.Remote.API
         KEY_FAV_ADD = 50,
         KEY_FAV_DEL = 51,
         KEY_FAV_ADD_SYSTEM = 52,
-        KEY_FAC_DEL_SYSTEM = 53,
+        KEY_FAV_DEL_SYSTEM = 53,
         //54 - missing
         KEY_PASSCODE = 55,
         KEY_RESTART_SYSTEM = 56,

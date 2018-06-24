@@ -44,14 +44,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c3g-UK-oL4">
-                    <rect key="frame" x="37" y="50" width="300" height="240"/>
+                    <rect key="frame" x="37" y="70" width="300" height="270"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="Ifa-Mw-95V"/>
-                        <constraint firstAttribute="height" constant="240" id="JUa-Rq-kB9"/>
+                        <constraint firstAttribute="height" constant="270" id="JUa-Rq-kB9"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMv-Uh-Vlq">
-                    <rect key="frame" x="16" y="270" width="343" height="44"/>
+                    <rect key="frame" x="16" y="320" width="343" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="343" id="3yB-WL-kDi"/>
                         <constraint firstAttribute="height" constant="44" id="8i2-HC-Tq7"/>
@@ -68,71 +68,71 @@
                     <state key="normal" title="Display"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRp-iC-EQT" userLabel="Hidden Name Button">
-                    <rect key="frame" x="15.5" y="270" width="343" height="44"/>
+                    <rect key="frame" x="15.5" y="320" width="343" height="44"/>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Shh-Fb-99K">
-                    <rect key="frame" x="37.5" y="314" width="300" height="303"/>
+                    <rect key="frame" x="37.5" y="364" width="300" height="253"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wz6-vJ-3wY" userLabel="Top Row Button">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="101"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="84.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lH-c4-nw5" userLabel="Quit Button">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="101"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="84.5"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_power"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ce-Gh-kg9" userLabel="Select Button">
-                                    <rect key="frame" x="100" y="0.0" width="100" height="101"/>
+                                    <rect key="frame" x="100" y="0.0" width="100" height="84.5"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_select"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2x8-nE-rus" userLabel="Menu Return Button">
-                                    <rect key="frame" x="200" y="0.0" width="100" height="101"/>
+                                    <rect key="frame" x="200" y="0.0" width="100" height="84.5"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_back"/>
                                 </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SMG-8c-G39" userLabel="Middle Row Button">
-                            <rect key="frame" x="0.0" y="101" width="300" height="101"/>
+                            <rect key="frame" x="0.0" y="84.5" width="300" height="84"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-lY-a71" userLabel="Page Down">
-                                    <rect key="frame" x="0.0" y="0.0" width="75" height="101"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="75" height="84"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_page_prev"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIK-F1-i1T">
-                                    <rect key="frame" x="75" y="0.0" width="75" height="101"/>
+                                    <rect key="frame" x="75" y="0.0" width="75" height="84"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_prev"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiE-Ic-A5W">
-                                    <rect key="frame" x="150" y="0.0" width="75" height="101"/>
+                                    <rect key="frame" x="150" y="0.0" width="75" height="84"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_next"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-5k-kki" userLabel="Page Up">
-                                    <rect key="frame" x="225" y="0.0" width="75" height="101"/>
+                                    <rect key="frame" x="225" y="0.0" width="75" height="84"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_page_next"/>
                                 </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C1t-eX-Ayv" userLabel="Bottom Row Button">
-                            <rect key="frame" x="0.0" y="202" width="300" height="101"/>
+                            <rect key="frame" x="0.0" y="168.5" width="300" height="84.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwN-B9-xBR" userLabel="Home Button">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="101"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="84.5"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_home"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSJ-Wz-4ak" userLabel="Play Button">
-                                    <rect key="frame" x="100" y="0.0" width="100" height="101"/>
+                                    <rect key="frame" x="100" y="0.0" width="100" height="84.5"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_play"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFT-qL-BWT" userLabel="Exit Button">
-                                    <rect key="frame" x="200" y="0.0" width="100" height="101"/>
+                                    <rect key="frame" x="200" y="0.0" width="100" height="84.5"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="ic_exit"/>
                                 </button>
@@ -151,7 +151,7 @@
                 <constraint firstItem="cRp-iC-EQT" firstAttribute="width" secondItem="pMv-Uh-Vlq" secondAttribute="width" id="FNj-HU-nDf"/>
                 <constraint firstItem="cRp-iC-EQT" firstAttribute="height" secondItem="pMv-Uh-Vlq" secondAttribute="height" id="KAc-9H-nCR"/>
                 <constraint firstItem="cRp-iC-EQT" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="Lxz-I4-1cr"/>
-                <constraint firstItem="c3g-UK-oL4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="50" id="MTV-y5-AC2"/>
+                <constraint firstItem="c3g-UK-oL4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="70" id="MTV-y5-AC2"/>
                 <constraint firstItem="Shh-Fb-99K" firstAttribute="width" secondItem="c3g-UK-oL4" secondAttribute="width" id="S0P-AH-1Aq"/>
                 <constraint firstItem="cRp-iC-EQT" firstAttribute="top" secondItem="pMv-Uh-Vlq" secondAttribute="top" id="bdh-cx-MgH"/>
                 <constraint firstItem="Dbv-yJ-cdY" firstAttribute="width" secondItem="c3g-UK-oL4" secondAttribute="width" id="dmZ-a3-V9o"/>
@@ -160,6 +160,7 @@
                 <constraint firstItem="c3g-UK-oL4" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="r56-1y-W3T"/>
                 <constraint firstItem="Shh-Fb-99K" firstAttribute="top" secondItem="cRp-iC-EQT" secondAttribute="bottom" id="wze-au-xfU"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>

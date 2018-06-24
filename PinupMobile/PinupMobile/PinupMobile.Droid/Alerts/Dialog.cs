@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Android.Support.V7.App;
+using System.Linq;
+using Android.App;
+using Android.Widget;
 using MvvmCross.Base;
 using MvvmCross.Platforms.Android;
 using PinupMobile.Core.Alerts;
@@ -31,18 +33,18 @@ namespace PinupMobile.Droid.Alerts
         public void Show(string title, string message, string cancelText, List<(string, Action)> actions)
         {
             // TODO: this doesn't properly support multiple actions - needs custom layout
-            var alertDialog = new AlertDialog.Builder(_topActivity.Activity).Create();
-            alertDialog.SetTitle(title);
-            alertDialog.SetMessage(message);
-            alertDialog.SetButton((int)Android.Content.DialogButtonType.Positive,
-                                  actions[0].Item1,
-                                  (sender, e) => actions[0].Item2?.Invoke());
+            var alertDialog = new AlertDialog.Builder(_topActivity.Activity);//.Create();
+            alertDialog.SetTitle(message);
+            //alertDialog.SetMessage(message); //Thanks android...if you SetMEssage it will block SetItems...
+            alertDialog.SetNegativeButton(cancelText, (sender, e) => { });
+            alertDialog.SetItems(actions.Select(x => x.Item1).ToArray(),
+                                 (object sender, Android.Content.DialogClickEventArgs e) =>
+            {
+                actions[e.Which].Item2?.Invoke();
+            });
 
-            alertDialog.SetButton((int)Android.Content.DialogButtonType.Negative,
-                                  cancelText,
-                                  (sender, e) => { });
-
-            InvokeOnMainThread(alertDialog.Show);
+            var dialog = alertDialog.Create();
+            InvokeOnMainThread(dialog.Show);
         }
     }
 }

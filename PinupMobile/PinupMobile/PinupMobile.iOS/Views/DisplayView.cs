@@ -70,9 +70,25 @@ namespace PinupMobile.iOS.Views
             set.Apply();
         }
 
-        public override void ViewWillDisappear(bool animated)
+        public override void ViewDidDisappear(bool animated)
         {
-            base.ViewWillDisappear(animated);
+            base.ViewDidDisappear(animated);
+
+            // Kill media and tidy up
+            if (_avplayer != null)
+            {
+                _avplayer.Pause();
+                _avplayer.Dispose();
+                _avplayer = null;
+            }
+
+            if (_avplayerController != null)
+            {
+                _avplayerController.RemoveFromParentViewController();
+                _avplayerController.View.RemoveFromSuperview();
+                _avplayerController.Dispose();
+                _avplayerController = null;
+            }
         }
 
         private void Play()

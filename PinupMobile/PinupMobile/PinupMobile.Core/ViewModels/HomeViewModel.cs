@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using PinupMobile.Core.Alerts;
 using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote;
 using PinupMobile.Core.Remote.API;
@@ -23,6 +25,7 @@ namespace PinupMobile.Core.ViewModels
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserSettings _userSettings;
+        private readonly IDialog _dialogService;
 
         private Item _currentItem;
         public Item CurrentItem
@@ -59,11 +62,7 @@ namespace PinupMobile.Core.ViewModels
 
         public MvxAsyncCommand OnMenuReturnCommand => new MvxAsyncCommand(OnMenuReturn);
 
-        public MvxAsyncCommand OnShutdownCommand => new MvxAsyncCommand(OnShutdown);
-
         public MvxAsyncCommand OnSystemMenuCommand => new MvxAsyncCommand(OnSystemMenu);
-
-        public MvxAsyncCommand OnRestartCommand => new MvxAsyncCommand(OnRestart);
 
         public MvxAsyncCommand OnHomeCommand => new MvxAsyncCommand(OnHome);
 
@@ -73,7 +72,7 @@ namespace PinupMobile.Core.ViewModels
 
         public MvxAsyncCommand OnRefreshCommand => new MvxAsyncCommand(Refresh);
 
-        public MvxAsyncCommand OnRecordCommand => new MvxAsyncCommand(OnRecord);
+        public MvxAsyncCommand OnRecordCommand => new MvxAsyncCommand(OnRecordMenu);
 
         public MvxAsyncCommand OnGameStartCommand => new MvxAsyncCommand(OnGameStart);
 
@@ -83,11 +82,13 @@ namespace PinupMobile.Core.ViewModels
 
         public HomeViewModel(IPopperService server,
                              IMvxNavigationService navigationService,
-                             IUserSettings userSettings)
+                             IUserSettings userSettings,
+                             IDialog dialogService)
         {
             _server = server;
             _navigationService = navigationService;
             _userSettings = userSettings;
+            _dialogService = dialogService;
         }
 
         public override async void ViewAppearing()
@@ -101,7 +102,13 @@ namespace PinupMobile.Core.ViewModels
 
         public async Task OnDisplayView()
         {
-            await _navigationService.Navigate<DisplayViewModel>();
+            _dialogService.Show("Popper Display", "Which display do you want to see?", "Cancel", new List<(string, Action)>
+            {
+                ("Playfield", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD)),
+                ("Backglass", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_BACKGLASS)),
+                ("DMD", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_DMD)),
+                ("Topper", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_TOPPER)),
+            });
         }
 
         public async Task OnGameNext()
@@ -144,19 +151,32 @@ namespace PinupMobile.Core.ViewModels
             await Task.Run(() => ExecuteCommand(_server.SendMenuReturn)).ConfigureAwait(false);
         }
 
-        public async Task OnShutdown()
-        {
-            await Task.Run(() => ExecuteCommand(_server.SendShutdown)).ConfigureAwait(false);
-        }
-
         public async Task OnSystemMenu()
         {
-            await Task.Run(() => ExecuteCommand(_server.SendSystemMenu)).ConfigureAwait(false);
+            // Show dialog asking if we want to , Quit, Shutdown, Reboot or Cancel
+            _dialogService.Show("System Menu", "What would you like to do?", "Cancel", new List<(string, Action)>
+            {
+                ("Shut down", async () => await OnShutdown()),
+                ("Reboot", async () => await OnRestart()),
+                ("Exit Popper", async () => await OnExitPopper()),
+            });
+
+            await Task.CompletedTask;
         }
 
         public async Task OnRestart()
         {
             await Task.Run(() => ExecuteCommand(_server.SendRestart)).ConfigureAwait(false);
+        }
+
+        public async Task OnShutdown()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendShutdown)).ConfigureAwait(false);
+        }
+
+        public async Task OnExitPopper()
+        {
+            await Task.Run(() => ExecuteCommand(_server.SendExitPopper)).ConfigureAwait(false);
         }
 
         public async Task OnGameStart()
@@ -167,6 +187,18 @@ namespace PinupMobile.Core.ViewModels
         public async Task OnRecordStart()
         {
             await Task.Run(() => ExecuteCommand(_server.SendRecordStart)).ConfigureAwait(false);
+        }
+
+        public async Task OnRecordMenu()
+        {
+            _dialogService.Show("Record Display", "Is the table you want to record already running, or do you need to launch it first?", "Cancel", new List<(string, Action)>
+            {
+                //("The table is already running", async () => await _navigationService.Navigate<RecordDisplayViewModel>()),
+                ("Launch table in Record Mode", async () => await OnRecordStart()),
+                ("Launch table normally", async () => await OnGameStart()),
+            });
+
+            await Task.CompletedTask;
         }
 
         private async Task Refresh()
@@ -184,14 +216,6 @@ namespace PinupMobile.Core.ViewModels
                 WheelIconPath = wheelRes;
 
             }).ConfigureAwait(false);
-        }
-
-        private async Task OnRecord()
-        {
-            await Task.Delay(2000);
-
-            //TODO Navigate to record view
-            await _navigationService.Navigate<DisplayViewModel>();
         }
 
         public async Task OnPlay()

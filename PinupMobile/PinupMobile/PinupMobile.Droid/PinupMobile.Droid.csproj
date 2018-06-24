@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>/Users/iainstanford/Library/Developer/Xamarin/Keystore/Pinup Remote/Pinup Remote.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Stanford1986</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>Pinup Remote</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Stanford1986</AndroidSigningKeyPass>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

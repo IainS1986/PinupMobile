@@ -39,6 +39,8 @@ namespace PinupMobile.Core.Remote
 
         Task<bool> SendRestart();
 
+        Task<bool> SendExitPopper();
+
         Task<bool> SendGameStart();
 
         Task<bool> SendRecordStart();

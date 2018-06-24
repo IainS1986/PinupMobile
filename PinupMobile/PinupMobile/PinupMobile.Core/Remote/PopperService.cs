@@ -360,6 +360,11 @@ namespace PinupMobile.Core.Remote
             return await SendPupKey(PopperCommand.KEY_RESTART_PC);
         }
 
+        public async Task<bool> SendExitPopper()
+        {
+            return await SendPupKey(PopperCommand.KEY_SYSTEM_EXIT);
+        }
+
         public async Task<bool> SendGameStart()
         {
             return await SendPupKey(PopperCommand.KEY_GAME_START);

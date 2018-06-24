@@ -15,10 +15,12 @@ namespace PinupMobile.Core.ViewModels
     /// Shows current playing item
     /// </summary>
     public class DisplayViewModel
-        : MvxViewModel
+        : MvxViewModel<string>
     {
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
+
+        private string _display = PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD;
 
         public MvxAsyncCommand CloseCommand => new MvxAsyncCommand(async () => await _navigationService.Close(this));
 
@@ -36,6 +38,11 @@ namespace PinupMobile.Core.ViewModels
             _navigationService = navigationService;
         }
 
+        public override void Prepare(string parameter)
+        {
+            _display = parameter;
+        }
+
         public override async void ViewAppearing()
         {
             base.ViewAppearing();
@@ -45,7 +52,7 @@ namespace PinupMobile.Core.ViewModels
             // Download the Playfield Display
             await Task.Run(async () =>
             {
-                MediaUrl = await _server.GetDisplay(PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD);
+                MediaUrl = await _server.GetDisplay(_display);
             }).ConfigureAwait(false);
         }
     }
