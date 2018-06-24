@@ -123,6 +123,10 @@
     </Compile>
     <Compile Include="Extensions\UIViewExtensions.cs" />
     <Compile Include="Alerts\Dialog.cs" />
+    <Compile Include="Views\RecordDisplayView.cs" />
+    <Compile Include="Views\RecordDisplayView.designer.cs">
+      <DependentUpon>RecordDisplayView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
@@ -139,6 +143,9 @@
     </InterfaceDefinition>
     <InterfaceDefinition Include="Views\SetupPopperView.xib">
       <DependentUpon>SetupPopperView.cs</DependentUpon>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Views\RecordDisplayView.xib">
+      <DependentUpon>RecordDisplayView.cs</DependentUpon>
     </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +276,7 @@
     <ImageAsset Include="Assets.xcassets\ic_record.imageset\round_fiber_manual_record_white_48pt_1x.png" />
     <ImageAsset Include="Assets.xcassets\ic_record.imageset\round_fiber_manual_record_white_48pt_2x.png" />
     <ImageAsset Include="Assets.xcassets\ic_record.imageset\round_fiber_manual_record_white_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\ic_stop.imageset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PinupMobile.Core\PinupMobile.Core.csproj">
@@ -288,6 +296,7 @@
     <Folder Include="Assets.xcassets\ic_exit.imageset\" />
     <Folder Include="Extensions\" />
     <Folder Include="Alerts\" />
+    <Folder Include="Assets.xcassets\ic_stop.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\test.png" />

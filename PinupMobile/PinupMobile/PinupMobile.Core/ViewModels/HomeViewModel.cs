@@ -109,6 +109,8 @@ namespace PinupMobile.Core.ViewModels
                 ("DMD", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_DMD)),
                 ("Topper", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_TOPPER)),
             });
+
+            await Task.CompletedTask;
         }
 
         public async Task OnGameNext()
@@ -193,9 +195,9 @@ namespace PinupMobile.Core.ViewModels
         {
             _dialogService.Show("Record Display", "Is the table ready to record?", "Cancel", new List<(string, Action)>
             {
-                //("The table is already running", async () => await _navigationService.Navigate<RecordDisplayViewModel>()),
-                ("Launch table in Record Mode", async () => await OnRecordStart()),
-                ("Launch table normally", async () => await OnGameStart()),
+                ("The table is already running", async () => await _navigationService.Navigate<RecordDisplayViewModel>()),
+                ("Launch table in Record Mode", async () => { await OnRecordStart(); await _navigationService.Navigate<RecordDisplayViewModel>(); }),
+                ("Launch table normally", async () => { await OnGameStart(); await _navigationService.Navigate<RecordDisplayViewModel>(); }),
             });
 
             await Task.CompletedTask;

@@ -600,6 +600,28 @@
     <AndroidResource Include="Resources\animator\flip_right_out.xml" />
     <AndroidResource Include="Resources\anim\flip_from.xml" />
     <AndroidResource Include="Resources\anim\flip_to.xml" />
+    <AndroidResource Include="Resources\layout\RecordDisplayView.axml" />
+    <AndroidResource Include="Resources\drawable\round_stop_24.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\round_stop_white_18.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\round_stop_white_24.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\round_stop_white_36.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\round_stop_white_48.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\round_stop_white_18.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\round_stop_white_24.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\round_stop_white_36.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\round_stop_white_48.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\round_stop_white_18.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\round_stop_white_24.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\round_stop_white_36.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\round_stop_white_48.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\round_stop_white_18.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\round_stop_white_24.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\round_stop_white_36.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\round_stop_white_48.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\round_stop_white_18.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\round_stop_white_24.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\round_stop_white_36.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\round_stop_white_48.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -621,6 +643,7 @@
     <Compile Include="Alerts\Dialog.cs" />
     <Compile Include="Extensions\ViewExtensions.cs" />
     <Compile Include="Controls\CustomPresenter.cs" />
+    <Compile Include="Views\RecordDisplayView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />

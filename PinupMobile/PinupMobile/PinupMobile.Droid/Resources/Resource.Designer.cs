@@ -6401,26 +6401,26 @@ namespace PinupMobile.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f0200d3
-			public const int avd_hide_password_1 = 2130837715;
+			// aapt resource value: 0x7f0200d8
+			public const int avd_hide_password_1 = 2130837720;
 			
-			// aapt resource value: 0x7f0200d4
-			public const int avd_hide_password_2 = 2130837716;
+			// aapt resource value: 0x7f0200d9
+			public const int avd_hide_password_2 = 2130837721;
 			
-			// aapt resource value: 0x7f0200d5
-			public const int avd_hide_password_3 = 2130837717;
+			// aapt resource value: 0x7f0200da
+			public const int avd_hide_password_3 = 2130837722;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f0200d6
-			public const int avd_show_password_1 = 2130837718;
+			// aapt resource value: 0x7f0200db
+			public const int avd_show_password_1 = 2130837723;
 			
-			// aapt resource value: 0x7f0200d7
-			public const int avd_show_password_2 = 2130837719;
+			// aapt resource value: 0x7f0200dc
+			public const int avd_show_password_2 = 2130837724;
 			
-			// aapt resource value: 0x7f0200d8
-			public const int avd_show_password_3 = 2130837720;
+			// aapt resource value: 0x7f0200dd
+			public const int avd_show_password_3 = 2130837725;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -6467,11 +6467,11 @@ namespace PinupMobile.Droid
 			// aapt resource value: 0x7f020063
 			public const int notification_icon_background = 2130837603;
 			
-			// aapt resource value: 0x7f0200d1
-			public const int notification_template_icon_bg = 2130837713;
+			// aapt resource value: 0x7f0200d6
+			public const int notification_template_icon_bg = 2130837718;
 			
-			// aapt resource value: 0x7f0200d2
-			public const int notification_template_icon_low_bg = 2130837714;
+			// aapt resource value: 0x7f0200d7
+			public const int notification_template_icon_low_bg = 2130837719;
 			
 			// aapt resource value: 0x7f020064
 			public const int notification_tile_bg = 2130837604;
@@ -6756,49 +6756,64 @@ namespace PinupMobile.Droid
 			public const int round_skip_previous_white_48 = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int selector_button_exit = 2130837698;
+			public const int round_stop_24 = 2130837698;
 			
 			// aapt resource value: 0x7f0200c3
-			public const int selector_button_fast_forward = 2130837699;
+			public const int round_stop_white_18 = 2130837699;
 			
 			// aapt resource value: 0x7f0200c4
-			public const int selector_button_fast_rewind = 2130837700;
+			public const int round_stop_white_24 = 2130837700;
 			
 			// aapt resource value: 0x7f0200c5
-			public const int selector_button_home = 2130837701;
+			public const int round_stop_white_36 = 2130837701;
 			
 			// aapt resource value: 0x7f0200c6
-			public const int selector_button_menu_return = 2130837702;
+			public const int round_stop_white_48 = 2130837702;
 			
 			// aapt resource value: 0x7f0200c7
-			public const int selector_button_play = 2130837703;
+			public const int selector_button_exit = 2130837703;
 			
 			// aapt resource value: 0x7f0200c8
-			public const int selector_button_power = 2130837704;
+			public const int selector_button_fast_forward = 2130837704;
 			
 			// aapt resource value: 0x7f0200c9
-			public const int selector_button_record = 2130837705;
+			public const int selector_button_fast_rewind = 2130837705;
 			
 			// aapt resource value: 0x7f0200ca
-			public const int selector_button_refresh = 2130837706;
+			public const int selector_button_home = 2130837706;
 			
 			// aapt resource value: 0x7f0200cb
-			public const int selector_button_select = 2130837707;
+			public const int selector_button_menu_return = 2130837707;
 			
 			// aapt resource value: 0x7f0200cc
-			public const int selector_button_skip_next = 2130837708;
+			public const int selector_button_play = 2130837708;
 			
 			// aapt resource value: 0x7f0200cd
-			public const int selector_button_skip_prev = 2130837709;
+			public const int selector_button_power = 2130837709;
 			
 			// aapt resource value: 0x7f0200ce
-			public const int splash = 2130837710;
+			public const int selector_button_record = 2130837710;
 			
 			// aapt resource value: 0x7f0200cf
-			public const int tooltip_frame_dark = 2130837711;
+			public const int selector_button_refresh = 2130837711;
 			
 			// aapt resource value: 0x7f0200d0
-			public const int tooltip_frame_light = 2130837712;
+			public const int selector_button_select = 2130837712;
+			
+			// aapt resource value: 0x7f0200d1
+			public const int selector_button_skip_next = 2130837713;
+			
+			// aapt resource value: 0x7f0200d2
+			public const int selector_button_skip_prev = 2130837714;
+			
+			// aapt resource value: 0x7f0200d3
+			public const int splash = 2130837715;
+			
+			// aapt resource value: 0x7f0200d4
+			public const int tooltip_frame_dark = 2130837716;
+			
+			// aapt resource value: 0x7f0200d5
+			public const int tooltip_frame_light = 2130837717;
 			
 			static Drawable()
 			{
@@ -7659,28 +7674,31 @@ namespace PinupMobile.Droid
 			public const int notification_template_part_time = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int select_dialog_item_material = 2130968634;
+			public const int RecordDisplayView = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int select_dialog_multichoice_material = 2130968635;
+			public const int select_dialog_item_material = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int select_dialog_singlechoice_material = 2130968636;
+			public const int select_dialog_multichoice_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int SetupPopperView = 2130968637;
+			public const int select_dialog_singlechoice_material = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int SplashScreen = 2130968638;
+			public const int SetupPopperView = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int support_simple_spinner_dropdown_item = 2130968639;
+			public const int SplashScreen = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int toolbar = 2130968640;
+			public const int support_simple_spinner_dropdown_item = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int tooltip = 2130968641;
+			public const int toolbar = 2130968641;
+			
+			// aapt resource value: 0x7f040042
+			public const int tooltip = 2130968642;
 			
 			static Layout()
 			{
