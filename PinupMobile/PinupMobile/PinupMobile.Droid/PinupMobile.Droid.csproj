@@ -622,6 +622,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\round_stop_white_24.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\round_stop_white_36.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\round_stop_white_48.png" />
+    <AndroidResource Include="Resources\mipmap-ldpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

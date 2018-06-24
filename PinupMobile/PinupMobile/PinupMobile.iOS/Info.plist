@@ -39,11 +39,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key>CFBundleName</key>
-	<string>PinupMobile.iOS</string>
 	<key>UIMainNibFile</key>
 	<string>LaunchScreen</string>
+	<key>CFBundleName</key>
+	<string>Pinup Remote</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>
 </plist>

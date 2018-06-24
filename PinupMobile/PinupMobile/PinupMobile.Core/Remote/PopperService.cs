@@ -59,7 +59,6 @@ namespace PinupMobile.Core.Remote
             //TODO First time setup...
             if (string.IsNullOrEmpty(url))
             {
-                //url = "http://192.168.0.31/";
                 url = "http://192.168.0.1/";
             }
 
