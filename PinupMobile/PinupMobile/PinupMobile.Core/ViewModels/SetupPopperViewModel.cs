@@ -16,7 +16,7 @@ namespace PinupMobile.Core.ViewModels
     /// Shows current playing item
     /// </summary>
     public class SetupPopperViewModel
-        : MvxViewModel
+        : BaseViewModel
     {
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;

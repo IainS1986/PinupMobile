@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using PinupMobile.Core.Analytics;
 using PinupMobile.Core.Extensions;
 using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote.API;
@@ -25,6 +26,7 @@ namespace PinupMobile.Core.Remote
 
         private readonly IUserSettings _settings;
         private readonly IHttpClientFactory _clientFactory;
+        private readonly IAppAnalytics _analytics;
 
         private Uri _baseUri;
         public Uri BaseUri
@@ -39,10 +41,12 @@ namespace PinupMobile.Core.Remote
         }
 
         public PopperService(IUserSettings settings,
-                             IHttpClientFactory clientFactory)
+                             IHttpClientFactory clientFactory,
+                             IAppAnalytics analytics)
         {
             _settings = settings;
             _clientFactory = clientFactory;
+            _analytics = analytics;
 
             Initialize();
         }
@@ -69,12 +73,17 @@ namespace PinupMobile.Core.Remote
                 var item = await GetCurrentItem();
 
                 if (item == null)
+                {
+                    _analytics.TrackServerConnect(false);
                     return false;
+                }
 
+                _analytics.TrackServerConnect(true);
                 return true;
             }
             catch (Exception ex)
             {
+                _analytics.TrackServerConnect(false);
                 Logger.Error($"Error pinging {BaseUri}");
                 Logger.Error(ex.Message);
                 return false;
@@ -396,12 +405,14 @@ namespace PinupMobile.Core.Remote
 
             if (response?.Success == true)
             {
+                _analytics.TrackPupCommand(command);
                 return true;
             }
             else
             {
                 //TODO Error handling???
                 Logger.Error($"Error sending pup key {command}, responded with {response?.Code} and {response?.Messsage}");
+                _analytics.TrackPupCommand(command, false);
                 return false;
             }
         }

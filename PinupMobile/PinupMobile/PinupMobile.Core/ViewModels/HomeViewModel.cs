@@ -18,7 +18,7 @@ namespace PinupMobile.Core.ViewModels
     /// Shows current playing item
     /// </summary>
     public class HomeViewModel
-        : MvxViewModel
+        : BaseViewModel
     {
         private const string TITLE_VISIBLE_KEY = "TitleVisible";
 

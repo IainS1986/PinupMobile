@@ -12,7 +12,7 @@ namespace PinupMobile.Core.ViewModels
     /// to a running PinupServer
     /// </summary>
     public class AppStartupViewModel
-        : MvxViewModel
+        : BaseViewModel
     {
         private readonly IUserSettings _settings;
         private readonly IPopperService _server;

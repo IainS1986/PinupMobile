@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using PinupMobile.Core.Analytics;
 using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote;
 using PinupMobile.Core.Remote.API;
@@ -15,7 +17,7 @@ namespace PinupMobile.Core.ViewModels
     /// Shows current playing item
     /// </summary>
     public class DisplayViewModel
-        : MvxViewModel<string>
+        : BaseViewModel<string>
     {
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
@@ -41,6 +43,8 @@ namespace PinupMobile.Core.ViewModels
         public override void Prepare(string parameter)
         {
             _display = parameter;
+
+            Analytics.TrackDisplay(_display);
         }
 
         public override async void ViewAppearing()
