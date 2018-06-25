@@ -11,6 +11,8 @@
     <color name="divider">#B6B6B6</color>
     <color name="activated_color">#E8E8E8</color>
 
+    <color name="white">#FFFFFF</color>
+
     <color name="button_enabled">#000000</color>
     <color name="button_disabled">#666666</color>
 
