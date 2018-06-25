@@ -46,6 +46,7 @@ namespace PinupMobile.Droid.Views
             }
 
             var set = this.CreateBindingSet<RecordDisplayView, RecordDisplayViewModel>();
+
             set.Apply();
         }
     }

@@ -26,5 +26,6 @@
     <Folder Include="Remote\Model\Mock\" />
     <Folder Include="Alerts\" />
     <Folder Include="Analytics\" />
+    <Folder Include="Timers\" />
   </ItemGroup>
 </Project>

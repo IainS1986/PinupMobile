@@ -6,7 +6,7 @@ using MvvmCross.Platforms.Android.Views;
 namespace PinupMobile.Droid
 {
     [Activity(
-        Label = "PinupMobile"
+        Label = "@string/ApplicationName"
         , MainLauncher = true
         , Icon = "@mipmap/ic_launcher"
         , Theme = "@style/Theme.Splash"

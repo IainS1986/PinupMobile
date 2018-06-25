@@ -415,5 +415,30 @@ namespace PinupMobile.Core.Remote
                 return false;
             }
         }
+
+        public async Task<bool> SendRecordDisplay(string display)
+        {
+            if (IsDebugMode)
+            {
+                Logger.Debug($"Sent popper command to start recording display {display}");
+                return true;
+            }
+
+            var request = new RecordDisplayRequest();
+            request.display = display;
+
+            var response = await MakeRequest<RecordDisplayRequest, string>(request).ConfigureAwait(false);
+
+            if (response?.Success == true)
+            {
+                return true;
+            }
+            else
+            {
+                //TODO Error handling???
+                Logger.Error($"Error recording display {display}, responded with {response?.Code} and {response?.Messsage}");
+                return false;
+            }
+        }
     }
 }
