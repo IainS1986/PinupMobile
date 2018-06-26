@@ -25,6 +25,7 @@
 //------------------------------------------------------------------------------
 
 using System;
+using MvvmCross;
 
 namespace PinupMobile.Core.Strings
 {
@@ -33,11 +34,7 @@ namespace PinupMobile.Core.Strings
     {
         private static ILocalisation _stringLoader;
 
-        public static ILocalisation StringLoader
-        {
-            get { return _stringLoader; }
-            set { _stringLoader = value; }
-        }
+        public static ILocalisation StringLoader => _stringLoader ?? (_stringLoader = Mvx.Resolve<ILocalisation>());
 <#
         foreach (var resource in GetResources(inputFilePath)) {
 #>

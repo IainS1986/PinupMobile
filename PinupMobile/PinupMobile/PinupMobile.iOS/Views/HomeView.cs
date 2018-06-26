@@ -5,6 +5,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using PinupMobile.Core.Converters;
+using PinupMobile.Core.Strings;
 using PinupMobile.Core.ViewModels;
 using PinupMobile.iOS.Extensions;
 using UIKit;
@@ -50,6 +51,8 @@ namespace PinupMobile.iOS.Views
             var rect = WheeImage.Frame;
             WheeImage.Transform = CoreGraphics.CGAffineTransform.MakeRotation((nfloat)1.5708);
             WheeImage.Frame = rect;
+
+            DisplayButton.SetTitle(Translation.home_display_button, UIControlState.Normal);
 
             var set = this.CreateBindingSet<HomeView, HomeViewModel>();
             set.Bind(CurrentItemName).For(v => v.Text).To(vm => vm.CurrentItem).WithConversion<CurrentItemDisplayNameConverter>();

@@ -7,6 +7,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using PinupMobile.Core.Converters;
+using PinupMobile.Core.Strings;
 using PinupMobile.Core.ViewModels;
 using PinupMobile.iOS.Extensions;
 using UIKit;
@@ -50,7 +51,7 @@ namespace PinupMobile.iOS.Views
 
             NavigationController.NavigationBar.Translucent = false;
 
-            _closeButton = new UIBarButtonItem("Close", UIBarButtonItemStyle.Plain, null);
+            _closeButton = new UIBarButtonItem(Translation.general_close, UIBarButtonItemStyle.Plain, null);
             NavigationItem.LeftBarButtonItem = _closeButton;
 
             RecordButton.SetImage(UIImage.FromBundle("ic_record"), UIControlState.Normal);

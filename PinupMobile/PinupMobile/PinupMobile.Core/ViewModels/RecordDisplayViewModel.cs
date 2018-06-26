@@ -7,6 +7,7 @@ using MvvmCross.ViewModels;
 using PinupMobile.Core.Alerts;
 using PinupMobile.Core.Remote;
 using PinupMobile.Core.Remote.API;
+using PinupMobile.Core.Strings;
 using PinupMobile.Core.Timers;
 
 namespace PinupMobile.Core.ViewModels
@@ -56,7 +57,7 @@ namespace PinupMobile.Core.ViewModels
             _timer = new Timer();
             _timer.TimeElapsed += TimeElapsed;
 
-            HelpMessage = "Hit record to start";
+            HelpMessage = Translation.menu_record_help_intro;
         }
 
         private async Task OnRecord()
@@ -64,20 +65,20 @@ namespace PinupMobile.Core.ViewModels
             if (!Recording)
             {
                 Time = 0;
-                _dialogService.Show("Record Dispay",
-                                    "Which display do you want to record?",
-                                    "Cancel",
+                _dialogService.Show(Translation.alert_record_display_title,
+                                    Translation.alert_record_display_body,
+                                    Translation.general_cancel,
                                     new List<(string, Action)>()
                 {
-                    ("Playfield", async () => await OnRecordStart(PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD)),
-                    ("Backglass", async () => await OnRecordStart(PopperDisplayConstants.POPPER_DISPLAY_BACKGLASS)),
-                    ("DMD", async () => await OnRecordStart(PopperDisplayConstants.POPPER_DISPLAY_DMD)),
-                    ("Topper", async () => await OnRecordStart(PopperDisplayConstants.POPPER_DISPLAY_TOPPER)),
+                    (Translation.general_display_playfield, async () => await OnRecordStart(PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD)),
+                    (Translation.general_display_backglass, async () => await OnRecordStart(PopperDisplayConstants.POPPER_DISPLAY_BACKGLASS)),
+                    (Translation.general_display_dmd, async () => await OnRecordStart(PopperDisplayConstants.POPPER_DISPLAY_DMD)),
+                    (Translation.general_display_topper, async () => await OnRecordStart(PopperDisplayConstants.POPPER_DISPLAY_TOPPER)),
                 });
             }
             else
             {
-                HelpMessage = "Recording Stopped";
+                HelpMessage = Translation.menu_record_help_stopped;
                 Recording = false;
                 _timer.Stop();
                 await _server.SendRecordDisplay(_currentDisplay);
@@ -108,7 +109,7 @@ namespace PinupMobile.Core.ViewModels
             if (!success)
             {
                 Recording = false;
-                HelpMessage = "Recording Failed";
+                HelpMessage = Translation.menu_record_help_failed;
                 return;
             }
 
@@ -116,7 +117,7 @@ namespace PinupMobile.Core.ViewModels
             _timer.Start();
             _currentDisplay = display;
 
-            HelpMessage = $"Recording {GetDisplayName(display)}";
+            HelpMessage = string.Format(Translation.menu_record_help_in_progress, GetDisplayName(display));
         }
 
         private void TimeElapsed(object sender, int e)
@@ -132,15 +133,15 @@ namespace PinupMobile.Core.ViewModels
             switch(display)
             {
                 case PopperDisplayConstants.POPPER_DISPLAY_BACKGLASS:
-                    return "Backglass";
+                    return Translation.general_display_backglass;
                 case PopperDisplayConstants.POPPER_DISPLAY_TOPPER:
-                    return "Topper";
+                    return Translation.general_display_topper;
                 case PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD:
-                    return "Playfield";
+                    return Translation.general_display_playfield;
                 case PopperDisplayConstants.POPPER_DISPLAY_DMD:
-                    return "DMD";
+                    return Translation.general_display_dmd;
                 default:
-                    return "Unknown";
+                    return Translation.general_display_unknown;
             }
         }
     }

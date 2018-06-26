@@ -4,6 +4,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using PinupMobile.Core.Converters;
+using PinupMobile.Core.Strings;
 using PinupMobile.Core.ViewModels;
 using PinupMobile.iOS.Extensions;
 using UIKit;
@@ -50,6 +51,11 @@ namespace PinupMobile.iOS.Views
             UrlInput.FadeIn();
             HelpText.FadeIn();
             ConnectButton.FadeIn();
+
+            HeaderLabel.Text = Translation.setup_top_text;
+            HelpText.Text = Translation.setup_footer;
+            ErrorLabel.Text = Translation.setup_error;
+            ConnectButton.SetTitle(Translation.setup_connect_button, UIControlState.Normal);
         }
     }
 }

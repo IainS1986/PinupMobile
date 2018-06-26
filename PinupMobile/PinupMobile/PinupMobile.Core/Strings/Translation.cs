@@ -6,6 +6,7 @@
 //------------------------------------------------------------------------------
 
 using System;
+using MvvmCross;
 
 namespace PinupMobile.Core.Strings
 {
@@ -14,11 +15,7 @@ namespace PinupMobile.Core.Strings
     {
         private static ILocalisation _stringLoader;
 
-        public static ILocalisation StringLoader
-        {
-            get { return _stringLoader; }
-            set { _stringLoader = value; }
-        }
+        public static ILocalisation StringLoader => _stringLoader ?? (_stringLoader = Mvx.Resolve<ILocalisation>());
         /// <summary>
         ///   Looks up a string similar to Which display do you want to see?
         /// </summary>
@@ -241,6 +238,13 @@ namespace PinupMobile.Core.Strings
         /// </summary>
         public static string setup_top_text {
             get { return StringLoader.GetString("setup_top_text"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Connect to Popper
+        /// </summary>
+        public static string setup_view_title {
+            get { return StringLoader.GetString("setup_view_title"); }
         }
 
 

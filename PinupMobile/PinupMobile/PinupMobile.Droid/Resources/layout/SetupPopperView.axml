@@ -96,7 +96,7 @@
             android:layout_margin="8dp"
             android:textSize="16dp"
             android:gravity="center"
-            android:text="Connect"
+            android:text="@string/setup_connect_button"
             android:enabled="true"
             android:layout_below="@id/error_region"
             local:MvxBind="Click OnConnectCommand; Enabled CanConnect;" />

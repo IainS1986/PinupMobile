@@ -42,7 +42,7 @@
                 android:id="@+id/help"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Help Prompt"
+                android:text="@string/menu_record_help_intro"
                 android:layout_centerInParent="true"
                 android:layout_below="@id/duration"
                 android:gravity="center"

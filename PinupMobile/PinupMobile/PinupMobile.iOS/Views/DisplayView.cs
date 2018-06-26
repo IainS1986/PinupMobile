@@ -11,6 +11,7 @@ using PinupMobile.Core.Converters;
 using PinupMobile.Core.Alerts;
 using PinupMobile.Core.ViewModels;
 using UIKit;
+using PinupMobile.Core.Strings;
 
 namespace PinupMobile.iOS.Views
 {
@@ -44,7 +45,7 @@ namespace PinupMobile.iOS.Views
         {
             base.ViewDidLoad();
 
-            _closeButton = new UIBarButtonItem("Close", UIBarButtonItemStyle.Plain, null);
+            _closeButton = new UIBarButtonItem(Translation.general_close, UIBarButtonItemStyle.Plain, null);
             NavigationItem.LeftBarButtonItem = _closeButton;
 
             _avplayer = new AVQueuePlayer();
@@ -104,9 +105,9 @@ namespace PinupMobile.iOS.Views
             {
                 //Show alert
                 LoadingSpinner.Hidden = true;
-                _dialog.Show("Playback Failed",
-                             "Sorry, f4v format is not supported on iOS devices. If you autorecord new videos with Popper they will be in mp4 format.", 
-                             "Close",
+                _dialog.Show(Translation.alert_display_failed_title,
+                             Translation.alert_display_failed_body,
+                             Translation.general_close,
                              async () => { await ViewModel?.CloseCommand?.ExecuteAsync(); });
                 return;
             }

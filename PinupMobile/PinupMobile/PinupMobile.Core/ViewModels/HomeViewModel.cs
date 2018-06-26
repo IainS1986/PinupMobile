@@ -10,6 +10,7 @@ using PinupMobile.Core.Remote;
 using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Remote.Model;
 using PinupMobile.Core.Settings;
+using PinupMobile.Core.Strings;
 
 namespace PinupMobile.Core.ViewModels
 {
@@ -102,12 +103,12 @@ namespace PinupMobile.Core.ViewModels
 
         public async Task OnDisplayView()
         {
-            _dialogService.Show("Popper Display", "Which display do you want to see?", "Cancel", new List<(string, Action)>
+            _dialogService.Show(Translation.alert_display_title, Translation.alert_display_body, Translation.general_cancel, new List<(string, Action)>
             {
-                ("Playfield", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD)),
-                ("Backglass", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_BACKGLASS)),
-                ("DMD", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_DMD)),
-                ("Topper", async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_TOPPER)),
+                (Translation.general_display_playfield, async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD)),
+                (Translation.general_display_backglass, async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_BACKGLASS)),
+                (Translation.general_display_dmd, async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_DMD)),
+                (Translation.general_display_topper, async () => await _navigationService.Navigate<string>(typeof(DisplayViewModel), PopperDisplayConstants.POPPER_DISPLAY_TOPPER)),
             });
 
             await Task.CompletedTask;
@@ -156,11 +157,11 @@ namespace PinupMobile.Core.ViewModels
         public async Task OnSystemMenu()
         {
             // Show dialog asking if we want to , Quit, Shutdown, Reboot or Cancel
-            _dialogService.Show("System Menu", "What would you like to do?", "Cancel", new List<(string, Action)>
+            _dialogService.Show(Translation.alert_display_power_title, Translation.alert_display_power_body, Translation.general_cancel, new List<(string, Action)>
             {
-                ("Shut down", async () => await OnShutdown()),
-                ("Reboot", async () => await OnRestart()),
-                ("Exit Popper", async () => await OnExitPopper()),
+                (Translation.alert_display_power_option_shut_down, async () => await OnShutdown()),
+                (Translation.alert_display_power_option_reboot, async () => await OnRestart()),
+                (Translation.alert_display_power_option_exit, async () => await OnExitPopper()),
             });
 
             await Task.CompletedTask;
@@ -193,11 +194,11 @@ namespace PinupMobile.Core.ViewModels
 
         public async Task OnRecordMenu()
         {
-            _dialogService.Show("Record Display", "Is the table ready to record?", "Cancel", new List<(string, Action)>
+            _dialogService.Show(Translation.alert_record_menu_title, Translation.alert_record_menu_body, Translation.general_cancel, new List<(string, Action)>
             {
-                ("The table is already running", async () => await _navigationService.Navigate<RecordDisplayViewModel>()),
-                ("Launch table in Record Mode", async () => { await OnRecordStart(); await _navigationService.Navigate<RecordDisplayViewModel>(); }),
-                ("Launch table normally", async () => { await OnGameStart(); await _navigationService.Navigate<RecordDisplayViewModel>(); }),
+                (Translation.alert_record_menu_option_running, async () => await _navigationService.Navigate<RecordDisplayViewModel>()),
+                (Translation.alert_record_menu_option_launch_record, async () => { await OnRecordStart(); await _navigationService.Navigate<RecordDisplayViewModel>(); }),
+                (Translation.alert_record_menu_option_launch_normal, async () => { await OnGameStart(); await _navigationService.Navigate<RecordDisplayViewModel>(); }),
             });
 
             await Task.CompletedTask;

@@ -32,4 +32,5 @@
   <string name="setup_error">Failed to connect to Popper, ensure your cabinet is on and popper is running before trying again...</string>
   <string name="setup_footer">If you are having problems ensure you have followed all the setup steps.\n\nhttp://www.nailbuster.com/wikipinup/doku.php?id=web_remote_control</string>
   <string name="setup_top_text">Failed to connect to Pinup Popper.\n\nPlease ensure Pinup is currently running on your cab and try again.\n\nIf you have changed the IP or name of your machine, then alter the URL below and reconnect.</string>
+  <string name="setup_view_title">Connect to Popper</string>
 </resources>

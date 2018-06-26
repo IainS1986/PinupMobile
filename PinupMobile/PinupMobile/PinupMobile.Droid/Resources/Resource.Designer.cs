@@ -7747,12 +7747,6 @@ namespace PinupMobile.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a002a
-			public const int ApplicationName = 2131361834;
-			
-			// aapt resource value: 0x7f0a0029
-			public const int VersionName = 2131361833;
-			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_action_bar_home_description = 2131361792;
 			
@@ -7840,6 +7834,54 @@ namespace PinupMobile.Droid
 			// aapt resource value: 0x7f0a0010
 			public const int abc_toolbar_collapse_description = 2131361808;
 			
+			// aapt resource value: 0x7f0a0029
+			public const int alert_display_body = 2131361833;
+			
+			// aapt resource value: 0x7f0a002a
+			public const int alert_display_failed_body = 2131361834;
+			
+			// aapt resource value: 0x7f0a002b
+			public const int alert_display_failed_title = 2131361835;
+			
+			// aapt resource value: 0x7f0a002c
+			public const int alert_display_power_body = 2131361836;
+			
+			// aapt resource value: 0x7f0a002d
+			public const int alert_display_power_option_exit = 2131361837;
+			
+			// aapt resource value: 0x7f0a002e
+			public const int alert_display_power_option_reboot = 2131361838;
+			
+			// aapt resource value: 0x7f0a002f
+			public const int alert_display_power_option_shut_down = 2131361839;
+			
+			// aapt resource value: 0x7f0a0030
+			public const int alert_display_power_title = 2131361840;
+			
+			// aapt resource value: 0x7f0a0031
+			public const int alert_display_title = 2131361841;
+			
+			// aapt resource value: 0x7f0a0032
+			public const int alert_record_display_body = 2131361842;
+			
+			// aapt resource value: 0x7f0a0033
+			public const int alert_record_display_title = 2131361843;
+			
+			// aapt resource value: 0x7f0a0034
+			public const int alert_record_menu_body = 2131361844;
+			
+			// aapt resource value: 0x7f0a0035
+			public const int alert_record_menu_option_launch_normal = 2131361845;
+			
+			// aapt resource value: 0x7f0a0036
+			public const int alert_record_menu_option_launch_record = 2131361846;
+			
+			// aapt resource value: 0x7f0a0037
+			public const int alert_record_menu_option_running = 2131361847;
+			
+			// aapt resource value: 0x7f0a0038
+			public const int alert_record_menu_title = 2131361848;
+			
 			// aapt resource value: 0x7f0a001e
 			public const int appbar_scrolling_view_behavior = 2131361822;
 			
@@ -7851,6 +7893,42 @@ namespace PinupMobile.Droid
 			
 			// aapt resource value: 0x7f0a0027
 			public const int fab_scroll_shrink_grow_autohide_behavior = 2131361831;
+			
+			// aapt resource value: 0x7f0a0039
+			public const int general_cancel = 2131361849;
+			
+			// aapt resource value: 0x7f0a003a
+			public const int general_close = 2131361850;
+			
+			// aapt resource value: 0x7f0a003b
+			public const int general_display_backglass = 2131361851;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int general_display_dmd = 2131361852;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int general_display_playfield = 2131361853;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int general_display_topper = 2131361854;
+			
+			// aapt resource value: 0x7f0a003f
+			public const int general_display_unknown = 2131361855;
+			
+			// aapt resource value: 0x7f0a0040
+			public const int home_display_button = 2131361856;
+			
+			// aapt resource value: 0x7f0a0041
+			public const int menu_record_help_failed = 2131361857;
+			
+			// aapt resource value: 0x7f0a0043
+			public const int menu_record_help_in_progress = 2131361859;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int menu_record_help_intro = 2131361858;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int menu_record_help_stopped = 2131361860;
 			
 			// aapt resource value: 0x7f0a0021
 			public const int password_toggle_content_description = 2131361825;
@@ -7870,14 +7948,20 @@ namespace PinupMobile.Droid
 			// aapt resource value: 0x7f0a0011
 			public const int search_menu_title = 2131361809;
 			
-			// aapt resource value: 0x7f0a002c
-			public const int setup_error = 2131361836;
+			// aapt resource value: 0x7f0a0045
+			public const int setup_connect_button = 2131361861;
 			
-			// aapt resource value: 0x7f0a002d
-			public const int setup_footer = 2131361837;
+			// aapt resource value: 0x7f0a0046
+			public const int setup_error = 2131361862;
 			
-			// aapt resource value: 0x7f0a002b
-			public const int setup_top_text = 2131361835;
+			// aapt resource value: 0x7f0a0047
+			public const int setup_footer = 2131361863;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int setup_top_text = 2131361864;
+			
+			// aapt resource value: 0x7f0a0049
+			public const int setup_view_title = 2131361865;
 			
 			// aapt resource value: 0x7f0a0026
 			public const int status_bar_notification_info_overflow = 2131361830;

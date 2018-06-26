@@ -3,6 +3,7 @@ using Android.OS;
 using Android.Widget;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using PinupMobile.Core.Strings;
 using PinupMobile.Core.ViewModels;
 using PinupMobile.Droid.Extensions;
 
@@ -24,7 +25,7 @@ namespace PinupMobile.Droid.Views
             if (Toolbar != null)
             {
                 SetSupportActionBar(Toolbar);
-                SupportActionBar.Title = "Connect to Popper";
+                SupportActionBar.Title = Translation.setup_view_title;
             }
 
             var set = this.CreateBindingSet<SetupPopperView, SetupPopperViewModel>();

@@ -76,7 +76,7 @@
                 android:layout_margin="8dp"
                 android:textSize="16dp"
                 android:gravity="center"
-                android:text="Display"
+                android:text="@string/home_display_button"
                 android:enabled="true"
                 local:MvxBind="Click OnShowDisplayViewCommand" />
         </LinearLayout>
