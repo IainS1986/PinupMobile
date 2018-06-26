@@ -48,6 +48,8 @@ namespace PinupMobile.iOS.Views
         {
             base.ViewDidLoad();
 
+            NavigationController.NavigationBar.Translucent = false;
+
             _closeButton = new UIBarButtonItem("Close", UIBarButtonItemStyle.Plain, null);
             NavigationItem.LeftBarButtonItem = _closeButton;
 
