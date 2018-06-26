@@ -2,16 +2,12 @@ using System;
 using Android.App;
 using Android.Content;
 using Android.Content.Res;
-using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Media;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Java.IO;
 using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
@@ -35,7 +31,7 @@ namespace PinupMobile.Droid.Views
 
         private AutoFitTextureView _textureView;
         private ImageView _imageView;
-        private MediaPlayer _mediaPlayer;
+        private Android.Media.MediaPlayer _mediaPlayer; 
         private ProgressBar _loadingSpinner;
 
         private bool _videoSizeSetupDone = false;
@@ -105,7 +101,7 @@ namespace PinupMobile.Droid.Views
             Surface surface = new Surface(e.Surface);
             try
             {
-                _mediaPlayer = new MediaPlayer();
+                _mediaPlayer = new Android.Media.MediaPlayer();
                 _mediaPlayer.SetSurface(surface);
                 _mediaPlayer.SetOnVideoSizeChangedListener(this);
 
@@ -177,7 +173,7 @@ namespace PinupMobile.Droid.Views
             }
         }
 
-        public void OnVideoSizeChanged(MediaPlayer mp, int width, int height)
+        public void OnVideoSizeChanged(Android.Media.MediaPlayer mp, int width, int height)
         {
             if (width > 0 && height > 0 && !_videoSizeSetupDone)
             {

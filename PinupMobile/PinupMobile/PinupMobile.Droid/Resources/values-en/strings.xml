@@ -16,6 +16,7 @@
   <string name="alert_record_menu_option_launch_record">Launch table in Record Mode</string>
   <string name="alert_record_menu_option_running">The table is already running</string>
   <string name="alert_record_menu_title">Record Display</string>
+  <string name="app_name">Pinup Remote</string>
   <string name="general_cancel">Cancel</string>
   <string name="general_close">Close</string>
   <string name="general_display_backglass">Backglass</string>

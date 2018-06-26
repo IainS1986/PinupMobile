@@ -129,6 +129,13 @@ namespace PinupMobile.Core.Strings
         }
 
         /// <summary>
+        ///   Looks up a string similar to Pinup Remote
+        /// </summary>
+        public static string app_name {
+            get { return StringLoader.GetString("app_name"); }
+        }
+
+        /// <summary>
         ///   Looks up a string similar to Cancel
         /// </summary>
         public static string general_cancel {
