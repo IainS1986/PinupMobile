@@ -19,6 +19,229 @@ namespace PinupMobile.Core.Strings
             get { return _stringLoader; }
             set { _stringLoader = value; }
         }
+        /// <summary>
+        ///   Looks up a string similar to Which display do you want to see?
+        /// </summary>
+        public static string alert_display_body {
+            get { return StringLoader.GetString("alert_display_body"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Sorry, f4v format is not supported on iOS devices. If you autorecord new videos with Popper they will be in mp4 format.
+        /// </summary>
+        public static string alert_display_failed_body {
+            get { return StringLoader.GetString("alert_display_failed_body"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Playback Failed
+        /// </summary>
+        public static string alert_display_failed_title {
+            get { return StringLoader.GetString("alert_display_failed_title"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to What would you like to do?
+        /// </summary>
+        public static string alert_display_power_body {
+            get { return StringLoader.GetString("alert_display_power_body"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Exit Popper
+        /// </summary>
+        public static string alert_display_power_option_exit {
+            get { return StringLoader.GetString("alert_display_power_option_exit"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Reboot
+        /// </summary>
+        public static string alert_display_power_option_reboot {
+            get { return StringLoader.GetString("alert_display_power_option_reboot"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Shut Down
+        /// </summary>
+        public static string alert_display_power_option_shut_down {
+            get { return StringLoader.GetString("alert_display_power_option_shut_down"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to System Menu
+        /// </summary>
+        public static string alert_display_power_title {
+            get { return StringLoader.GetString("alert_display_power_title"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Popper Display
+        /// </summary>
+        public static string alert_display_title {
+            get { return StringLoader.GetString("alert_display_title"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Which display do you want to record?
+        /// </summary>
+        public static string alert_record_display_body {
+            get { return StringLoader.GetString("alert_record_display_body"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Record Display
+        /// </summary>
+        public static string alert_record_display_title {
+            get { return StringLoader.GetString("alert_record_display_title"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Is the table ready to record?
+        /// </summary>
+        public static string alert_record_menu_body {
+            get { return StringLoader.GetString("alert_record_menu_body"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Launch table normally
+        /// </summary>
+        public static string alert_record_menu_option_launch_normal {
+            get { return StringLoader.GetString("alert_record_menu_option_launch_normal"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Launch table in Record Mode
+        /// </summary>
+        public static string alert_record_menu_option_launch_record {
+            get { return StringLoader.GetString("alert_record_menu_option_launch_record"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to The table is already running
+        /// </summary>
+        public static string alert_record_menu_option_running {
+            get { return StringLoader.GetString("alert_record_menu_option_running"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Record Display
+        /// </summary>
+        public static string alert_record_menu_title {
+            get { return StringLoader.GetString("alert_record_menu_title"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Cancel
+        /// </summary>
+        public static string general_cancel {
+            get { return StringLoader.GetString("general_cancel"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Close
+        /// </summary>
+        public static string general_close {
+            get { return StringLoader.GetString("general_close"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Backglass
+        /// </summary>
+        public static string general_display_backglass {
+            get { return StringLoader.GetString("general_display_backglass"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to DMD
+        /// </summary>
+        public static string general_display_dmd {
+            get { return StringLoader.GetString("general_display_dmd"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Playfield
+        /// </summary>
+        public static string general_display_playfield {
+            get { return StringLoader.GetString("general_display_playfield"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Topper
+        /// </summary>
+        public static string general_display_topper {
+            get { return StringLoader.GetString("general_display_topper"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Unknown
+        /// </summary>
+        public static string general_display_unknown {
+            get { return StringLoader.GetString("general_display_unknown"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Display
+        /// </summary>
+        public static string home_display_button {
+            get { return StringLoader.GetString("home_display_button"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Recording Failed
+        /// </summary>
+        public static string menu_record_help_failed {
+            get { return StringLoader.GetString("menu_record_help_failed"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Hit record to start
+        /// </summary>
+        public static string menu_record_help_intro {
+            get { return StringLoader.GetString("menu_record_help_intro"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Recording {0}
+        /// </summary>
+        public static string menu_record_help_in_progress {
+            get { return StringLoader.GetString("menu_record_help_in_progress"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Recording Stopped
+        /// </summary>
+        public static string menu_record_help_stopped {
+            get { return StringLoader.GetString("menu_record_help_stopped"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Connect
+        /// </summary>
+        public static string setup_connect_button {
+            get { return StringLoader.GetString("setup_connect_button"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Failed to connect to Popper, ensure your cabinet is on and popper is running before trying again...
+        /// </summary>
+        public static string setup_error {
+            get { return StringLoader.GetString("setup_error"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to If you are having problems ensure you have followed all the setup steps.\n\nhttp://www.nailbuster.com/wikipinup/doku.php?id=web_remote_control
+        /// </summary>
+        public static string setup_footer {
+            get { return StringLoader.GetString("setup_footer"); }
+        }
+
+        /// <summary>
+        ///   Looks up a string similar to Failed to connect to Pinup Popper.\n\nPlease ensure Pinup is currently running on your cab and try again.\n\nIf you have changed the IP or name of your machine, then alter the URL below and reconnect.
+        /// </summary>
+        public static string setup_top_text {
+            get { return StringLoader.GetString("setup_top_text"); }
+        }
 
 
         /// <summary>
