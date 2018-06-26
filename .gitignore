@@ -330,3 +330,7 @@ ASALocalRun/
 .mfractor/
 
 \.DS_Store
+\.phraseapp.yml
+\phraseapp_pull.sh
+
+phraseapp_pull\.sh
