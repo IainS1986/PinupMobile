@@ -15,8 +15,9 @@ Here's some screenshots with general feature list...
 
 Currently works with version 1.3.3 of Pinup Popper
 
-* Connects to popper via URL/IP. User friendly setup view.
+* Connects to popper via URL/IP. User friendly setup view. (Popper URL persisted between sessions)
 * Displays current wheel icon in app
+* Displays name of current game, can tap name to hide/show (persisted between sessions)
 * Play, Prev, Next, Page Prev, Page Next controls
 * Home button
 * Power Button - Supports, Reboot, Shutdown and System Exit
@@ -28,16 +29,8 @@ Currently works with version 1.3.3 of Pinup Popper
 
 # iOS Screenshots
 
-<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.13.png" width="300">
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.13.png" width="300"> <img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.28.png" width="300"> <img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.35.png" width="300">
 
-<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.28.png" width="300">
-
-<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.35.png" width="300">
-
-<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.44.png" width="300">
-
-<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.50.png" width="300">
-
-<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.52.12.png" width="300">
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.44.png" width="300"> <img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.50.png" width="300">
 
 # Android Screenshots
