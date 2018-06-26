@@ -623,6 +623,8 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\round_stop_white_36.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\round_stop_white_48.png" />
     <AndroidResource Include="Resources\mipmap-ldpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable\selector_button_stop.xml" />
+    <AndroidResource Include="Resources\drawable\layout_border.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

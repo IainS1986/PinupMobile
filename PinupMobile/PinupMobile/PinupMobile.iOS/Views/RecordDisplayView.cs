@@ -35,7 +35,7 @@ namespace PinupMobile.iOS.Views
                 if (_isRecording != value)
                 {
                     _isRecording = value;
-                    UpdateRecordButton();
+                    UpdateRecordUI();
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace PinupMobile.iOS.Views
             set.Apply();
         }
 
-        private void UpdateRecordButton()
+        private void UpdateRecordUI()
         {
             if (DurationLabel != null)
             {

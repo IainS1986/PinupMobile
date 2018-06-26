@@ -16,5 +16,52 @@
         android:id="@+id/content_frame"
         android:layout_below="@id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/border"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/layout_border" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="60sp"
+                android:fontFamily="sans"
+                local:MvxBind="Text Time" />
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Help Prompt"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/duration"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:fontFamily="sans"
+                android:layout_marginTop="16dp"
+                local:MvxBind="Text HelpMessage" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/record"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/help"
+                android:src="@drawable/selector_button_record"
+                android:scaleType="centerInside"
+                android:background="@android:color/transparent"
+                local:MvxBind="Click RecordCommand" />
+        </RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>
