@@ -28,6 +28,6 @@ Currently works with version 1.3.3 of Pinup Popper
 
 # iOS Screenshots
 
-<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.13.png" width="48">
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.13.png" width="200">
 
 # Android Screenshots
