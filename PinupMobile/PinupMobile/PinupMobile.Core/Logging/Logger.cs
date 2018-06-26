@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Microsoft.AppCenter.Crashes;
 
 namespace PinupMobile.Core.Logging
 {
@@ -7,6 +9,8 @@ namespace PinupMobile.Core.Logging
         private static readonly Lazy<Logger> LoggerInstance = new Lazy<Logger>(() => new Logger());
 
         private ILogWriter _writer;
+
+        public static bool LogErrorsToAppCenter => true;
 
         public Logger(ILogWriter logWriter = null) 
         {
@@ -25,14 +29,24 @@ namespace PinupMobile.Core.Logging
             Instance.LogDiagnostic(message);
         }
 
-        public static void Error(string message)
+        public static void Error(string message, Exception exception = null)
         {
             Instance.LogError(message);
+
+            if (LogErrorsToAppCenter)
+            {
+                Crashes.TrackError(exception ?? new Exception(message), (exception != null) ? new Dictionary<string, string> { { "Message", message } } : null);
+            }
         }
 
-        public static void Fatal(string message)
+        public static void Fatal(string message, Exception exception = null)
         {
             Instance.LogFatal(message);
+
+            if (LogErrorsToAppCenter)
+            {
+                Crashes.TrackError(exception ?? new Exception(message), (exception != null) ? new Dictionary<string, string> { { "Message", message } } : null);
+            }
         }
 
         public static string GetLog()

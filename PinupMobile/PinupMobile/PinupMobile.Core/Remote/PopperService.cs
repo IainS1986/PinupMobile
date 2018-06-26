@@ -83,8 +83,7 @@ namespace PinupMobile.Core.Remote
             catch (Exception ex)
             {
                 _analytics.TrackServerConnect(false);
-                Logger.Error($"Error pinging {BaseUri}");
-                Logger.Error(ex.Message);
+                Logger.Error($"Error pinging {BaseUri} - {ex.Message}", ex);
                 return false;
             }
         }
@@ -195,7 +194,7 @@ namespace PinupMobile.Core.Remote
             }
             catch (Exception ex)
             {
-                Logger.Error($"Error fetching {url}");
+                Logger.Error($"Error fetching {url}", ex);
                 response.Success = false;
                 response.Messsage = ex.Message;
             }
@@ -249,8 +248,7 @@ namespace PinupMobile.Core.Remote
                 }
                 catch(Exception ex)
                 {
-                    Logger.Error($"Error saving off display data for playback");
-                    Logger.Error(ex.Message);
+                    Logger.Error($"Error saving off display data for playback - {ex.Message}", ex);
                     return string.Empty;
                 }
             }

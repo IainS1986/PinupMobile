@@ -26,8 +26,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Getting Float UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Getting Float UserSetting {key} - {e.Message}", e);
             }
 
             return 0;
@@ -41,8 +40,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Getting Int UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Getting Int UserSetting {key} - {e.Message}", e);
             }
 
             return 0;
@@ -56,8 +54,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Getting Long UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Getting Long UserSetting {key} - {e.Message}", e);
             }
 
             return 0;
@@ -71,8 +68,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Getting Bool UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Getting Bool UserSetting {key} - {e.Message}", e);
             }
 
             return false;
@@ -86,8 +82,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Getting String UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Getting String UserSetting {key} - {e.Message}", e);
             }
 
             return string.Empty;
@@ -103,8 +98,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Getting Object UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Getting Object UserSetting {key} - {e.Message}", e);
             }
 
             return null;
@@ -124,8 +118,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Setting Float UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Setting Float UserSetting {key} - {e.Message}", e);
             }
 
             return false;
@@ -145,8 +138,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Setting Int UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Setting Int UserSetting {key} - {e.Message}", e);
             }
 
             return false;
@@ -166,8 +158,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Setting Long UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Setting Long UserSetting {key} - {e.Message}", e);
             }
 
             return false;
@@ -187,8 +178,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Setting Bool UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Setting Bool UserSetting {key} - {e.Message}", e);
             }
 
             return false;
@@ -208,8 +198,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Setting String UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Setting String UserSetting {key} - {e.Message}", e);
             }
 
             return false;
@@ -233,8 +222,7 @@ namespace PinupMobile.Droid.Settings
             }
             catch (Exception e)
             {
-                Logger.Error($"Error Setting Object UserSetting {key}");
-                Logger.Error(e.Message);
+                Logger.Error($"Error Setting Object UserSetting {key} - {e.Message}", e);
             }
 
             return false;

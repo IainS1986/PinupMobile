@@ -114,8 +114,7 @@ namespace PinupMobile.Droid.Views
             }
             catch(Exception ex)
             {
-                Logger.Error($"Error setting up surface for video");
-                Logger.Error(ex.Message);
+                Logger.Error($"Error setting up surface for video - {ex.Message}", ex);
             }
         }
 
@@ -174,8 +173,7 @@ namespace PinupMobile.Droid.Views
             }
             catch(Exception ex)
             {
-                Logger.Error($"Error trying to start media player");
-                Logger.Error(ex.Message);
+                Logger.Error($"Error trying to start media player - {ex.Message}", ex);
             }
         }
 
