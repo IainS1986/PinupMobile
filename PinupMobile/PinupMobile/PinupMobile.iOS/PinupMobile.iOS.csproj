@@ -127,6 +127,7 @@
     <Compile Include="Views\RecordDisplayView.designer.cs">
       <DependentUpon>RecordDisplayView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\Localisation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
@@ -248,11 +249,13 @@
     <Folder Include="Alerts\" />
     <Folder Include="Assets.xcassets\ic_stop.imageset\" />
     <Folder Include="Assets.xcassets\App_Icon.appiconset\" />
+    <Folder Include="Resources\en.lproj\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\test.png" />
     <BundleResource Include="Resources\test.m4v" />
     <BundleResource Include="Resources\test.f4v" />
+    <BundleResource Include="Resources\en.lproj\Localizable.strings" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

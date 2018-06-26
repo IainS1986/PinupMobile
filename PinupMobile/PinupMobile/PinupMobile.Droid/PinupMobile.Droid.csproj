@@ -130,6 +130,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
+    <Reference Include="Xamarin.iOS">
+      <HintPath>..\..\..\..\..\..\..\Library\Frameworks\Xamarin.iOS.framework\Versions\Current\lib\mono\Xamarin.iOS\Xamarin.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PinupMobile.Core\PinupMobile.Core.csproj">
@@ -148,6 +151,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Resources\animator\" />
     <Folder Include="Resources\anim\" />
+    <Folder Include="Resources\values-en\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.png" />
@@ -625,6 +629,7 @@
     <AndroidResource Include="Resources\mipmap-ldpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable\selector_button_stop.xml" />
     <AndroidResource Include="Resources\drawable\layout_border.xml" />
+    <AndroidResource Include="Resources\values-en\strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -647,6 +652,7 @@
     <Compile Include="Extensions\ViewExtensions.cs" />
     <Compile Include="Controls\CustomPresenter.cs" />
     <Compile Include="Views\RecordDisplayView.cs" />
+    <Compile Include="Settings\Localisation.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
