@@ -11,12 +11,12 @@ Soon(ish) I'll be getting a copy of both the Android and iOS apps up onto their 
 
 # Architecure Details
 
-Cross platform app developed in Xamarin, targetting Android and iOS devices.
-MvvmCross 6.0
-PhraseApp used for Translation/Localisation/Strings
-AppCenter for builds and test distribution
-AppCenter Crash Logging
-AppCenter Analytics
+* Cross platform app developed in Xamarin, targetting Android and iOS devices.
+* MvvmCross 6.0
+* PhraseApp used for Translation/Localisation/Strings
+* AppCenter for builds and test distribution
+* AppCenter Crash Logging
+* AppCenter Analytics
 
 Soon will be available on iTunes App Store and Google Play Store
 
