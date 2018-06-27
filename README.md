@@ -1,4 +1,4 @@
-# <img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.Droid/Resources/mipmap-xhdpi/ic_launcher.png" width="100"><img src="https://github.com/IainS1986/PinupMobile/blob/master/Wiki/iOS/Screen%20Shot%202018-06-25%20at%2021.51.28.png" width="300"> Pinup Remote 
+# <img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.Droid/Resources/mipmap-xhdpi/ic_launcher.png" width="60"> Pinup Remote 
 Mobile frontend for the Remote Control of PinupPopper
 
 This is a super basic mobile app to interact with the web api created by Nailbuster in PinupPopper.
@@ -36,6 +36,31 @@ Currently works with version 1.3.3 of Pinup Popper
 * Select Button (allows navigation of playlists)
 * Display View - Will play the current Playfield/Backglass/Topper/DMD video on your device
 * Record View - Supports start/stop recording Playfield/Backglass/Topper/DMD. Can either start from a game already playing, or launch the game in "Normal" or "Record" mode.
+
+# Icons Explained
+
+Ideally, I went for a minimalist, material design but I'm not sure how well the icons represent what they need too...
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_power.imageset/round_power_settings_new_black_48pt_1x.png"> - Power (System Menu)
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_select.imageset/round_check_circle_black_48pt_1x.png"> - Select
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_back.imageset/round_keyboard_return_black_48pt_1x.png"> - Menu Return
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_page_prev.imageset/round_fast_rewind_black_48pt_1x.png"> - Page Previous
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_prev.imageset/round_skip_previous_black_48pt_1x.png"> - Previous
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_next.imageset/round_skip_next_black_48pt_1x.png"> - Next
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_page_next.imageset/round_fast_forward_black_48pt_1x.png"> - Page Next
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_home.imageset/round_home_black_48pt_1x.png"> - Home
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_play.imageset/round_play_circle_filled_white_black_48pt_1x.png"> - Start Game
+
+<img src="https://github.com/IainS1986/PinupMobile/blob/master/PinupMobile/PinupMobile/PinupMobile.iOS/Assets.xcassets/ic_exit.imageset/round_exit_to_app_black_48pt_1x.png"> - Exit Emulator
+
 
 # iOS Screenshots
 
