@@ -63,16 +63,16 @@ namespace PinupMobile.Core.Analytics
                     displayStr = "Backglass";
                     break;
                 case PopperDisplayConstants.POPPER_DISPLAY_TOPPER:
-                    displayStr = "Backglass";
+                    displayStr = "Topper";
                     break;
                 case PopperDisplayConstants.POPPER_DISPLAY_WHEEL:
-                    displayStr = "Backglass";
+                    displayStr = "Wheel";
                     break;
                 case PopperDisplayConstants.POPPER_DISPLAY_DMD:
-                    displayStr = "Backglass";
+                    displayStr = "DMD";
                     break;
                 case PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD:
-                    displayStr = "Backglass";
+                    displayStr = "Playfield";
                     break;
                 default:
                     displayStr = "Unknown";
