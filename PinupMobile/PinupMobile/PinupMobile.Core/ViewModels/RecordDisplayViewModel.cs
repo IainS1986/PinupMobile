@@ -5,6 +5,7 @@ using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PinupMobile.Core.Alerts;
+using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote;
 using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Strings;
@@ -113,13 +114,14 @@ namespace PinupMobile.Core.ViewModels
             {
                 Recording = false;
                 HelpMessage = Translation.menu_record_help_failed;
-                Analytics.TrackStartRecordDisplay(display);
+                Logger.Error($"Failed to start recording {display}");
                 return;
             }
 
             //Start timer
             _timer.Start();
             _currentDisplay = display;
+            Analytics.TrackStartRecordDisplay(display);
 
             HelpMessage = string.Format(Translation.menu_record_help_in_progress, GetDisplayName(display));
         }
