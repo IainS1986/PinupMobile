@@ -82,6 +82,7 @@ namespace PinupMobile.Core.ViewModels
                 Recording = false;
                 _timer.Stop();
                 await _server.SendRecordDisplay(_currentDisplay);
+                Analytics.TrackStopRecordDisplay(_currentDisplay, Time);
             }
         }
 
@@ -94,7 +95,9 @@ namespace PinupMobile.Core.ViewModels
                 && !string.IsNullOrEmpty(_currentDisplay))
             {
                 //Kill/Stop the current recording
+                _timer.Stop();
                 await _server.SendRecordDisplay(_currentDisplay);
+                Analytics.TrackStopRecordDisplay(_currentDisplay, Time);
             }
         }
 
@@ -110,6 +113,7 @@ namespace PinupMobile.Core.ViewModels
             {
                 Recording = false;
                 HelpMessage = Translation.menu_record_help_failed;
+                Analytics.TrackStartRecordDisplay(display);
                 return;
             }
 

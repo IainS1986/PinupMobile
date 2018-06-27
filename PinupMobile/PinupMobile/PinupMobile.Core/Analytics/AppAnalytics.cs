@@ -9,8 +9,13 @@ namespace PinupMobile.Core.Analytics
         public static string ViewEvent = "Screen";
         public static string ViewProperty = "Name";
 
-        public static string DisplayEvent = "Display";
+        public static string DisplayEvent = "View Display";
         public static string DisplayProperty = "Display";
+
+        public static string StartRecordDisplayEvent = "Record Display (Start)";
+        public static string EndRecordDisplayEvent = "Record Display (End)";
+
+        public static string RecordDurationProperty = "Duration";
 
         public static string PupKeySuccessEvent = "Pup Command Success";
         public static string PupKeyFailedEvent = "Pup Command Failed";
@@ -56,34 +61,54 @@ namespace PinupMobile.Core.Analytics
 
         public void TrackDisplay(string display)
         {
-            string displayStr = string.Empty;
-            switch(display)
-            {
-                case PopperDisplayConstants.POPPER_DISPLAY_BACKGLASS:
-                    displayStr = "Backglass";
-                    break;
-                case PopperDisplayConstants.POPPER_DISPLAY_TOPPER:
-                    displayStr = "Topper";
-                    break;
-                case PopperDisplayConstants.POPPER_DISPLAY_WHEEL:
-                    displayStr = "Wheel";
-                    break;
-                case PopperDisplayConstants.POPPER_DISPLAY_DMD:
-                    displayStr = "DMD";
-                    break;
-                case PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD:
-                    displayStr = "Playfield";
-                    break;
-                default:
-                    displayStr = "Unknown";
-                    break;
-            }
             TrackEvent(DisplayEvent, new Dictionary<string, string>()
             {
                 {
-                    DisplayProperty, displayStr
+                    DisplayProperty, AnalyticsDisplayString(display)
                 }
             });
+        }
+
+        public void TrackStartRecordDisplay(string display)
+        {
+            TrackEvent(StartRecordDisplayEvent, new Dictionary<string, string>()
+            {
+                {
+                    DisplayProperty, AnalyticsDisplayString(display)
+                }
+            }); 
+        }
+
+        public void TrackStopRecordDisplay(string display, int seconds)
+        {
+            TrackEvent(EndRecordDisplayEvent, new Dictionary<string, string>()
+            {
+                {
+                    DisplayProperty, AnalyticsDisplayString(display)
+                },
+                {
+                    RecordDurationProperty, seconds.ToString()
+                }
+            });
+        }
+
+        private string AnalyticsDisplayString(string display)
+        {
+            switch (display)
+            {
+                case PopperDisplayConstants.POPPER_DISPLAY_BACKGLASS:
+                    return "Backglass";
+                case PopperDisplayConstants.POPPER_DISPLAY_TOPPER:
+                    return "Topper";
+                case PopperDisplayConstants.POPPER_DISPLAY_WHEEL:
+                    return "Wheel";
+                case PopperDisplayConstants.POPPER_DISPLAY_DMD:
+                    return "DMD";
+                case PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD:
+                    return "Playfield";
+                default:
+                    return "Unknown";
+            }
         }
     }
 }

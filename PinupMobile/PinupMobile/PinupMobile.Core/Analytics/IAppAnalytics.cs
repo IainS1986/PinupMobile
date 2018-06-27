@@ -14,6 +14,10 @@ namespace PinupMobile.Core.Analytics
 
         void TrackDisplay(string display);
 
+        void TrackStartRecordDisplay(string display);
+
+        void TrackStopRecordDisplay(string display, int durationInSeconds);
+
         void TrackServerConnect(bool success = true);
 
     }
