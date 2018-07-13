@@ -189,7 +189,18 @@ namespace PinupMobile.Core.ViewModels
 
         public async Task OnRecordStart()
         {
-            await Task.Run(() => ExecuteCommand(_server.SendRecordStart)).ConfigureAwait(false);
+            await Task.Run(async () =>
+            {
+
+                bool success = await _server.SendRecordGame(CurrentItem.GameID);
+
+                if (success)
+                {
+                    // It appears popper needs "some" time to move onto a new game
+                    await Task.Delay(500);
+                    await Refresh();
+                }
+            }).ConfigureAwait(false);
         }
 
         public async Task OnRecordMenu()

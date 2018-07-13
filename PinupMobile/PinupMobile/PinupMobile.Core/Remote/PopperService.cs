@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -183,7 +184,17 @@ namespace PinupMobile.Core.Remote
                     else if(contentType.MediaType == "text/html")
                     {
                         string responseBody = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                        response.Data = (ResponseT)(object) responseBody;
+
+                        //HACK - Backglass GetDisplay is sometimes returning text/html instead of video???
+                        if (responseBody.Contains("ftypf4v"))
+                        {
+                            response.Data = (ResponseT)(object)"video/f4v";
+                            response.Raw = await httpResponse.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                        }
+                        else
+                        {
+                            response.Data = (ResponseT)(object) responseBody;
+                        }
                     }
                     else
                     {
@@ -307,6 +318,31 @@ namespace PinupMobile.Core.Remote
             {
                 //TODO Error handling???
                 Logger.Error($"Error launching game {gameid}, responded with {response?.Code} and {response?.Messsage}");
+                return false;
+            }
+        }
+
+        public async Task<bool> SendRecordGame(int gameid)
+        {
+            if (IsDebugMode)
+            {
+                Logger.Debug($"Sent popper command to launch game with id {gameid} in record mode");
+                return true;
+            }
+
+            var request = new LaunchRecordGameRequest();
+            request.id = gameid;
+
+            var response = await MakeRequest<LaunchRecordGameRequest, string>(request).ConfigureAwait(false);
+
+            if (response?.Success == true)
+            {
+                return true;
+            }
+            else
+            {
+                //TODO Error handling???
+                Logger.Error($"Error launching game {gameid} in record mode, responded with {response?.Code} and {response?.Messsage}");
                 return false;
             }
         }

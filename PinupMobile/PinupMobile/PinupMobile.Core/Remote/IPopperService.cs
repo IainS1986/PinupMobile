@@ -27,6 +27,8 @@ namespace PinupMobile.Core.Remote
 
         Task<bool> SendPlayGame(int gameid);
 
+        Task<bool> SendRecordGame(int gameid);
+
         Task<bool> SendExitEmulator();
 
         Task<bool> SendHome();
