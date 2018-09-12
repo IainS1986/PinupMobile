@@ -4,6 +4,7 @@ using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PinupMobile.Core.Logging;
+using PinupMobile.Core.Network;
 using PinupMobile.Core.Remote;
 using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Remote.Model;
@@ -21,6 +22,7 @@ namespace PinupMobile.Core.ViewModels
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserSettings _userSettings;
+        private readonly IApi _api;
 
         private string _url;
         public string Url
@@ -52,17 +54,19 @@ namespace PinupMobile.Core.ViewModels
 
         public SetupPopperViewModel(IPopperService server,
                                     IMvxNavigationService navigationService,
-                                    IUserSettings userSettings)
+                                    IUserSettings userSettings,
+                                    IApi api)
         {
             _server = server;
             _navigationService = navigationService;
             _userSettings = userSettings;
+            _api = api;
         }
 
         public override Task Initialize()
         {
             //See if we have a saved Popper URL thats failed an preload it
-            string currentURL = _server.GetCurrentSavedPopperURL();
+            string currentURL = _api.BaseUri?.AbsoluteUri;
 
             if (!string.IsNullOrEmpty(currentURL))
             {

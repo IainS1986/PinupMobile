@@ -18,7 +18,6 @@ namespace PinupMobile.Core.Network
     public class Api : IApi
     {
         private const string PopperURLSettingKey = "popperServerURL";
-        private const string DebugPopperURL = "http://debug/";
 
         private readonly IHttpClientFactory _clientFactory;
         private readonly IUserSettings _settings;
@@ -35,8 +34,28 @@ namespace PinupMobile.Core.Network
         {
             _clientFactory = clientFactory;
             _settings = settings;
+
+            Initialise();
         }
 
+        private void Initialise()
+        {
+            // Check if we've manually set an IP and connect to that if so
+            string url = _settings.GetString(PopperURLSettingKey);
+
+            if (string.IsNullOrEmpty(url))
+            {
+                url = "http://192.168.0.1/";
+            }
+
+            BaseUri = new Uri(url);
+        }
+
+        public void SaveUrl()
+        {
+            //Save off the URL so we autoconnect next time
+            _settings.SetString(PopperURLSettingKey, BaseUri.AbsoluteUri);
+        }
 
         public async Task<PopperResponse<ResponseT>> MakeRequest<RequestT, ResponseT>(RequestT request)
             where RequestT : class

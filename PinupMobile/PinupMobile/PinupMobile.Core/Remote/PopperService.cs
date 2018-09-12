@@ -13,10 +13,8 @@ namespace PinupMobile.Core.Remote
 {
     public class PopperService : IPopperService
     {
-        private const string PopperURLSettingKey = "popperServerURL";
         private const string DebugPopperURL = "http://debug/";
 
-        private readonly IUserSettings _settings;
         private readonly IAppAnalytics _analytics;
         private readonly IApi _api;
 
@@ -25,28 +23,11 @@ namespace PinupMobile.Core.Remote
             get { return _api.BaseUri.AbsoluteUri.Equals(DebugPopperURL, StringComparison.CurrentCultureIgnoreCase); }
         }
 
-        public PopperService(IUserSettings settings,
-                             IAppAnalytics analytics,
+        public PopperService(IAppAnalytics analytics,
                              IApi api)
         {
-            _settings = settings;
             _analytics = analytics;
             _api = api;
-
-            Initialise();
-        }
-
-        private void Initialise()
-        {
-            // Check if we've manually set an IP and connect to that if so
-            string url = _settings.GetString(PopperURLSettingKey);
-
-            if (string.IsNullOrEmpty(url))
-            {
-                url = "http://192.168.0.1/";
-            }
-
-            _api.BaseUri = new Uri(url);
         }
 
         public async Task<bool> ServerExists()
@@ -80,16 +61,10 @@ namespace PinupMobile.Core.Remote
 
             if (connected && !IsDebugMode)
             {
-                //Save off the URL so we autoconnect next time
-                _settings.SetString(PopperURLSettingKey, url);
+                _api.SaveUrl();
             }
 
             return connected;
-        }
-
-        public string GetCurrentSavedPopperURL()
-        {
-            return _settings.GetString(PopperURLSettingKey);
         }
 
         public async Task<DisplayResponse> GetDisplay(string display)

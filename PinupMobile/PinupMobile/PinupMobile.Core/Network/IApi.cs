@@ -8,6 +8,8 @@ namespace PinupMobile.Core.Network
     {
         Uri BaseUri { get; set; }
 
+        void SaveUrl();
+
         Task<PopperResponse<ResponseT>> MakeRequest<RequestT, ResponseT>(RequestT request)
             where RequestT : class
             where ResponseT : class;
