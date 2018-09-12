@@ -240,7 +240,7 @@ namespace PinupMobile.Core.ViewModels
                 var itemRes = await itemReq;
 
                 // Check if things have actually changed before going off to get more display details
-                if (itemRes.GameID != CurrentItem?.GameID)
+                if (!string.Equals(itemRes.DisplayName, CurrentItem?.DisplayName, StringComparison.CurrentCultureIgnoreCase))
                 {
                     var wheelRes = await _server.GetDisplay(PopperDisplayConstants.POPPER_DISPLAY_WHEEL);
                     

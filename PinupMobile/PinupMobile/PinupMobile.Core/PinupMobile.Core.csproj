@@ -27,5 +27,6 @@
     <Folder Include="Alerts\" />
     <Folder Include="Analytics\" />
     <Folder Include="Timers\" />
+    <Folder Include="Network\" />
   </ItemGroup>
 </Project>
