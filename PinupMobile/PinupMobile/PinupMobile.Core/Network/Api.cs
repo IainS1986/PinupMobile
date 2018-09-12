@@ -134,6 +134,7 @@ namespace PinupMobile.Core.Network
                         string responseBody = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                         //HACK - Backglass GetDisplay is sometimes returning text/html instead of video???
+                        //     - Seems to only be on Android and F4V files...
                         if (responseBody.Contains("ftypf4v"))
                         {
                             response.Data = (ResponseT)(object)"video/f4v";
