@@ -4,11 +4,13 @@ using System.Threading.Tasks;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using PinupMobile.Core.Alerts;
 using PinupMobile.Core.Analytics;
 using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote;
 using PinupMobile.Core.Remote.API;
 using PinupMobile.Core.Remote.Model;
+using PinupMobile.Core.Strings;
 
 namespace PinupMobile.Core.ViewModels
 {
@@ -21,6 +23,7 @@ namespace PinupMobile.Core.ViewModels
     {
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
+        private readonly IDialog _dialogService;
 
         private string _display = PopperDisplayConstants.POPPER_DISPLAY_PLAYFIELD;
 
@@ -34,10 +37,12 @@ namespace PinupMobile.Core.ViewModels
         }
 
         public DisplayViewModel(IPopperService server,
-                             IMvxNavigationService navigationService)
+                                IMvxNavigationService navigationService,
+                                IDialog dialogService)
         {
             _server = server;
             _navigationService = navigationService;
+            _dialogService = dialogService;
         }
 
         public override void Prepare(string parameter)
@@ -56,7 +61,19 @@ namespace PinupMobile.Core.ViewModels
             // Download the Playfield Display
             await Task.Run(async () =>
             {
-                MediaUrl = await _server.GetDisplay(_display);
+                var response = await _server.GetDisplay(_display);
+
+                if (response.Success)
+                {
+                    MediaUrl = response.MediaUrl;
+                }
+                else
+                {
+                    _dialogService.Show(Translation.alert_display_failed_title,
+                                        response.Error,
+                                        Translation.general_close,
+                                        async () => await CloseCommand?.ExecuteAsync());
+                }
             }).ConfigureAwait(false);
         }
     }

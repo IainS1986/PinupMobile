@@ -223,11 +223,13 @@ namespace PinupMobile.Core.ViewModels
                 var itemReq = _server.GetCurrentItem();
                 var wheelReq = _server.GetDisplay(PopperDisplayConstants.POPPER_DISPLAY_WHEEL);
 
-                var itemRes = await itemReq;
-                var wheelRes = await wheelReq;
+                await Task.WhenAll(itemReq, wheelReq);
+
+                var itemRes = itemReq.Result;
+                var wheelRes = wheelReq.Result;
 
                 CurrentItem = itemRes;
-                WheelIconPath = wheelRes;
+                WheelIconPath = wheelRes.MediaUrl;
 
             }).ConfigureAwait(false);
         }
@@ -236,7 +238,6 @@ namespace PinupMobile.Core.ViewModels
         {
             await Task.Run(async () =>
             {
-
                 bool success = await _server.SendPlayGame(CurrentItem.GameID);
 
                 if (success)

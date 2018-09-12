@@ -213,8 +213,10 @@ namespace PinupMobile.Core.Remote
             return response;
         }
 
-        public async Task<string> GetDisplay(string display)
+        public async Task<DisplayResponse> GetDisplay(string display)
         {
+            DisplayResponse result = new DisplayResponse();
+            result.Success = true;
             if (IsDebugMode)
             {
                 Logger.Debug($"Sent popper request for {display} feed");
@@ -227,48 +229,62 @@ namespace PinupMobile.Core.Remote
                     localFilename = "test.png";
                 }
 
-                //return Path.Combine(documentsPath, localFilename);
-                return localFilename;
-            }
-
-            GetDisplayRequest request = new GetDisplayRequest();
-            request.display = display;
-
-            var response = await MakeRequest<GetDisplayRequest, string>(request).ConfigureAwait(false);
-
-            if(response.Success == true)
-            {
-                try
-                {
-                    // Check Response data to determine what format to save the byte[] too
-                    string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                    string localFilename = "test.txt";
-                    if (response.Data.Contains("video") ||
-                        response.Data.Contains("image"))
-                    {
-                        string format = response.Data.Split('/')[1];
-                        localFilename = $"test.{format}";
-                    }
-                    
-                    // Save 
-                    string localPath = Path.Combine(documentsPath, localFilename);
-                    File.WriteAllBytes(localPath, response.Raw);
-                    
-                    return localPath;
-                    
-                }
-                catch(Exception ex)
-                {
-                    Logger.Error($"Error saving off display data for playback - {ex.Message}", ex);
-                    return string.Empty;
-                }
+                result.MediaUrl = localFilename;
             }
             else
             {
-                //TODO Error handling???
-                Logger.Error($"Error requesting Display {display}, responded with {response?.Code} and {response?.Messsage}");
-                return string.Empty;  
+                
+                GetDisplayRequest request = new GetDisplayRequest();
+                request.display = display;
+                
+                var response = await MakeRequest<GetDisplayRequest, string>(request).ConfigureAwait(false);
+                
+                if(response.Success == true)
+                {
+                    try
+                    {
+                        if (string.Equals(response.Data, "no image found", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            Logger.Error($"Error fetching display {display}, no image found returned from Popper");
+                            //TODO Change to an actual response object instead of string
+                            result.Success = false;
+                            result.Error = string.Format($"Error - No image found");
+                        }
+                        else
+                        {
+                            // Check Response data to determine what format to save the byte[] too
+                            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                            string localFilename = "test.txt";
+                            if (response.Data.Contains("video") ||
+                                response.Data.Contains("image"))
+                            {
+                                string format = response.Data.Split('/')[1];
+                                localFilename = $"test.{format}";
+                            }
+                            
+                            // Save 
+                            string localPath = Path.Combine(documentsPath, localFilename);
+                            File.WriteAllBytes(localPath, response.Raw);
+
+                            result.MediaUrl = localPath;
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        Logger.Error($"Error saving off display data for playback - {ex.Message}", ex);
+                        result.Success = false;
+                        result.Error = $"Error saving off display data for playback - {ex.Message}";
+                    }
+                }
+                else
+                {
+                    Logger.Error($"Error requesting Display {display}, responded with {response?.Code} and {response?.Messsage}");
+                    result.Success = false;
+                    result.Error = $"Error requesting Display { display}, responded with { response?.Code} and { response?.Messsage}";  
+                }
             }
+
+            return result;
         }
 
         public async Task<Item> GetCurrentItem()
