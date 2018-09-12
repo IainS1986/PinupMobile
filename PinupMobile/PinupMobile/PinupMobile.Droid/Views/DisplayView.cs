@@ -11,8 +11,10 @@ using Android.Widget;
 using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using PinupMobile.Core.Alerts;
 using PinupMobile.Core.Logging;
 using PinupMobile.Core.Remote;
+using PinupMobile.Core.Strings;
 using PinupMobile.Core.ViewModels;
 using PinupMobile.Droid.Controls;
 using static Android.Media.MediaPlayer;
@@ -33,6 +35,7 @@ namespace PinupMobile.Droid.Views
         private ImageView _imageView;
         private Android.Media.MediaPlayer _mediaPlayer; 
         private ProgressBar _loadingSpinner;
+        private IDialog _dialogService;
 
         private bool _videoSizeSetupDone = false;
 
@@ -48,6 +51,7 @@ namespace PinupMobile.Droid.Views
             base.OnCreate(bundle);
 
             _popper = Mvx.Resolve<IPopperService>();
+            _dialogService = Mvx.Resolve<IDialog>();
 
             SetContentView(Resource.Layout.DisplayView);
 
@@ -85,6 +89,8 @@ namespace PinupMobile.Droid.Views
             if(_mediaPlayer != null)
             {
                 _mediaPlayer.Stop();
+                _mediaPlayer.Error -= OnMediaPlaybackError;
+                _mediaPlayer.Prepared -= OnMediaPlayerPrepared;
                 _mediaPlayer.Release();
                 _mediaPlayer.Dispose();
                 _mediaPlayer = null;
@@ -102,6 +108,8 @@ namespace PinupMobile.Droid.Views
             try
             {
                 _mediaPlayer = new Android.Media.MediaPlayer();
+                _mediaPlayer.Error += OnMediaPlaybackError;
+                _mediaPlayer.Prepared += OnMediaPlayerPrepared;
                 _mediaPlayer.SetSurface(surface);
                 _mediaPlayer.SetOnVideoSizeChangedListener(this);
 
@@ -141,9 +149,8 @@ namespace PinupMobile.Droid.Views
                         await _mediaPlayer.SetDataSourceAsync(MediaUrl);
                     }
 
-                    _mediaPlayer.Prepare();
                     _mediaPlayer.Looping = true;
-                    _mediaPlayer.Start();
+                    _mediaPlayer.Prepare();
                 }
                 // PNG Support
                 else if (MediaUrl.EndsWith(".png", StringComparison.CurrentCultureIgnoreCase))
@@ -181,6 +188,20 @@ namespace PinupMobile.Droid.Views
                 _loadingSpinner.Visibility = ViewStates.Invisible;
                 ChangeVideoSize(width, height);
             }
+        }
+
+        private void OnMediaPlayerPrepared(object sender, EventArgs e)
+        {
+            _mediaPlayer.Start();
+        }
+
+        private void OnMediaPlaybackError(object sender, ErrorEventArgs e)
+        {
+            Logger.Error($"Error playing media {MediaUrl}, {e}");
+            _dialogService.Show(Translation.alert_display_failed_title,
+                                Translation.alert_display_failed_body,
+                                Translation.general_close,
+                                async () => { await ViewModel?.CloseCommand?.ExecuteAsync(); });
         }
 
         private void ChangeVideoSize(int width, int height)
