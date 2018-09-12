@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Timers;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
@@ -22,11 +23,14 @@ namespace PinupMobile.Core.ViewModels
         : BaseViewModel
     {
         private const string TITLE_VISIBLE_KEY = "TitleVisible";
+        private const int REFRESH_RATE_SECONDS = 5;//seconds
 
         private readonly IPopperService _server;
         private readonly IMvxNavigationService _navigationService;
         private readonly IUserSettings _userSettings;
         private readonly IDialog _dialogService;
+
+        private Timer _refreshTimer;
 
         private Item _currentItem;
         public Item CurrentItem
@@ -90,6 +94,10 @@ namespace PinupMobile.Core.ViewModels
             _navigationService = navigationService;
             _userSettings = userSettings;
             _dialogService = dialogService;
+
+            _refreshTimer = new Timer(REFRESH_RATE_SECONDS * 1000);
+            _refreshTimer.Elapsed += OnRefreshTimerElapsed;
+            _refreshTimer.AutoReset = true;
         }
 
         public override async void ViewAppearing()
@@ -99,6 +107,15 @@ namespace PinupMobile.Core.ViewModels
             TitleHidden = _userSettings.GetBool(TITLE_VISIBLE_KEY);
 
             await Refresh();
+
+            _refreshTimer.Start();
+        }
+
+        public override void ViewDisappearing()
+        {
+            base.ViewDisappearing();
+
+            _refreshTimer.Stop();
         }
 
         public async Task OnDisplayView()
@@ -217,19 +234,19 @@ namespace PinupMobile.Core.ViewModels
 
         private async Task Refresh()
         {
-            // TODO First time run to setup Popper Server URL....
             await Task.Run(async () =>
             {
                 var itemReq = _server.GetCurrentItem();
-                var wheelReq = _server.GetDisplay(PopperDisplayConstants.POPPER_DISPLAY_WHEEL);
+                var itemRes = await itemReq;
 
-                await Task.WhenAll(itemReq, wheelReq);
-
-                var itemRes = itemReq.Result;
-                var wheelRes = wheelReq.Result;
-
-                CurrentItem = itemRes;
-                WheelIconPath = wheelRes.MediaUrl;
+                // Check if things have actually changed before going off to get more display details
+                if (itemRes.GameID != CurrentItem?.GameID)
+                {
+                    var wheelRes = await _server.GetDisplay(PopperDisplayConstants.POPPER_DISPLAY_WHEEL);
+                    
+                    CurrentItem = itemRes;
+                    WheelIconPath = wheelRes.MediaUrl;
+                }
 
             }).ConfigureAwait(false);
         }
@@ -269,6 +286,11 @@ namespace PinupMobile.Core.ViewModels
             TitleHidden = !TitleHidden;
 
             _userSettings.SetBool(TITLE_VISIBLE_KEY, TitleHidden);
+        }
+
+        private void OnRefreshTimerElapsed(object sender, ElapsedEventArgs eventArgs)
+        {
+            Task.Run(async () => await Refresh()).ConfigureAwait(false);
         }
     }
 }
