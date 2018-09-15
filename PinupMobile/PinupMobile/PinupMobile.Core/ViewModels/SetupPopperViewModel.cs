@@ -92,8 +92,9 @@ namespace PinupMobile.Core.ViewModels
             var minTime = Task.Delay(2000);
             var connectReq = _server.ServerExistsWithUrl($"http://{Url}");
 
-            var popperConnected = await connectReq;
-            await minTime;
+            await Task.WhenAll(minTime, connectReq);
+
+            var popperConnected = connectReq.Result;
 
             Connecting = false;
 

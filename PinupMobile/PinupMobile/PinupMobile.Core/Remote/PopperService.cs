@@ -34,16 +34,19 @@ namespace PinupMobile.Core.Remote
         {
             try
             {
-                var item = await GetCurrentItem();
+                var request = new GetCurrentItemRequest();
+                var response = await _api.MakeRequest<GetCurrentItemRequest, GetCurrentItemResponse>(request).ConfigureAwait(false);
 
-                if (item == null)
+                if (response?.Success == true)
+                {
+                    _analytics.TrackServerConnect(true);
+                    return true;
+                }
+                else
                 {
                     _analytics.TrackServerConnect(false);
                     return false;
                 }
-
-                _analytics.TrackServerConnect(true);
-                return true;
             }
             catch (Exception ex)
             {
