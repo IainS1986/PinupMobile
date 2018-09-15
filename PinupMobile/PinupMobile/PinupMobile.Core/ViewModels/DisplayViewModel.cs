@@ -74,7 +74,7 @@ namespace PinupMobile.Core.ViewModels
                                         Translation.general_close,
                                         async () => await CloseCommand?.ExecuteAsync());
                 }
-            }).ConfigureAwait(false);
+            });
         }
     }
 }
