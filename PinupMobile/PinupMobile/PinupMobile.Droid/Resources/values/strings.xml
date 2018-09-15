@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
   <string name="alert_display_body">Which display do you want to see?</string>
-  <string name="alert_display_failed_body">Sorry, f4v format is not supported on iOS devices. If you autorecord new videos with Popper they will be in mp4 format.</string>
+  <string name="alert_display_failed_body">Sorry, f4v format is not supported very well on default Android media players. If you autorecord new videos with Popper they will be in mp4 format.</string>
   <string name="alert_display_failed_title">Playback Failed</string>
   <string name="alert_display_power_body">What would you like to do?</string>
   <string name="alert_display_power_option_exit">Exit Popper</string>
