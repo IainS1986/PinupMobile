@@ -1,41 +1,48 @@
 ﻿using System;
 using CoreGraphics;
+using MvvmCross.Base;
 using PinupMobile.Core.Alerts;
 using UIKit;
 
 namespace PinupMobile.iOS.Alerts
 {
-    public class Dialog : IDialog
+    public class Dialog : MvxMainThreadDispatchingObject, IDialog
     {
         public void Show(string title, string message, string cancelText, Action buttonAction = null)
         {
-            var alert = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
-            alert.AddAction(UIAlertAction.Create(cancelText, UIAlertActionStyle.Default, (action) => buttonAction?.Invoke()));
+            InvokeOnMainThread(() =>
+            {
+                var alert = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
+                alert.AddAction(UIAlertAction.Create(cancelText, UIAlertActionStyle.Default, (action) => buttonAction?.Invoke()));
 
-            PresentAlert(alert);
+                PresentAlert(alert);
+            });
         }
 
         public void Show(string title, string message, string cancelText, System.Collections.Generic.List<(string, Action)> actions)
         {
-            var alert = UIAlertController.Create(title, message, UIAlertControllerStyle.ActionSheet);
-
-            foreach (var alertAction in actions)
+            InvokeOnMainThread(() =>
             {
-                alert.AddAction(UIAlertAction.Create(alertAction.Item1, UIAlertActionStyle.Default, (action) => alertAction.Item2?.Invoke()));
-            }
+                var alert = UIAlertController.Create(title, message, UIAlertControllerStyle.ActionSheet);
 
-            alert.AddAction(UIAlertAction.Create(cancelText, UIAlertActionStyle.Cancel, null));
+                foreach (var alertAction in actions)
+                {
+                    alert.AddAction(UIAlertAction.Create(alertAction.Item1, UIAlertActionStyle.Default, (action) => alertAction.Item2?.Invoke()));
+                }
 
-            var viewController = FindViewControllerForPresentation();
+                alert.AddAction(UIAlertAction.Create(cancelText, UIAlertActionStyle.Cancel, null));
 
-            if (alert.PopoverPresentationController != null)
-            {
-                alert.PopoverPresentationController.SourceView = viewController.View;
-                alert.PopoverPresentationController.SourceRect = new CGRect(viewController.View.Bounds.GetMidX(), viewController.View.Bounds.GetMidY(), 0, 0);
-                alert.PopoverPresentationController.PermittedArrowDirections = 0;
-            }
+                var viewController = FindViewControllerForPresentation();
 
-            viewController.PresentViewController(alert, true, null);
+                if (alert.PopoverPresentationController != null)
+                {
+                    alert.PopoverPresentationController.SourceView = viewController.View;
+                    alert.PopoverPresentationController.SourceRect = new CGRect(viewController.View.Bounds.GetMidX(), viewController.View.Bounds.GetMidY(), 0, 0);
+                    alert.PopoverPresentationController.PermittedArrowDirections = 0;
+                }
+
+                viewController.PresentViewController(alert, true, null);
+            });
         }
 
         private static UIViewController FindViewControllerForPresentation()
